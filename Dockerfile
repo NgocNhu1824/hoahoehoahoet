@@ -1,32 +1,28 @@
 # ==========================
-        # 1️⃣ Stage 1: Build project
+# 1️⃣ Stage 1: Build project
 # ==========================
 FROM maven:3.9.8-eclipse-temurin-21 AS builder
 
-# Set thư mục làm việc trong container
 WORKDIR /app
-
-# Copy toàn bộ code vào container
 COPY . .
 
-        # Build ứng dụng, bỏ qua test cho nhanh
+# Build ứng dụng, bỏ qua test
 RUN mvn clean package -DskipTests
 
 # ==========================
-        # 2️⃣ Stage 2: Run application
+# 2️⃣ Stage 2: Run application
 # ==========================
 FROM eclipse-temurin:21-jre-jammy
 
-# Thư mục làm việc của app
 WORKDIR /app
 
-# Copy file jar từ stage 1 sang
+# Copy jar từ stage 1
 COPY --from=builder /app/target/*.jar app.jar
 
-# Mở cổng 8080 (Render sẽ tự dùng)
+# Mở cổng 8080 (Render sẽ override bằng $PORT)
 EXPOSE 8080
 
-# Biến môi trường (Render sẽ override khi deploy)
+# Biến môi trường cho profile prod
 ENV SPRING_PROFILES_ACTIVE=prod
 
 # Lệnh chạy ứng dụng
