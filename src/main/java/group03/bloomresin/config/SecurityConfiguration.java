@@ -56,13 +56,14 @@ public class SecurityConfiguration {
     public SpringSessionRememberMeServices rememberMeServices() {
         SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
         rememberMeServices.setAlwaysRemember(true);
+        // Không set cookie secure / cookie name khác để tránh redirect loop
         return rememberMeServices;
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            // Không ép HTTPS, Render terminate HTTPS ngoài app
+            // Không ép HTTPS, Render terminate HTTPS proxy
             .authorizeHttpRequests(authorize -> authorize
                 .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.INCLUDE).permitAll()
                 .requestMatchers(
@@ -78,12 +79,12 @@ public class SecurityConfiguration {
             )
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                .invalidSessionUrl("/logout?expired")
+                .invalidSessionUrl("/login?expired") // redirect về login khi session hết hạn
                 .maximumSessions(1)
                 .maxSessionsPreventsLogin(false)
             )
             .logout(logout -> logout
-                .deleteCookies("JSESSIONID", "REMEMBER_ME")
+                .deleteCookies("JSESSIONID") // remember-me cookie mặc định Spring Session
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/login?logout")
             )
@@ -110,7 +111,7 @@ public class SecurityConfiguration {
 
         if (user != null) {
             if (!user.isStatus()) {
-                request.getSession().setAttribute("message", "Your Account was banned");
+                request.getSession().setAttribute("message", "Your account was banned");
                 response.sendRedirect("/login?locked");
             } else {
                 response.sendRedirect("/login?error");
