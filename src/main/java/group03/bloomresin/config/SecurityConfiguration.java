@@ -56,8 +56,6 @@ public class SecurityConfiguration {
     public SpringSessionRememberMeServices rememberMeServices() {
         SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
         rememberMeServices.setAlwaysRemember(true);
-        rememberMeServices.setCookieName("REMEMBER_ME");
-        rememberMeServices.setUseSecureCookie(true); // HTTPS proxy ok
         return rememberMeServices;
     }
 
