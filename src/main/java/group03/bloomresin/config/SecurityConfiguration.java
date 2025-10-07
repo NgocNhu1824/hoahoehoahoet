@@ -62,9 +62,6 @@ public class SecurityConfiguration {
         @Bean
         SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http
-                        .requiresChannel(channel -> channel
-                            .anyRequest().requiresSecure() 
-                        )
                         .authorizeHttpRequests(authorize -> authorize
                                 .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.INCLUDE).permitAll()
                                 .requestMatchers("/", "/login", "/register", "/client/**", "/css/**", "/js/**", "/images/**", "/upload/**",
