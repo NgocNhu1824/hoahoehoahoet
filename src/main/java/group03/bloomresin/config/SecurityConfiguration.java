@@ -61,6 +61,7 @@ public class SecurityConfiguration {
     public SpringSessionRememberMeServices rememberMeServices() {
         SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
         rememberMeServices.setAlwaysRemember(true);
+        // SpringSessionRememberMeServices không có setUseSecureCookie()
         return rememberMeServices;
     }
 
@@ -73,6 +74,7 @@ public class SecurityConfiguration {
     // ================= Security Filter Chain =================
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http
             // Không ép HTTPS, Render terminate HTTPS proxy
             .authorizeHttpRequests(authorize -> authorize
