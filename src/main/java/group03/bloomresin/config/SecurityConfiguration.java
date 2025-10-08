@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
+import org.springframework.web.filter.ForwardedHeaderFilter;
 
 import group03.bloomresin.domain.User;
 import group03.bloomresin.service.UserService;
@@ -33,11 +34,13 @@ public class SecurityConfiguration {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    // ================= Password Encoder =================
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // ================= Authentication Provider =================
     @Bean
     public DaoAuthenticationProvider authProvider(PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -47,19 +50,28 @@ public class SecurityConfiguration {
         return authProvider;
     }
 
+    // ================= Success Handler =================
     @Bean
     public AuthenticationSuccessHandler customSuccessHandler() {
         return new CustomSuccessHandler();
     }
 
+    // ================= Remember-Me Service =================
     @Bean
     public SpringSessionRememberMeServices rememberMeServices() {
         SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
         rememberMeServices.setAlwaysRemember(true);
-        // Không set cookie secure / cookie name khác để tránh redirect loop
+        rememberMeServices.setUseSecureCookie(false); // avoid redirect loop on Render
         return rememberMeServices;
     }
 
+    // ================= Forwarded Header Filter =================
+    @Bean
+    public ForwardedHeaderFilter forwardedHeaderFilter() {
+        return new ForwardedHeaderFilter();
+    }
+
+    // ================= Security Filter Chain =================
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -79,12 +91,12 @@ public class SecurityConfiguration {
             )
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                .invalidSessionUrl("/login?expired") // redirect về login khi session hết hạn
+                .invalidSessionUrl("/login?expired")
                 .maximumSessions(1)
                 .maxSessionsPreventsLogin(false)
             )
             .logout(logout -> logout
-                .deleteCookies("JSESSIONID") // remember-me cookie mặc định Spring Session
+                .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/login?logout")
             )
@@ -104,6 +116,7 @@ public class SecurityConfiguration {
         return http.build();
     }
 
+    // ================= Login Failure Handler =================
     private void handleLoginFailure(HttpServletRequest request, HttpServletResponse response,
                                     org.springframework.security.core.AuthenticationException exception) throws IOException {
         String email = request.getParameter("username");
