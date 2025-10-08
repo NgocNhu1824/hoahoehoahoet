@@ -61,7 +61,6 @@ public class SecurityConfiguration {
     public SpringSessionRememberMeServices rememberMeServices() {
         SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
         rememberMeServices.setAlwaysRemember(true);
-        rememberMeServices.setUseSecureCookie(false); // avoid redirect loop on Render
         return rememberMeServices;
     }
 
