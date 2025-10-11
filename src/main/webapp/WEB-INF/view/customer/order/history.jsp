@@ -51,8 +51,8 @@
             color: white;
         }
 
-        .table-dark {
-            background-color: #6B1700;
+        .table thead.custom-header th {
+            background-color: #6B1700; /* màu nâu đậm của giao diện */
             color: #FFF1D2;
         }
 
@@ -80,10 +80,10 @@
         </nav>
 
         <!-- Đơn hàng thường -->
-        <h4 class="mb-3">Đơn hàng thông thường</h4>
+<%--        <h4 class="mb-3">Đơn hàng thông thường</h4>--%>
         <div class="table-responsive mb-5">
             <table class="table table-hover table-bordered text-center align-middle">
-                <thead class="table-dark">
+                <thead class="custom-header">
                 <tr>
                     <th>Sản phẩm</th>
                     <th>Tên</th>
@@ -144,55 +144,55 @@
             </table>
         </div>
 
-        <!-- Đơn hàng theo yêu cầu -->
-        <h4 class="mb-3">Đơn hàng theo yêu cầu</h4>
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered text-center align-middle">
-                <thead class="table-danger text-dark">
-                <tr>
-                    <th>Ảnh</th>
-                    <th>Tên sản phẩm</th>
-                    <th>SĐT</th>
-                    <th>Địa chỉ</th>
-                    <th>Mô tả</th>
-                    <th>Trạng thái</th>
-                    <th>Ngày đặt</th>
-                    <th>Hành động</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="custom" items="${customOrders}">
-                    <tr>
-                        <td>
-                            <img src="${pageContext.request.contextPath}/images/custom-order/${custom.image}"
-                                 class="rounded border" style="width: 60px; height: 60px; object-fit: cover;" alt="${custom.name}">
-                        </td>
-                        <td><strong>${custom.name}</strong></td>
-                        <td>${custom.phone}</td>
-                        <td>${custom.address}</td>
-                        <td style="max-width: 200px; white-space: pre-line">${custom.description}</td>
-                        <td>
-                            <c:choose>
-                                <c:when test="${custom.status == 'CONFIRM'}"><span class="text-warning">Chờ xác nhận</span></c:when>
-                                <c:when test="${custom.status == 'PROCESSING'}"><span class="text-primary">Đang xử lý</span></c:when>
-                                <c:when test="${custom.status == 'COMPLETED'}"><span class="text-success">Hoàn thành</span></c:when>
-                                <c:when test="${custom.status == 'CANCELLED'}"><span class="text-danger">Đã hủy</span></c:when>
-                                <c:otherwise><span class="text-muted">Không rõ</span></c:otherwise>
-                            </c:choose>
-                        </td>
-                        <td><fmt:formatDate value="${convertedDates[custom.id]}" pattern="dd/MM/yyyy HH:mm" /></td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/custom-order/edit/${custom.id}" class="btn btn-outline-info btn-sm">
-                                <i class="fas fa-search"></i> Xem chi tiết
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                <c:if test="${empty customOrders}">
-                    <tr><td colspan="8" class="text-muted text-center">Không có đơn hàng theo yêu cầu.</td></tr>
-                </c:if>
-                </tbody>
-            </table>
+<%--        <!-- Đơn hàng theo yêu cầu -->--%>
+<%--        <h4 class="mb-3">Đơn hàng theo yêu cầu</h4>--%>
+<%--        <div class="table-responsive">--%>
+<%--            <table class="table table-hover table-bordered text-center align-middle">--%>
+<%--                <thead class="table-danger text-dark">--%>
+<%--                <tr>--%>
+<%--                    <th>Ảnh</th>--%>
+<%--                    <th>Tên sản phẩm</th>--%>
+<%--                    <th>SĐT</th>--%>
+<%--                    <th>Địa chỉ</th>--%>
+<%--                    <th>Mô tả</th>--%>
+<%--                    <th>Trạng thái</th>--%>
+<%--                    <th>Ngày đặt</th>--%>
+<%--                    <th>Hành động</th>--%>
+<%--                </tr>--%>
+<%--                </thead>--%>
+<%--                <tbody>--%>
+<%--                <c:forEach var="custom" items="${customOrders}">--%>
+<%--                    <tr>--%>
+<%--                        <td>--%>
+<%--                            <img src="${pageContext.request.contextPath}/images/custom-order/${custom.image}"--%>
+<%--                                 class="rounded border" style="width: 60px; height: 60px; object-fit: cover;" alt="${custom.name}">--%>
+<%--                        </td>--%>
+<%--                        <td><strong>${custom.name}</strong></td>--%>
+<%--                        <td>${custom.phone}</td>--%>
+<%--                        <td>${custom.address}</td>--%>
+<%--                        <td style="max-width: 200px; white-space: pre-line">${custom.description}</td>--%>
+<%--                        <td>--%>
+<%--                            <c:choose>--%>
+<%--                                <c:when test="${custom.status == 'CONFIRM'}"><span class="text-warning">Chờ xác nhận</span></c:when>--%>
+<%--                                <c:when test="${custom.status == 'PROCESSING'}"><span class="text-primary">Đang xử lý</span></c:when>--%>
+<%--                                <c:when test="${custom.status == 'COMPLETED'}"><span class="text-success">Hoàn thành</span></c:when>--%>
+<%--                                <c:when test="${custom.status == 'CANCELLED'}"><span class="text-danger">Đã hủy</span></c:when>--%>
+<%--                                <c:otherwise><span class="text-muted">Không rõ</span></c:otherwise>--%>
+<%--                            </c:choose>--%>
+<%--                        </td>--%>
+<%--                        <td><fmt:formatDate value="${convertedDates[custom.id]}" pattern="dd/MM/yyyy HH:mm" /></td>--%>
+<%--                        <td>--%>
+<%--                            <a href="${pageContext.request.contextPath}/custom-order/edit/${custom.id}" class="btn btn-outline-info btn-sm">--%>
+<%--                                <i class="fas fa-search"></i> Xem chi tiết--%>
+<%--                            </a>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </c:forEach>--%>
+<%--                <c:if test="${empty customOrders}">--%>
+<%--                    <tr><td colspan="8" class="text-muted text-center">Không có đơn hàng theo yêu cầu.</td></tr>--%>
+<%--                </c:if>--%>
+<%--                </tbody>--%>
+<%--            </table>--%>
         </div>
     </div>
 </div>

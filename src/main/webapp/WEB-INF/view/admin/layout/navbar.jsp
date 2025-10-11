@@ -14,7 +14,7 @@
         <li><a href="/admin/order" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-bag-check-fill"></i> Quản lý đơn hàng</a></li>
         <li><a href="/admin/profile/${sessionScope.id}" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-person-circle"></i> Quản lý hồ sơ</a></li>
         <li><a href="/admin/news" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-newspaper"></i> Quản lý tin tức</a></li>
-        <li><a href="/admin/custom-order" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-newspaper"></i> Quản lý đơn hàng yêu cầu</a></li>
+<%--        <li><a href="/admin/custom-order" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-newspaper"></i> Quản lý đơn hàng yêu cầu</a></li>--%>
 
         <li>
             <form method="post" action="/logout">

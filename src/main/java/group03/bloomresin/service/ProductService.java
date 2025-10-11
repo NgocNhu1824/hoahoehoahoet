@@ -86,11 +86,11 @@ public class ProductService {
             switch (p) {
                 case "duoi-100.000":
                     min = 1;
-                    max = 100000;
+                    max = 99999;
                     break;
                 case "100.000-500.000":
                     min = 100000;
-                    max = 500000;
+                    max = 499999;
                     break;
                 case "tren-500.000":
                     min = 500000;

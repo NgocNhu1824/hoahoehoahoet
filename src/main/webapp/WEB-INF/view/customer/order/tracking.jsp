@@ -1,12 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8">
     <title>Theo dõi đơn hàng</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
 <div class="container-fluid py-5 mt-5">
     <div class="container py-5">
         <h2 class="mb-4 text-center">Theo dõi đơn hàng</h2>
-        <p class="text-center text-muted mb-5">Kiểm tra trạng thái các đơn hàng bạn đã đặt – bao gồm cả đơn thường và đơn theo yêu cầu.</p>
+        <p class="text-center text-muted mb-5">Kiểm tra trạng thái các đơn hàng bạn đã đặt</p>
         <c:if test="${not empty message}">
             <div class="alert alert-success text-center fw-semibold">${message}</div>
         </c:if>
@@ -32,10 +32,9 @@
         </c:if>
 
         <c:if test="${not empty orders}">
-            <h5 class="fw-bold mb-3">Đơn hàng thường</h5>
             <div class="table-responsive mb-5">
                 <table class="table table-bordered text-center align-middle shadow-sm rounded">
-                    <thead style="background-color: #CEAF95; color: #fff;">
+                    <thead style="background-color: #6B1700; color: #FFF1D2;">
                     <tr>
                         <th>Ảnh</th>
                         <th>Sản phẩm</th>
@@ -98,55 +97,55 @@
             </div>
         </c:if>
 
-        <c:if test="${not empty customOrders}">
-            <h4 class="mb-3">Đơn hàng theo yêu cầu</h4>
-            <div class="table-responsive">
-                <table class="table table-hover table-bordered text-center align-middle shadow-sm rounded">
-                    <thead style="background-color: #6B1700; color: #fff;">
-                    <tr>
-                        <th>Ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Trạng thái</th>
-                        <th>Ngày đặt</th>
-                        <th>Hành động</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="custom" items="${customOrders}">
-                        <tr>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/images/custom-order/${custom.image}"
-                                     class="rounded border" style="width: 60px; height: 60px; object-fit: cover;" alt="${custom.name}">
-                            </td>
-                            <td><strong>${custom.name}</strong></td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${custom.status == 'CONFIRM'}"><span class="text-warning">Chờ xác nhận</span></c:when>
-                                    <c:when test="${custom.status == 'PROCESSING'}"><span class="text-primary">Đang xử lý</span></c:when>
-                                    <c:when test="${custom.status == 'COMPLETED'}"><span class="text-success">Hoàn thành</span></c:when>
-                                    <c:when test="${custom.status == 'CANCELLED'}"><span class="text-danger">Đã hủy</span></c:when>
-                                    <c:otherwise><span class="text-muted">Không rõ</span></c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td><fmt:formatDate value="${convertedDates[custom.id]}" pattern="dd/MM/yyyy HH:mm" /></td>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/custom-order/edit/${custom.id}" class="btn btn-outline-dark btn-sm">
-                                    <i class="fas fa-search"></i> Xem chi tiết
-                                </a>
-                                <c:if test="${custom.status == 'CONFIRM'}">
-                                    <a href="/customer/custom-order/cancel/${custom.id}"
-                                       class="btn btn-outline-danger btn-sm"
-                                       onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng theo yêu cầu này?');">
-                                        Hủy đơn hàng
-                                    </a>
-                                </c:if>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </c:if>
+<%--        <c:if test="${not empty customOrders}">--%>
+<%--            <h4 class="mb-3">Đơn hàng theo yêu cầu</h4>--%>
+<%--            <div class="table-responsive">--%>
+<%--                <table class="table table-hover table-bordered text-center align-middle shadow-sm rounded">--%>
+<%--                    <thead style="background-color: #6B1700; color: #fff;">--%>
+<%--                    <tr>--%>
+<%--                        <th>Ảnh</th>--%>
+<%--                        <th>Tên sản phẩm</th>--%>
+<%--                        <th>Trạng thái</th>--%>
+<%--                        <th>Ngày đặt</th>--%>
+<%--                        <th>Hành động</th>--%>
+<%--                    </tr>--%>
+<%--                    </thead>--%>
+<%--                    <tbody>--%>
+<%--                    <c:forEach var="custom" items="${customOrders}">--%>
+<%--                        <tr>--%>
+<%--                            <td>--%>
+<%--                                <img src="${pageContext.request.contextPath}/images/custom-order/${custom.image}"--%>
+<%--                                     class="rounded border" style="width: 60px; height: 60px; object-fit: cover;" alt="${custom.name}">--%>
+<%--                            </td>--%>
+<%--                            <td><strong>${custom.name}</strong></td>--%>
+<%--                            <td>--%>
+<%--                                <c:choose>--%>
+<%--                                    <c:when test="${custom.status == 'CONFIRM'}"><span class="text-warning">Chờ xác nhận</span></c:when>--%>
+<%--                                    <c:when test="${custom.status == 'PROCESSING'}"><span class="text-primary">Đang xử lý</span></c:when>--%>
+<%--                                    <c:when test="${custom.status == 'COMPLETED'}"><span class="text-success">Hoàn thành</span></c:when>--%>
+<%--                                    <c:when test="${custom.status == 'CANCELLED'}"><span class="text-danger">Đã hủy</span></c:when>--%>
+<%--                                    <c:otherwise><span class="text-muted">Không rõ</span></c:otherwise>--%>
+<%--                                </c:choose>--%>
+<%--                            </td>--%>
+<%--                            <td><fmt:formatDate value="${convertedDates[custom.id]}" pattern="dd/MM/yyyy HH:mm" /></td>--%>
+<%--                            <td>--%>
+<%--                                <a href="${pageContext.request.contextPath}/custom-order/edit/${custom.id}" class="btn btn-outline-dark btn-sm">--%>
+<%--                                    <i class="fas fa-search"></i> Xem chi tiết--%>
+<%--                                </a>--%>
+<%--                                <c:if test="${custom.status == 'CONFIRM'}">--%>
+<%--                                    <a href="/customer/custom-order/cancel/${custom.id}"--%>
+<%--                                       class="btn btn-outline-danger btn-sm"--%>
+<%--                                       onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng theo yêu cầu này?');">--%>
+<%--                                        Hủy đơn hàng--%>
+<%--                                    </a>--%>
+<%--                                </c:if>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+<%--                    </c:forEach>--%>
+<%--                    </tbody>--%>
+<%--                </table>--%>
+<%--            </div>--%>
+<%--        </c:if>--%>
 
         <c:if test="${empty orders and empty customOrders}">
             <div class="text-center">

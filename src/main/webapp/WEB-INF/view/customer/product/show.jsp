@@ -285,11 +285,11 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8 text-center">
-                    <div class="text-end mb-3">
-                        <a href="/custom-order/form" class="btn btn-success px-4 py-2 rounded-pill shadow-sm" style="font-weight: 600; font-size: 16px;">
-                            <i class="fas fa-magic me-1"></i> Làm sản phẩm theo yêu cầu
-                        </a>
-                    </div>
+<%--                    <div class="text-end mb-3">--%>
+<%--                        <a href="/custom-order/form" class="btn btn-success px-4 py-2 rounded-pill shadow-sm" style="font-weight: 600; font-size: 16px;">--%>
+<%--                            <i class="fas fa-magic me-1"></i> Làm sản phẩm theo yêu cầu--%>
+<%--                        </a>--%>
+<%--                    </div>--%>
                     <div class="row g-4">
                         <c:if test="${totalPages ==  0}">
                             <div>Không tìm thấy sản phẩm !!! </div>
