@@ -24,7 +24,6 @@
     </properties>
 
     <dependencies>
-
         <!-- Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -92,17 +91,18 @@
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
 
-        <!-- PostgreSQL (hoặc MySQL nếu bạn dùng MySQL thì bật dòng dưới) -->
+        <!-- PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- MySQL (bỏ nếu bạn dùng PostgreSQL) -->
+        <!-- MySQL (chỉ giữ nếu cần) -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- Excel Apache POI -->
@@ -120,13 +120,12 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JAXB (bắt buộc fix lỗi JAXBException) -->
+        <!-- JAXB (fix lỗi JAXBException) -->
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>4.0.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
@@ -158,9 +157,8 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>6.3.3</version> <!-- version này tương thích với Spring Boot 3.2.10 -->
+            <version>6.3.3</version>
         </dependency>
-
     </dependencies>
 
     <build>
