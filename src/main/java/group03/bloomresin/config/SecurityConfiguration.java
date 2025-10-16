@@ -100,7 +100,7 @@ public class SecurityConfiguration {
                         .exceptionHandling(ex -> ex.accessDeniedPage("/access-deny"));
 
                 // ✅ Không ép HTTPS redirect ở đây
-                http.requiresChannel(channel -> channel.anyRequest().requiresInsecure());
+                http.requiresChannel(channel -> channel.anyRequest().requiresSecure());
 
                 return http.build();
         }
