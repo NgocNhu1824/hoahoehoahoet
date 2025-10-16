@@ -79,7 +79,7 @@ public class SecurityConfiguration {
                         )
                         .sessionManagement(sessionManagement -> sessionManagement
                                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                                .invalidSessionUrl("/logout?expired")
+                                .invalidSessionUrl("/login?expired")
                                 .maximumSessions(1)
                                 .maxSessionsPreventsLogin(false)
                         )
