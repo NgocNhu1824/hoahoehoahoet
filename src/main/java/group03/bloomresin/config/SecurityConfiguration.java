@@ -65,11 +65,9 @@ public class SecurityConfiguration {
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http
+                        .requiresChannel(channel -> channel.anyRequest().requiresSecure())
                         .authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/", "/login", "/register", "/css/**", "/js/**", "/images/**", "/upload/**",
-                                        "/forgotpassword", "/authentication/**", "/product/**", "/products",
-                                        "/search/**", "/aboutus", "/voucher/**", "/category/**",
-                                        "/news/**", "/careservice/**").permitAll()
+                                .requestMatchers("/", "/login", "/register", "/css/**", "/js/**", "/images/**").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/employee/**").hasRole("EMPLOYEE")
                                 .requestMatchers("/customer/**").hasRole("CUSTOMER")
@@ -77,21 +75,23 @@ public class SecurityConfiguration {
                         )
                         .sessionManagement(session -> session
                                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                                .invalidSessionUrl("/logout?expired")
+                                .invalidSessionUrl("/login?expired")
                                 .maximumSessions(1)
                                 .maxSessionsPreventsLogin(false)
-                        )
-                        .logout(logout -> logout
-                                .deleteCookies("JSESSIONID")
-                                .invalidateHttpSession(true)
-                        )
-                        .rememberMe(r -> r
-                                .rememberMeServices(rememberMeServices())
                         )
                         .formLogin(form -> form
                                 .loginPage("/login")
                                 .successHandler(customSuccessHandler())
                                 .permitAll()
+                        )
+                        .logout(logout -> logout
+                                .logoutUrl("/logout")
+                                .logoutSuccessUrl("/login?logout")
+                                .deleteCookies("JSESSIONID")
+                                .invalidateHttpSession(true)
+                        )
+                        .rememberMe(r -> r
+                                .rememberMeServices(rememberMeServices())
                         )
                         .exceptionHandling(ex -> ex
                                 .accessDeniedPage("/access-deny")
