@@ -20,12 +20,9 @@ WORKDIR /app
 # Copy jar từ stage build
 COPY --from=builder /app/target/*.jar app.jar
 
-# Lắng nghe tất cả interface để Render detect port
 EXPOSE 8080
 
-# Đặt profile production
 ENV SPRING_PROFILES_ACTIVE=prod
 ENV JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
 
-# ⚠️ Render gán PORT động, bind vào PORT env var
 ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT} -Dserver.address=0.0.0.0 -jar app.jar"]
