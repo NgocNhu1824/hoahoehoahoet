@@ -3,21 +3,29 @@
 # ==========================
 FROM maven:3.9.8-eclipse-temurin-21 AS builder
 WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
+
+# Copy source code
+COPY pom.xml .
+COPY src ./src
+
+# Build project, skip tests
+RUN mvn clean package -DskipTests -Duser.language=en -Duser.country=US -Dfile.encoding=UTF-8
 
 # ==========================
 # 2️⃣ Stage 2: Run application
 # ==========================
 FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
+
+# Copy jar từ stage build
 COPY --from=builder /app/target/*.jar app.jar
 
-# Mở cổng (Render sẽ gán PORT env var)
+# Lắng nghe tất cả interface để Render detect port
 EXPOSE 8080
 
 # Đặt profile production
 ENV SPRING_PROFILES_ACTIVE=prod
+ENV JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
 
-# ⚠️ Quan trọng: Render gán PORT động -> bắt PORT biến môi trường
-ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
+# ⚠️ Render gán PORT động, bind vào PORT env var
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT} -Dserver.address=0.0.0.0 -jar app.jar"]
