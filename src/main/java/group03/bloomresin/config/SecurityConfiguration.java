@@ -79,28 +79,26 @@ public class SecurityConfiguration {
                         )
                         .sessionManagement(sessionManagement -> sessionManagement
                                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                                .invalidSessionUrl("/login?expired")
+                                .invalidSessionUrl("/logout?expired")
                                 .maximumSessions(1)
                                 .maxSessionsPreventsLogin(false)
                         )
                         .logout(logout -> logout
-                                .logoutUrl("/logout")
-                                .logoutSuccessUrl("/login?logout")
-                                .invalidateHttpSession(true)
                                 .deleteCookies("JSESSIONID")
-                                .permitAll()
+                                .invalidateHttpSession(true)
                         )
-                        .rememberMe(r -> r.rememberMeServices(rememberMeServices()))
+                        .rememberMe(r -> r
+                                .rememberMeServices(rememberMeServices())
+                        )
                         .formLogin(formLogin -> formLogin
                                 .loginPage("/login")
                                 .failureHandler(this::handleLoginFailure)
                                 .successHandler(customSuccessHandler())
                                 .permitAll()
                         )
-                        .exceptionHandling(ex -> ex.accessDeniedPage("/access-deny"));
-
-                // ✅ Không ép HTTPS redirect ở đây
-                http.requiresChannel(channel -> channel.anyRequest().requiresInsecure());
+                        .exceptionHandling(ex -> ex
+                                .accessDeniedPage("/access-deny")
+                        );
 
                 return http.build();
         }
@@ -110,9 +108,13 @@ public class SecurityConfiguration {
                 String email = request.getParameter("username");
                 User user = userService.getUserByEmail(email).orElse(null);
 
-                if (user != null && !user.isStatus()) {
-                        request.getSession().setAttribute("message", "Your Account was BAN");
-                        response.sendRedirect("/login?locked");
+                if (user != null) {
+                        if (!user.isStatus()) {
+                                request.getSession().setAttribute("message", "Your Account was BAN");
+                                response.sendRedirect("/login?locked");
+                        } else {
+                                response.sendRedirect("/login?error");
+                        }
                 } else {
                         response.sendRedirect("/login?error");
                 }
