@@ -2,6 +2,9 @@ package group03.bloomresin.config;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,9 +22,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -42,6 +42,11 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String email = authentication.getName();
         User user = userService.getUserByEmail(email).orElse(null);
 
+        if (user == null) {
+            response.sendRedirect("/login?error");
+            return;
+        }
+
         // Check account status
         if (!user.isStatus()) {
             response.sendRedirect("/login?locked");
@@ -54,40 +59,37 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         log.setLoginTime(LocalDateTime.now());
         loginLogRepo.save(log);
 
-        // Determine target URL based on role
+        // Determine redirect URL based on role
         String targetUrl = determineTargetUrl(authentication);
 
         // Redirect
         redirectStrategy.sendRedirect(request, response, targetUrl);
 
-        // Clear authentication attributes and set session
-        clearAuthenticationAttributes(request, authentication, user);
+        // Set session attributes
+        clearAuthenticationAttributes(request, user);
     }
 
-    protected String determineTargetUrl(final Authentication authentication) {
-
+    private String determineTargetUrl(final Authentication authentication) {
         Map<String, String> roleTargetUrlMap = new HashMap<>();
         roleTargetUrlMap.put("ROLE_CUSTOMER", "/");
         roleTargetUrlMap.put("ROLE_EMPLOYEE", "/employee/order");
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin/statistics");
 
-        final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        for (final GrantedAuthority grantedAuthority : authorities) {
-            String authorityName = grantedAuthority.getAuthority();
-            if (roleTargetUrlMap.containsKey(authorityName)) {
-                return roleTargetUrlMap.get(authorityName);
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        for (GrantedAuthority grantedAuthority : authorities) {
+            if (roleTargetUrlMap.containsKey(grantedAuthority.getAuthority())) {
+                return roleTargetUrlMap.get(grantedAuthority.getAuthority());
             }
         }
 
-        throw new IllegalStateException();
+        return "/"; // fallback
     }
 
-    protected void clearAuthenticationAttributes(HttpServletRequest request, Authentication authentication, User user) {
+    private void clearAuthenticationAttributes(HttpServletRequest request, User user) {
         HttpSession session = request.getSession(false);
         if (session == null) return;
 
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-
         session.setAttribute("username", user.getEmail());
         session.setAttribute("avatar", user.getAvatar());
         session.setAttribute("id", user.getId());
