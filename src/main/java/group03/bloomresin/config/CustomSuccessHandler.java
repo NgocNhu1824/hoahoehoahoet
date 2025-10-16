@@ -42,13 +42,19 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String email = authentication.getName();
         User user = userService.getUserByEmail(email).orElse(null);
 
+        System.out.println("==== Authentication Success ====");
+        System.out.println("User email: " + email);
+        System.out.println("Authorities: " + authentication.getAuthorities());
+
         if (user == null) {
+            System.out.println("User not found, redirect to /login?error");
             response.sendRedirect("/login?error");
             return;
         }
 
         // Check account status
         if (!user.isStatus()) {
+            System.out.println("User account locked, redirect to /login?locked");
             response.sendRedirect("/login?locked");
             return;
         }
@@ -58,15 +64,20 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         log.setUser(user);
         log.setLoginTime(LocalDateTime.now());
         loginLogRepo.save(log);
+        System.out.println("Login log saved for user: " + email);
 
         // Determine redirect URL based on role
         String targetUrl = determineTargetUrl(authentication);
+        System.out.println("Redirecting to targetUrl: " + targetUrl);
 
         // Redirect
         redirectStrategy.sendRedirect(request, response, targetUrl);
 
         // Set session attributes
         clearAuthenticationAttributes(request, user);
+
+        System.out.println("Session attributes set: username=" + user.getEmail());
+        System.out.println("==== End Authentication Success ====");
     }
 
     private String determineTargetUrl(final Authentication authentication) {
