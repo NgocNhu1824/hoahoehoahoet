@@ -65,22 +65,20 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     }
 
     protected String determineTargetUrl(final Authentication authentication) {
+    Map<String, String> roleTargetUrlMap = new HashMap<>();
+    roleTargetUrlMap.put("ROLE_CUSTOMER", "/");
+    roleTargetUrlMap.put("ROLE_EMPLOYEE", "/employee/order");
+    roleTargetUrlMap.put("ROLE_ADMIN", "/admin/statistics");
 
-        Map<String, String> roleTargetUrlMap = new HashMap<>();
-        roleTargetUrlMap.put("ROLE_CUSTOMER", "/");
-        roleTargetUrlMap.put("ROLE_EMPLOYEE", "/employee/order");
-        roleTargetUrlMap.put("ROLE_ADMIN", "/admin/statistics");
-
-        final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        for (final GrantedAuthority grantedAuthority : authorities) {
-            String authorityName = grantedAuthority.getAuthority();
-            if (roleTargetUrlMap.containsKey(authorityName)) {
-                return roleTargetUrlMap.get(authorityName);
-            }
+    final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+    for (final GrantedAuthority grantedAuthority : authorities) {
+        String authorityName = grantedAuthority.getAuthority();
+        if (roleTargetUrlMap.containsKey(authorityName)) {
+            return roleTargetUrlMap.get(authorityName);
         }
-
-        throw new IllegalStateException();
     }
+    return "/";
+}
 
     protected void clearAuthenticationAttributes(HttpServletRequest request, Authentication authentication, User user) {
         HttpSession session = request.getSession(false);
