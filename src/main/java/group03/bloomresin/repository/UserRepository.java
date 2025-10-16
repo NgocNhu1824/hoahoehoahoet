@@ -2,6 +2,7 @@ package group03.bloomresin.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import group03.bloomresin.domain.User;
 
@@ -21,4 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void deleteById(Long id);
     @Query("SELECT u.email FROM User u WHERE u.role = :role")
     List<String> findEmailsByRole(String role);
+    @Query("SELECT COUNT(u) FROM User u WHERE u.role.id = :roleId")
+    long countByRoleId(@Param("roleId") Long roleId);
+
 }

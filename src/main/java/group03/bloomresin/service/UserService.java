@@ -257,4 +257,20 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy người dùng với username: " + username));
     }
 
+    // Đếm tổng khách hàng
+    public long countCustomers() {
+        // Giả sử roleId của khách hàng là 3
+        return userRepository.findAllByRole_Id(3L).size();
+    }
+
+    // Đếm tổng nhân viên
+    public long countEmployees() {
+        // Giả sử roleId của nhân viên là 2
+        return userRepository.findAllByRole_Id(2L).size();
+    }
+
+    // Đếm tổng tất cả người dùng
+    public long countAllUsers() {
+        return userRepository.count();
+    }
 }
