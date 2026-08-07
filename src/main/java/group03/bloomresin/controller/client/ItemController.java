@@ -1,6 +1,5 @@
 package group03.bloomresin.controller.client;
 
-import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
@@ -9,10 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 import group03.bloomresin.domain.*;
-import group03.bloomresin.repository.UserRepository;
 import group03.bloomresin.service.*;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -39,21 +36,15 @@ public class ItemController {
     private final ProductService productService;
     private final ProductReviewService productReviewService;
     private final CartService cartService;
-    @Autowired
-    private OrderService orderService;
-    @Autowired
-    private CategoryService categoryService;
-    @Autowired
-    private OrderNotificationService orderNotificationService;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserService userService;
-
+    private final OrderService orderService;
+    private final CategoryService categoryService;
+    private final OrderNotificationService orderNotificationService;
+    private final UserService userService;
 
     public ItemController(ProductService productService, ProductReviewService productReviewService,
             CartDetailRepository cartDetailRepository, CartRepository cartRepository,
-            CartService cartService, OrderService orderService, UserService userService) {
+            CartService cartService, OrderService orderService, UserService userService,
+            CategoryService categoryService, OrderNotificationService orderNotificationService) {
         this.productService = productService;
         this.productReviewService = productReviewService;
         this.cartDetailRepository = cartDetailRepository;
@@ -61,6 +52,8 @@ public class ItemController {
         this.cartService = cartService;
         this.orderService = orderService;
         this.userService = userService;
+        this.categoryService = categoryService;
+        this.orderNotificationService = orderNotificationService;
     }
 
     @GetMapping("/products")
@@ -222,6 +215,9 @@ public class ItemController {
     @PostMapping("/add-product-to-cart/{id}")
     public String addProductToCart(@PathVariable long id, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("email") == null) {
+            return "redirect:/login";
+        }
         String email = (String) session.getAttribute("email");
         this.productService.handleAddProductToCart(email, id, session, 1);
         return "redirect:/";
@@ -230,6 +226,9 @@ public class ItemController {
     @PostMapping("/add-products-to-cart/{id}")
     public String addProductsToCart(@PathVariable long id, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("email") == null) {
+            return "redirect:/login";
+        }
         String email = (String) session.getAttribute("email");
         this.productService.handleAddProductToCart(email, id, session, 1);
         return "redirect:/products";
@@ -241,6 +240,9 @@ public class ItemController {
             @RequestParam("quantity") long quantity,
             HttpServletRequest request) {
         HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("email") == null) {
+            return "redirect:/login";
+        }
         String email = (String) session.getAttribute("email");
         this.productService.handleAddProductToCart(email, id, session, quantity);
         return "redirect:/product/" + id;
@@ -248,9 +250,13 @@ public class ItemController {
 
     @GetMapping("/cart")
     public String getCartPage(Model model, HttpServletRequest request) {
-        User currentUser = new User();
         HttpSession session = request.getSession(false);
-        long id = (long) session.getAttribute("id");
+        if (session == null || session.getAttribute("id") == null) {
+            return "redirect:/login";
+        }
+
+        User currentUser = new User();
+        long id = ((Number) session.getAttribute("id")).longValue();
         currentUser.setId(id);
 
         Cart cart = this.productService.fetchByUser(currentUser);
@@ -305,7 +311,7 @@ public class ItemController {
             return "redirect:/login";
         }
 
-        long userId = (long) session.getAttribute("id");
+        long userId = ((Number) session.getAttribute("id")).longValue();
 
         User user = userService.getUserById(userId)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng"));
@@ -361,7 +367,7 @@ public class ItemController {
             return "redirect:/login";
         }
 
-        long userId = (long) session.getAttribute("id");
+        long userId = ((Number) session.getAttribute("id")).longValue();
 
         receiverName = receiverName.replaceAll(",$", "").trim();
         receiverAddress = receiverAddress.replaceAll(",$", "").trim();

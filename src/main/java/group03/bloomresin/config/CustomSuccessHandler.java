@@ -70,14 +70,14 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String targetUrl = determineTargetUrl(authentication);
         System.out.println("Redirecting to targetUrl: " + targetUrl);
 
-        // Redirect
-        redirectStrategy.sendRedirect(request, response, targetUrl);
-
-        // Set session attributes
+        // Set session attributes BEFORE redirect
         clearAuthenticationAttributes(request, user);
 
         System.out.println("Session attributes set: username=" + user.getEmail());
         System.out.println("==== End Authentication Success ====");
+
+        // Redirect (must be last - response is committed after this)
+        redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
     private String determineTargetUrl(final Authentication authentication) {

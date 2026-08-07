@@ -68,7 +68,12 @@ public class SecurityConfiguration {
                         // .requiresChannel(channel -> channel.anyRequest().requiresSecure())
                         .authorizeHttpRequests(authorize -> authorize
                                 .requestMatchers("/", "/login", "/register", "/css/**", "/js/**", "/images/**",
-                                        "/WEB-INF/**", "/client/**").permitAll()
+                                        "/WEB-INF/**", "/client/**",
+                                        "/products", "/product/**", "/category",
+                                        "/search", "/news", "/news/**",
+                                        "/forgotpassword", "/authentication/**",
+                                        "/about-us", "/contact", "/care-service",
+                                        "/upload/**", "/resources/**").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/employee/**").hasRole("EMPLOYEE")
                                 .requestMatchers("/customer/**").hasRole("CUSTOMER")

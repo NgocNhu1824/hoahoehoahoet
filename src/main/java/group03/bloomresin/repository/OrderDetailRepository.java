@@ -16,7 +16,7 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> 
     // Top sản phẩm bán chạy theo month/year
     @Query("SELECT od.product.name, SUM(od.quantity) " +
             "FROM OrderDetail od " +
-            "WHERE MONTH(od.order.orderDate) = :month AND YEAR(od.order.orderDate) = :year " +
+            "WHERE EXTRACT(MONTH FROM od.order.orderDate) = :month AND EXTRACT(YEAR FROM od.order.orderDate) = :year " +
             "GROUP BY od.product.name " +
             "ORDER BY SUM(od.quantity) DESC")
     List<Object[]> getTopProductsInMonthByMonthYear(@Param("month") int month,

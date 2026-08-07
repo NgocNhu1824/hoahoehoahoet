@@ -1,8 +1,6 @@
 package group03.bloomresin.service;
 
 import group03.bloomresin.domain.*;
-import group03.bloomresin.repository.*;
-import group03.bloomresin.domain.*;
 import group03.bloomresin.domain.dto.ProductCriteriaDTO;
 import group03.bloomresin.repository.*;
 import group03.bloomresin.service.specification.ProductSpecs;
@@ -253,7 +251,7 @@ public class ProductService {
     }
 
     public List<Product> findAll(Specification<Product> spec) {
-        throw new UnsupportedOperationException("Phương pháp chưa triển khai 'findAll'");
+        return this.productRepository.findAll(spec);
     }
 
     public List<Product> getProductByNameOrCategory(String keyword, boolean status) {

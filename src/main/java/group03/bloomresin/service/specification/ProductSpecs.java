@@ -22,30 +22,28 @@ public class ProductSpecs {
         return (root, query, criteriaBuilder) -> criteriaBuilder.le(root.get("price"), price);
     }
 
+    /**
+     * Product entity hiện tại không có trường 'factory'.
+     * Trả về conjunction (luôn true) để tránh crash.
+     */
     public static Specification<Product> matchFactory(Long factoryId) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("factory").get("id"), factoryId);
+        return (root, query, criteriaBuilder) -> criteriaBuilder.conjunction();
     }
 
+    /**
+     * Product entity hiện tại không có trường 'factory'.
+     * Trả về conjunction (luôn true) để tránh crash.
+     */
     public static Specification<Product> matchListFactory(List<Long> factoryIds) {
-        return (root, query, criteriaBuilder) -> {
-            query.distinct(true);
-            CriteriaBuilder.In<Long> inClause = criteriaBuilder.in(root.get("factory").get("id").as(Long.class));
-            for (Long id : factoryIds) {
-                inClause.value(id);
-            }
-            return inClause;
-        };
+        return (root, query, criteriaBuilder) -> criteriaBuilder.conjunction();
     }
 
+    /**
+     * Product entity hiện tại không có trường 'target'.
+     * Trả về conjunction (luôn true) để tránh crash.
+     */
     public static Specification<Product> matchListTarget(List<Long> targetIds) {
-        return (root, query, criteriaBuilder) -> {
-            query.distinct(true);
-            CriteriaBuilder.In<Long> inClause = criteriaBuilder.in(root.get("target").get("id").as(Long.class));
-            for (Long id : targetIds) {
-                inClause.value(id);
-            }
-            return inClause;
-        };
+        return (root, query, criteriaBuilder) -> criteriaBuilder.conjunction();
     }
 
     public static Specification<Product> matchPrice(double min, double max) {

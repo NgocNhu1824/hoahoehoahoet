@@ -3,6 +3,7 @@ package group03.bloomresin.domain;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "product_review")
 public class ProductReview {
 
     @Id
