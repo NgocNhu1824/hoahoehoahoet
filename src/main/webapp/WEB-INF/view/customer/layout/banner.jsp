@@ -38,7 +38,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 65%;
+        height: 70%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -70,14 +70,15 @@
         line-height: 1.4;
     }
 
-    /* Yellow button anchored inside image frame, positioned below image content, 40px away from bottom edge */
-    .banner-btn-container {
+    /* 100% STATIC & FIXED Yellow button anchored inside image frame, 40px away from bottom edge */
+    .banner-fixed-btn-container {
         position: absolute;
         bottom: 40px;
         left: 0;
         width: 100%;
         text-align: center;
-        z-index: 5;
+        z-index: 20;
+        pointer-events: auto;
     }
 
     .banner-btn {
@@ -89,7 +90,7 @@
         border-radius: 30px;
         text-decoration: none;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
-        transition: all 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease;
         border: 2px solid #FFF1D2;
         font-size: 1rem;
     }
@@ -109,7 +110,7 @@
         .banner-subtitle {
             font-size: 0.9rem;
         }
-        .banner-btn-container {
+        .banner-fixed-btn-container {
             bottom: 25px;
         }
         .banner-btn {
@@ -135,64 +136,72 @@
     <div id="bloomBannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
         <div class="carousel-inner">
             <!-- Slide 1 -->
-            <div class="carousel-item active">
+            <div class="carousel-item active" data-link="/products" data-btn-text="Khám Phá Sản Phẩm" data-btn-icon="fa-shopping-bag">
                 <img src="${pageContext.request.contextPath}/client/img/banner01.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 1">
                 <div class="banner-overlay-text">
                     <h1 class="banner-title">HOA HOÈ HOA HOẸT - BLOOMRESIN</h1>
                     <p class="banner-subtitle">Trang sức thủ công hoa ép Resin tự nhiên lấp lánh & tinh tế</p>
                 </div>
-                <div class="banner-btn-container">
-                    <a href="/products" class="banner-btn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
-                </div>
             </div>
 
             <!-- Slide 2 -->
-            <div class="carousel-item">
+            <div class="carousel-item" data-link="/products" data-btn-text="Xem Bộ Sưu Tập" data-btn-icon="fa-gem">
                 <img src="${pageContext.request.contextPath}/client/img/banner02.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 2">
                 <div class="banner-overlay-text">
                     <h1 class="banner-title">BỘ SƯU TẬP HOA ÉP VĨNH CỬU</h1>
                     <p class="banner-subtitle">Lưu giữ trọn vẹn nét đẹp tươi tắn và khoảnh khắc kỷ niệm quý giá</p>
                 </div>
-                <div class="banner-btn-container">
-                    <a href="/products" class="banner-btn"><i class="fas fa-gem me-2"></i>Xem Bộ Sưu Tập</a>
-                </div>
             </div>
 
             <!-- Slide 3 -->
-            <div class="carousel-item">
+            <div class="carousel-item" data-link="/custom-order/form" data-btn-text="Đặt Làm Ngay" data-btn-icon="fa-magic">
                 <img src="${pageContext.request.contextPath}/client/img/banner03.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 3">
                 <div class="banner-overlay-text">
                     <h1 class="banner-title">LÀM THEO YÊU CẦU (CUSTOM ORDER)</h1>
                     <p class="banner-subtitle">Gửi hoa cưới & hoa kỷ niệm của bạn – Shop sẽ đúc thành trang sức độc bản</p>
                 </div>
-                <div class="banner-btn-container">
-                    <a href="/custom-order/form" class="banner-btn"><i class="fas fa-magic me-2"></i>Đặt Làm Ngay</a>
-                </div>
             </div>
 
             <!-- Slide 4 -->
-            <div class="carousel-item">
+            <div class="carousel-item" data-link="/news" data-btn-text="Đọc Tin Tức" data-btn-icon="fa-newspaper">
                 <img src="${pageContext.request.contextPath}/client/img/banner04.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 4">
                 <div class="banner-overlay-text">
                     <h1 class="banner-title">TIN TỨC & BẢO QUẢN SẢN PHẨM</h1>
                     <p class="banner-subtitle">Khám phá các bí quyết chăm sóc trang sức Resin bền đẹp cùng thời gian</p>
                 </div>
-                <div class="banner-btn-container">
-                    <a href="/news" class="banner-btn"><i class="fas fa-newspaper me-2"></i>Đọc Tin Tức</a>
-                </div>
             </div>
         </div>
+    </div>
+
+    <!-- 100% FIXED & STATIC Yellow button anchored inside image frame (40px gap from bottom edge) -->
+    <div class="banner-fixed-btn-container">
+        <a href="/products" class="banner-btn" id="fixedBannerBtn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
     </div>
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var bannerCarousel = document.querySelector('#bloomBannerCarousel');
+        var fixedBtn = document.getElementById('fixedBannerBtn');
+
         if (bannerCarousel && typeof bootstrap !== 'undefined') {
             new bootstrap.Carousel(bannerCarousel, {
                 interval: 3500,
                 ride: 'carousel',
                 wrap: true
+            });
+        }
+
+        if (bannerCarousel && fixedBtn) {
+            bannerCarousel.addEventListener('slid.bs.carousel', function () {
+                var activeItem = bannerCarousel.querySelector('.carousel-item.active');
+                if (activeItem) {
+                    var link = activeItem.getAttribute('data-link');
+                    var text = activeItem.getAttribute('data-btn-text');
+                    var icon = activeItem.getAttribute('data-btn-icon') || 'fa-shopping-bag';
+                    if (link) fixedBtn.setAttribute('href', link);
+                    if (text) fixedBtn.innerHTML = '<i class="fas ' + icon + ' me-2"></i>' + text;
+                }
             });
         }
     });
