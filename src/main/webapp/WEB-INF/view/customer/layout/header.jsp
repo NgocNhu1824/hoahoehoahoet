@@ -108,14 +108,24 @@
         .navbar .dropdown-menu {
             position: absolute;
             top: 100% !important;
-            left: 0 !important;
             margin-top: 6px !important;
             background-color: #FFF8EA;
             border: 1px solid #CEAF95;
             border-radius: 12px;
-            padding: 6px 0;
-            min-width: 220px;
+            padding: 8px 0;
+            min-width: 240px;
             box-shadow: 0 10px 25px rgba(107, 23, 0, 0.15);
+            z-index: 1050;
+        }
+
+        .navbar .dropdown-menu:not(.dropdown-menu-end) {
+            left: 0 !important;
+            right: auto !important;
+        }
+
+        .navbar .dropdown-menu.dropdown-menu-end {
+            right: 0 !important;
+            left: auto !important;
         }
 
         .navbar .dropdown-item {
@@ -343,7 +353,7 @@
                         <ul class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="dropdownMenuLink">
                             <li class="d-flex align-items-center flex-column" style="min-width: 260px;">
                                 <img src="/images/avatar/${sessionScope.avatar}" alt="Avatar người dùng"
-                                     style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #CEAF95;" />
+                                     style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #CEAF95; object-fit: cover;" />
                                 <div class="text-center my-3 fw-bold fs-6">
                                     <c:out value="${sessionScope.username}" />
                                 </div>
