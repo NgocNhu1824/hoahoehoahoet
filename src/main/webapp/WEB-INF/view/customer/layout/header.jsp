@@ -139,9 +139,16 @@
             right: auto !important;
         }
 
-        .navbar .dropdown-menu.dropdown-menu-end {
+        .navbar .dropdown-menu.dropdown-menu-end, .dropdown-menu.dropdown-menu-end {
             right: 0 !important;
             left: auto !important;
+        }
+
+        .dropdown-menu.show {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 99999 !important;
         }
 
         .navbar .dropdown-item {
@@ -413,11 +420,11 @@
                     </a>
 
                     <!-- User Profile Dropdown (Desktop Only) -->
-                    <div class="dropdown d-none d-xl-block">
-                        <a href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="dropdown d-none d-xl-block position-relative">
+                        <a href="javascript:void(0);" id="dropdownMenuLink" class="user-avatar-btn text-decoration-none" style="cursor: pointer;">
                             <i class="fas fa-user fa-2x icon-colored"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="dropdownMenuLink">
+                        <ul class="dropdown-menu dropdown-menu-end p-4 shadow" aria-labelledby="dropdownMenuLink">
                             <li class="d-flex align-items-center flex-column" style="min-width: 260px;">
                                 <img src="/images/avatar/${sessionScope.avatar}" alt="Avatar người dùng"
                                      style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #CEAF95; object-fit: cover;" />
@@ -504,14 +511,30 @@
                 var parent = this.closest(".dropdown");
                 var menu = parent ? parent.querySelector(".dropdown-menu") : null;
                 if (menu) {
-                    menu.classList.toggle("show");
+                    var isShown = menu.classList.contains("show");
+                    document.querySelectorAll(".dropdown-menu.show").forEach(function(m) {
+                        m.classList.remove("show");
+                    });
+                    if (!isShown) {
+                        menu.classList.add("show");
+                        menu.style.display = "block";
+                        menu.style.position = "absolute";
+                        menu.style.right = "0px";
+                        menu.style.top = "100%";
+                        menu.style.zIndex = "99999";
+                    }
                 }
             });
+
             document.addEventListener("click", function(e) {
-                var parent = userDropdownToggle ? userDropdownToggle.closest(".dropdown") : null;
-                var menu = parent ? parent.querySelector(".dropdown-menu") : null;
-                if (menu && !parent.contains(e.target)) {
-                    menu.classList.remove("show");
+                var userDropdownToggle = document.getElementById("dropdownMenuLink");
+                if (userDropdownToggle) {
+                    var parent = userDropdownToggle.closest(".dropdown");
+                    var menu = parent ? parent.querySelector(".dropdown-menu") : null;
+                    if (menu && !parent.contains(e.target)) {
+                        menu.classList.remove("show");
+                        menu.style.display = "";
+                    }
                 }
             });
         }
