@@ -4,19 +4,30 @@
 <style>
     .hero-banner-container {
         width: 100%;
-        height: 480px;
+        max-width: 1240px;
+        height: 500px;
         position: relative;
         overflow: hidden;
-        margin-top: 80px;
-        box-shadow: 0 8px 25px rgba(107, 23, 0, 0.15);
+        margin: 95px auto 30px auto;
+        border-radius: 20px;
+        box-shadow: 0 12px 35px rgba(107, 23, 0, 0.18);
         cursor: pointer;
         background-color: #1e0802 !important;
     }
 
+    @media (max-width: 1280px) {
+        .hero-banner-container {
+            max-width: 95%;
+            margin-top: 90px;
+        }
+    }
+
     @media (max-width: 768px) {
         .hero-banner-container {
+            max-width: 100%;
             height: 340px;
-            margin-top: 70px;
+            margin-top: 75px;
+            border-radius: 0;
         }
     }
 
@@ -29,7 +40,7 @@
     /* Cinematic Slow Zoom & Smooth Fade Transitions */
     .banner-slide-img {
         width: 100%;
-        height: 480px;
+        height: 500px;
         object-fit: cover;
         filter: brightness(0.82);
         display: block;
@@ -91,7 +102,7 @@
 
     .banner-title {
         font-family: 'Raleway', sans-serif;
-        font-size: 2.6rem;
+        font-size: 2.5rem;
         font-weight: 800;
         color: #FFFFFF !important;
         text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.95);
@@ -101,19 +112,19 @@
     }
 
     .banner-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.18rem;
         font-weight: 600;
         color: #FFF1D2 !important;
         text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.95);
         margin: 0 auto;
-        max-width: 760px;
+        max-width: 780px;
         line-height: 1.4;
     }
 
-    /* 100% STATIC & FIXED Yellow button anchored inside image frame, 40px away from bottom edge */
+    /* 100% STATIC & FIXED Yellow button anchored inside image frame, 35px away from bottom edge */
     .banner-fixed-btn-container {
         position: absolute;
-        bottom: 40px;
+        bottom: 35px;
         left: 0;
         width: 100%;
         text-align: center;
@@ -144,18 +155,18 @@
 
     @media (max-width: 768px) {
         .banner-title {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-bottom: 6px;
         }
         .banner-subtitle {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
         .banner-fixed-btn-container {
-            bottom: 25px;
+            bottom: 22px;
         }
         .banner-btn {
             padding: 8px 22px;
-            font-size: 0.85rem;
+            font-size: 0.84rem;
         }
     }
 
@@ -208,7 +219,7 @@
         </div>
     </div>
 
-    <!-- 100% FIXED & STATIC Yellow button anchored inside image frame (40px gap from bottom edge) -->
+    <!-- 100% FIXED & STATIC Yellow button anchored inside image frame (35px gap from bottom edge) -->
     <div class="banner-fixed-btn-container">
         <a href="/products" class="banner-btn" id="fixedBannerBtn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
     </div>
