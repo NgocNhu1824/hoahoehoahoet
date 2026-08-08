@@ -55,11 +55,14 @@
             padding: 0.5rem 0.75rem;
             border-radius: 6px;
             transition: all 0.25s ease;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         .nav-link:hover, .nav-link.active, .nav-link:focus, .dropdown-toggle:focus, .dropdown-toggle.show {
             color: #6B1700 !important;
-            background-color: rgba(206, 175, 149, 0.3);
+            background-color: rgba(206, 175, 149, 0.3) !important;
             outline: none !important;
             box-shadow: none !important;
             border: none !important;
@@ -229,17 +232,20 @@
                 margin-bottom: 4px;
                 box-shadow: 0 2px 4px rgba(107, 23, 0, 0.03);
                 transition: all 0.2s ease !important;
+                outline: none !important;
             }
 
-            .nav-link span, .nav-link i {
+            .nav-link i {
                 color: inherit !important;
             }
 
-            .nav-link:hover, .nav-link:hover span, .nav-link:hover i,
-            .nav-link.active, .nav-link.active span, .nav-link.active i {
+            .nav-link:hover, .nav-link:hover i,
+            .nav-link.active, .nav-link.active i {
                 background-color: #6B1700 !important;
                 color: #FFF1D2 !important;
                 border-color: #6B1700 !important;
+                outline: none !important;
+                box-shadow: none !important;
             }
 
             .navbar .dropdown-menu {
@@ -335,8 +341,8 @@
                 <a href="/" class="nav-item nav-link active fw-bold"><i class="fas fa-home me-2 opacity-75"></i>Trang chủ</a>
 
                 <div class="nav-item dropdown">
-                    <a href="/products" class="nav-link fw-bold dropdown-toggle d-flex align-items-center justify-content-between" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span><i class="fas fa-boxes me-2 opacity-75"></i>Sản phẩm</span>
+                    <a href="/products" class="nav-link fw-bold dropdown-toggle" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-boxes me-2 opacity-75"></i>Sản phẩm
                     </a>
                     <ul class="dropdown-menu shadow" aria-labelledby="productDropdown">
                         <li>
