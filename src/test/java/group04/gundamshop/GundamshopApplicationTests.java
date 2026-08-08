@@ -1,4 +1,4 @@
-package group04.bloomresin;
+package group03.bloomresin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
