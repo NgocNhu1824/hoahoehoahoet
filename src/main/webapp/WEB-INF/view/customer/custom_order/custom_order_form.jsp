@@ -56,13 +56,20 @@
         .fw-bold {
             color: #6B1700;
         }
+
+        @media (max-width: 991px) {
+            .custom-order-wrapper {
+                padding-top: 35px !important;
+                margin-top: 20px !important;
+            }
+        }
     </style>
 </head>
 <body>
 
 <jsp:include page="../layout/header.jsp"/>
 
-<div class="container pt-2 pb-5 mt-2">
+<div class="container custom-order-wrapper pt-2 pb-5 mt-2">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>

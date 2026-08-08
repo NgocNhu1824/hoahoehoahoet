@@ -167,11 +167,14 @@
                     <div class="col-lg-4 text-start">
                         <h1 style="font-size: 2.2rem; font-weight: 800; color: #6B1700; margin-bottom: 0;">Sản phẩm hiện có</h1>
                     </div>
-                    <div class="col-lg-8 text-end">
-                        <ul class="nav nav-pills d-inline-flex text-center mb-2">
+                    <div class="col-lg-8 text-end d-flex align-items-center justify-content-end gap-2 flex-wrap">
+                        <a href="/custom-order/form" class="btn rounded-pill text-white px-3 py-2" style="background-color: #6B1700; font-weight: 700; font-family: 'Raleway', sans-serif;">
+                            <i class="fas fa-magic me-2"></i>ĐẶT LÀM THEO YÊU CẦU
+                        </a>
+                        <ul class="nav nav-pills d-inline-flex text-center mb-0">
                             <li class="nav-item">
-                                <a class="d-flex m-1 py-2 bg-light rounded-pill active" href="/products">
-                                    <span class="text-dark" style="width: 130px;">SẢN PHẨM</span>
+                                <a class="d-flex m-0 py-2 bg-light rounded-pill active" href="/products">
+                                    <span class="text-dark" style="width: 140px;">TẤT CẢ SẢN PHẨM</span>
                                 </a>
                             </li>
                         </ul>

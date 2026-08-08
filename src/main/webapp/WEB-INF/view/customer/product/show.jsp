@@ -234,14 +234,17 @@
 <jsp:include page="../layout/header.jsp" />
 <div class="container-fluid py-4 mt-3">
     <div class="container py-4">
-        <div class="row g-4 mb-5">
-            <div>
+        <div class="row g-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Danh sách sản phẩm</li>
                     </ol>
                 </nav>
+                <a href="/custom-order/form" class="btn rounded-pill text-white px-4 py-2" style="background-color: #6B1700; font-weight: 700; font-family: 'Raleway', sans-serif;">
+                    <i class="fas fa-magic me-2"></i>ĐẶT SẢN PHẨM THEO YÊU CẦU
+                </a>
             </div>
             <div class="row g-4 fruite">
                 <div class="col-12 col-md-4">

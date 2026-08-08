@@ -350,6 +350,11 @@
                                 <i class="fas fa-th-large me-2"></i>Tất cả sản phẩm
                             </a>
                         </li>
+                        <li>
+                            <a class="dropdown-item fw-bold border-bottom text-primary" href="/custom-order/form">
+                                <i class="fas fa-magic me-2"></i>Đặt sản phẩm theo yêu cầu
+                            </a>
+                        </li>
                         <c:forEach var="category" items="${categories}">
                             <li>
                                 <a class="dropdown-item" href="/products?categoryId=${category.id}">
@@ -360,6 +365,7 @@
                     </ul>
                 </div>
 
+                <a href="/custom-order/form" class="nav-item nav-link fw-bold"><i class="fas fa-magic me-2 opacity-75"></i>Đặt làm theo yêu cầu</a>
                 <a href="/careservice" class="nav-item nav-link fw-bold"><i class="fas fa-comments me-2 opacity-75"></i>Dịch vụ hỏi đáp</a>
                 <a href="/news" class="nav-item nav-link fw-bold"><i class="fas fa-newspaper me-2 opacity-75"></i>Tin tức</a>
                 <a href="/aboutus" class="nav-item nav-link fw-bold"><i class="fas fa-info-circle me-2 opacity-75"></i>Giới thiệu</a>
