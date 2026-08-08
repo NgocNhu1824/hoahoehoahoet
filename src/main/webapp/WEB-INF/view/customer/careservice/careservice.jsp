@@ -371,7 +371,8 @@
         if (text.includes("yêu cầu") || text.includes("đặt làm") || text.includes("custom") || text.includes("hoa của tôi") || text.includes("kỷ niệm")) {
             return "✨ <strong>Dịch vụ làm sản phẩm theo yêu cầu (Custom Order):</strong><br>" +
                 "Bạn có thể gửi hoa cưới, hoa sinh nhật hay bông hoa kỷ niệm của chính bạn đến BloomResin! Shop sẽ ép khô bằng kỹ thuật cao và đúc vào khung Resin vĩnh cửu.<br><br>" +
-                "📞 Vui lòng gọi trực tiếp Hotline <strong>0989780481</strong> hoặc ghé cửa hàng để nhân viên tư vấn chi tiết quy trình gửi hoa ạ!";
+                "📞 Vui lòng gọi trực tiếp Hotline <strong>0989780481</strong> hoặc ghé cửa hàng để nhân viên tư vấn chi tiết quy trình gửi hoa ạ!<br><br>" +
+                "👉 Bạn cũng có thể điền thông tin trực tiếp tại <a href='/custom-order/form' style='color:#6B1700; font-weight:bold; text-decoration:underline;'>Form Đặt Làm Theo Yêu Cầu</a> nhé!";
         }
 
         if (text.includes("bảo quản") || text.includes("vàng") || text.includes("bền") || text.includes("nước") || text.includes("vệ sinh")) {

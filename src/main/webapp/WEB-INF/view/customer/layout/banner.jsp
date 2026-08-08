@@ -195,7 +195,7 @@
             </div>
 
             <!-- Slide 3 -->
-            <div class="carousel-item" data-link="/care-service" data-btn-text="Tư Vấn & Đặt Làm" data-btn-icon="fa-magic">
+            <div class="carousel-item" data-link="/custom-order/form" data-btn-text="Đặt Làm Theo Yêu Cầu" data-btn-icon="fa-magic">
                 <img src="${pageContext.request.contextPath}/client/img/banner03.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 3">
                 <div class="banner-overlay-text">
                     <h1 class="banner-title">LÀM THEO YÊU CẦU (CUSTOM ORDER)</h1>
