@@ -67,10 +67,40 @@
             border-color: #CEAF95;
         }
 
+        .product-item {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #CEAF95;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 18px rgba(107, 23, 0, 0.12);
+        }
+
+        .product-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            padding: 1.25rem;
+        }
+
         .product-desc {
+            font-size: 13.5px;
             color: #6B1700;
-            font-size: 14px;
-            min-height: 40px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            text-align: center;
+            line-height: 1.45;
+            white-space: normal;
+            word-break: break-word;
         }
 
         .pagination .page-link {
@@ -143,28 +173,21 @@
                                                         style="top: 10px; left: 10px;">
                                                         ${product.category.name}
                                                     </div>
-                                                    <div
-                                                        class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4 style="font-size: 15px;">
-                                                            <a
-                                                                href="/product/${product.id}">${product.name}</a>
-                                                        </h4>
-                                                        <p class="product-desc">${product.shortDesc}</p>
-                                                        <div
-                                                            class="d-flex flex-lg-wrap justify-content-center flex-column">
-                                                            <p style="font-size: 15px; text-align: center; width: 100%;"
-                                                                class="text-dark fw-bold mb-3">
-                                                                <fmt:formatNumber type="number"
-                                                                    value="${product.price}" /> đ
+                                                    <div class="product-content border border-secondary border-top-0 rounded-bottom">
+                                                        <div>
+                                                            <h4 style="font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 8px;">
+                                                                <a href="/product/${product.id}">${product.name}</a>
+                                                            </h4>
+                                                            <p class="product-desc">${product.shortDesc}</p>
+                                                        </div>
+                                                        <div class="d-flex flex-lg-wrap justify-content-center flex-column mt-auto pt-2">
+                                                            <p style="font-size: 15px; text-align: center; width: 100%;" class="text-dark fw-bold mb-2">
+                                                                <fmt:formatNumber type="number" value="${product.price}" /> đ
                                                             </p>
-                                                            <form
-                                                                action="/add-products-to-cart/${product.id}"
-                                                                method="post">
-                                                                <input type="hidden"
-                                                                    name="${_csrf.parameterName}"
-                                                                    value="${_csrf.token}" />
+                                                            <form action="/add-products-to-cart/${product.id}" method="post">
+                                                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                                                 <button class="btn btn-primary w-100">
-                                                                    <i class="fa fa-shopping-bag me-2 text-primary">Thêm vào giỏ hàng</i>
+                                                                    <i class="fa fa-shopping-bag me-2"></i>Thêm vào giỏ hàng
                                                                 </button>
                                                             </form>
                                                         </div>

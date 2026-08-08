@@ -62,25 +62,39 @@
         }
 
         .product-item {
-            background-color: #FFF1D2;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
             border: 1px solid #CEAF95;
-            border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0px 8px 18px rgba(107, 23, 0, 0.12);
+        }
+
+        .product-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            padding: 1.25rem;
         }
 
         .product-desc {
-            font-size: 14px;
+            font-size: 13.5px;
             color: #6B1700;
             margin-top: 8px;
+            margin-bottom: 12px;
             text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            line-height: 1.45;
+            white-space: normal;
+            word-break: break-word;
         }
 
         .custom-product-blog {
@@ -307,35 +321,29 @@
                                                  style="top: 10px; left: 10px;">
                                                     ${product.category.name}
                                             </div>
-                                            <div
-                                                    class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4 style="font-size: 15px;">
-                                                    <a
-                                                            href="/product/${product.id}">${product.name}</a>
-                                                </h4>
-                                                <p class="product-desc">${product.shortDesc}</p>
-                                                <p style="font-size: 15px; text-align: center; width: 100%;"
-                                                   class="text-dark fw-bold mb-3">
-                                                    <fmt:formatNumber type="number"
-                                                                      value="${product.price}" /> đ
-                                                </p>
-                                                <c:choose>
-                                                    <c:when test="${product.quantity > 0}">
-                                                        <form
-                                                                action="/add-products-to-cart/${product.id}"
-                                                                method="post">
-                                                            <input type="hidden"
-                                                                   name="${_csrf.parameterName}"
-                                                                   value="${_csrf.token}" />
-                                                            <button class="btn btn-primary"><i
-                                                                    class="fa fa-shopping-bag me-2"></i>Thêm vào giỏ hàng</button>
-                                                        </form>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <button class="btn btn-secondary"
-                                                                disabled>Đã bán hết</button>
-                                                    </c:otherwise>
-                                                </c:choose>
+                                            <div class="product-content border border-secondary border-top-0 rounded-bottom">
+                                                <div>
+                                                    <h4 style="font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 8px;">
+                                                        <a href="/product/${product.id}">${product.name}</a>
+                                                    </h4>
+                                                    <p class="product-desc">${product.shortDesc}</p>
+                                                </div>
+                                                <div class="d-flex flex-lg-wrap justify-content-center flex-column mt-auto pt-2">
+                                                    <p style="font-size: 15px; text-align: center; width: 100%;" class="text-dark fw-bold mb-2">
+                                                        <fmt:formatNumber type="number" value="${product.price}" /> đ
+                                                    </p>
+                                                    <c:choose>
+                                                        <c:when test="${product.quantity > 0}">
+                                                            <form action="/add-products-to-cart/${product.id}" method="post">
+                                                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                                                <button class="btn btn-primary w-100"><i class="fa fa-shopping-bag me-2"></i>Thêm vào giỏ hàng</button>
+                                                            </form>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button class="btn btn-secondary w-100" disabled>Hết hàng</button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -390,14 +398,6 @@
 <script src="/client/js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 <script src="/client/js/main.js"></script>
-<script>
-    document.querySelectorAll('.product-desc').forEach(function (desc) {
-        const words = desc.textContent.trim().split(/\s+/);
-        if (words.length > 4) {
-            desc.textContent = words.slice(0, 4).join(' ') + '...';
-        }
-    });
-</script>
 <div id="chat-icon" onclick="redirectToCareService()">
     <i class="fas fa-comment-alt"></i>
 </div>
