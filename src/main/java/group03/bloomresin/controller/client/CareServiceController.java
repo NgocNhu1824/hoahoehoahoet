@@ -105,7 +105,8 @@ public class CareServiceController {
         if (text.contains("yêu cầu") || text.contains("đặt làm") || text.contains("custom") || text.contains("hoa của tôi") || text.contains("kỷ niệm")) {
             return "✨ **Dịch vụ làm sản phẩm theo yêu cầu (Custom Order):**\n" +
                 "Bạn có thể gửi hoa cưới, hoa sinh nhật hay bông hoa kỷ niệm của chính bạn đến BloomResin! Shop sẽ ép khô bằng kỹ thuật cao và đúc vào khung Resin vĩnh cửu.\n\n" +
-                "📞 Vui lòng gọi trực tiếp Hotline **0901234567** hoặc ghé cửa hàng để nhân viên tư vấn chi tiết quy trình gửi hoa ạ!";
+                "📞 Vui lòng gọi trực tiếp Hotline **0989780481** hoặc ghé cửa hàng để nhân viên tư vấn chi tiết quy trình gửi hoa ạ!\n\n" +
+                "👉 Bạn cũng có thể điền thông tin trực tiếp tại [Form Đặt Làm Theo Yêu Cầu](/custom-order/form) nhé!";
         }
 
         if (text.contains("bảo quản") || text.contains("vàng") || text.contains("bền") || text.contains("nước") || text.contains("vệ sinh")) {
@@ -125,9 +126,9 @@ public class CareServiceController {
 
         if (text.contains("liên hệ") || text.contains("địa chỉ") || text.contains("hotline") || text.contains("sđt") || text.contains("shop")) {
             return "📞 **Thông tin liên hệ BloomResin:**\n" +
-                "• **Địa chỉ cửa hàng:** 123 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh.\n" +
-                "• **Hotline / Zalo:** 0901234567\n" +
-                "• **Email:** admin@bloomresin.com\n" +
+                "• **Địa chỉ cửa hàng:** FPT University, 600 Nguyen Van Cu, An Binh, Ninh Kieu, Can Tho.\n" +
+                "• **Hotline / Zalo:** 0989780481\n" +
+                "• **Email:** bloomresin.system@gmail.com\n" +
                 "• **Giờ mở cửa:** 08:00 - 21:30 (Tất cả các ngày trong tuần)";
         }
 

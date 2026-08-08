@@ -213,21 +213,6 @@
 <jsp:include page="../layout/header.jsp" />
 
 <div class="chat-wrapper">
-    <!-- Store Contact Info Box -->
-    <div class="store-info-box mb-4" style="background: #FFF8EA; border: 2px solid #CEAF95; border-radius: 16px; padding: 20px 24px; box-shadow: 0 8px 25px rgba(107, 23, 0, 0.08);">
-        <h4 style="font-family: 'Raleway', sans-serif; font-weight: 800; color: #6B1700; margin-bottom: 14px;"><i class="fas fa-store me-2"></i>THÔNG TIN LIÊN HỆ & TƯ VẤN KỶ NIỆM</h4>
-        <div class="row g-3">
-            <div class="col-md-6">
-                <p class="mb-2" style="font-size: 14px; color: #6B1700;"><i class="fas fa-map-marker-alt me-2" style="color: #6B1700;"></i><strong>Địa chỉ:</strong> FPT University, 600 Nguyen Van Cu, An Binh, Ninh Kieu, Can Tho</p>
-                <p class="mb-0" style="font-size: 14px; color: #6B1700;"><i class="fas fa-phone-alt me-2" style="color: #6B1700;"></i><strong>Hotline / Zalo:</strong> <a href="tel:0989780481" style="color: #6B1700; font-weight: 700;">0989780481</a></p>
-            </div>
-            <div class="col-md-6">
-                <p class="mb-2" style="font-size: 14px; color: #6B1700;"><i class="fas fa-envelope me-2" style="color: #6B1700;"></i><strong>Email:</strong> <a href="mailto:bloomresin.system@gmail.com" style="color: #6B1700; font-weight: 700;">bloomresin.system@gmail.com</a></p>
-                <p class="mb-0" style="font-size: 14px; color: #6B1700;"><i class="fas fa-clock me-2" style="color: #6B1700;"></i><strong>Giờ mở cửa:</strong> 08:00 - 21:30 (Tất cả các ngày)</p>
-            </div>
-        </div>
-    </div>
-
     <!-- Chat Card -->
     <div class="chat-card">
         <div class="chat-header">
