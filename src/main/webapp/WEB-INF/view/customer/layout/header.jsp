@@ -149,6 +149,7 @@
             padding: 6px 12px !important;
             outline: none !important;
             box-shadow: none !important;
+            cursor: pointer !important;
         }
 
         .custom-toggler:focus {
@@ -167,20 +168,23 @@
 
             .navbar-collapse.show {
                 display: block !important;
-                position: absolute !important;
-                top: 100% !important;
+                position: fixed !important;
+                top: 72px !important;
                 left: 0 !important;
                 right: 0 !important;
                 width: 100% !important;
-                max-height: calc(100vh - 75px) !important;
+                max-height: calc(100vh - 72px) !important;
+                height: auto !important;
                 overflow-y: auto !important;
+                overscroll-behavior: contain !important;
                 -webkit-overflow-scrolling: touch !important;
-                background-color: #FFF1D2 !important;
-                border-top: 1px solid #CEAF95 !important;
+                background-color: #FFF8EA !important;
                 border-bottom: 3px solid #CEAF95 !important;
-                box-shadow: 0 15px 35px rgba(107, 23, 0, 0.25) !important;
+                border-bottom-left-radius: 20px !important;
+                border-bottom-right-radius: 20px !important;
+                box-shadow: 0 20px 40px rgba(107, 23, 0, 0.25) !important;
                 z-index: 99999 !important;
-                padding: 20px 24px !important;
+                padding: 18px 20px 30px 20px !important;
             }
 
             .navbar-collapse::-webkit-scrollbar {
@@ -189,38 +193,40 @@
 
             .navbar-collapse::-webkit-scrollbar-thumb {
                 background-color: #CEAF95;
-                border-radius: 4px;
+                border-radius: 10px;
             }
 
             .navbar-nav {
                 flex-direction: column !important;
-                align-items: center !important;
-                text-align: center !important;
+                align-items: stretch !important;
                 width: 100% !important;
-                gap: 8px !important;
+                gap: 6px !important;
             }
 
             .nav-item {
                 width: 100% !important;
-                text-align: center !important;
             }
 
             .nav-link {
-                font-size: 14px !important;
+                font-size: 14.5px !important;
                 font-weight: 700 !important;
                 padding: 12px 18px !important;
-                border-radius: 10px !important;
-                display: block !important;
-                text-align: center !important;
-                background-color: #FFF8EA;
-                border: 1px solid #CEAF95;
+                border-radius: 12px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                background-color: #FFFFFF !important;
+                border: 1px solid #CEAF95 !important;
                 color: #6B1700 !important;
                 margin-bottom: 4px;
+                box-shadow: 0 2px 4px rgba(107, 23, 0, 0.03);
+                transition: all 0.2s ease !important;
             }
 
             .nav-link:hover, .nav-link.active {
-                background-color: #CEAF95 !important;
-                color: #FFF !important;
+                background-color: #6B1700 !important;
+                color: #FFF1D2 !important;
+                border-color: #6B1700 !important;
             }
 
             .navbar .dropdown-menu {
@@ -230,7 +236,15 @@
                 margin-top: 6px !important;
                 box-shadow: none !important;
                 border: 1px solid #CEAF95 !important;
-                background-color: #FFF;
+                border-radius: 12px !important;
+                background-color: #FFF1D2 !important;
+                padding: 8px !important;
+            }
+
+            .navbar .dropdown-item {
+                border-radius: 8px !important;
+                padding: 10px 14px !important;
+                font-size: 13.5px !important;
             }
 
             .search-wrapper {
@@ -242,14 +256,15 @@
 
             .search-wrapper form {
                 width: 100% !important;
-                max-width: 320px;
+                max-width: 100%;
                 margin: 0 auto;
             }
 
             .nav-search {
                 width: 100% !important;
-                height: 42px;
+                height: 44px;
                 font-size: 14px;
+                border-radius: 22px;
             }
 
             .nav-search:focus {
@@ -289,7 +304,7 @@
                         </span>
                     </a>
                 </c:if>
-                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler custom-toggler" type="button" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars fa-lg icon-colored"></i>
                 </button>
             </div>
@@ -304,11 +319,11 @@
         <!-- Collapsible Navigation Drawer -->
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarCollapse">
             <div class="navbar-nav d-flex align-items-center">
-                <a href="/" class="nav-item nav-link active fw-bold">Trang chủ</a>
+                <a href="/" class="nav-item nav-link active fw-bold"><i class="fas fa-home me-2 opacity-75"></i>Trang chủ</a>
 
                 <div class="nav-item dropdown">
-                    <a href="/products" class="nav-link fw-bold dropdown-toggle d-flex align-items-center justify-content-center" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sản phẩm
+                    <a href="/products" class="nav-link fw-bold dropdown-toggle d-flex align-items-center justify-content-between" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span><i class="fas fa-boxes me-2 opacity-75"></i>Sản phẩm</span>
                     </a>
                     <ul class="dropdown-menu shadow" aria-labelledby="productDropdown">
                         <li>
@@ -326,9 +341,9 @@
                     </ul>
                 </div>
 
-                <a href="/careservice" class="nav-item nav-link fw-bold">Dịch vụ hỏi đáp</a>
-                <a href="/news" class="nav-item nav-link fw-bold">Tin tức</a>
-                <a href="/aboutus" class="nav-item nav-link fw-bold">Giới thiệu</a>
+                <a href="/careservice" class="nav-item nav-link fw-bold"><i class="fas fa-comments me-2 opacity-75"></i>Dịch vụ hỏi đáp</a>
+                <a href="/news" class="nav-item nav-link fw-bold"><i class="fas fa-newspaper me-2 opacity-75"></i>Tin tức</a>
+                <a href="/aboutus" class="nav-item nav-link fw-bold"><i class="fas fa-info-circle me-2 opacity-75"></i>Giới thiệu</a>
 
                 <!-- Search Input Bar -->
                 <div class="nav-item d-flex align-items-center search-wrapper ms-xl-2">
@@ -401,12 +416,29 @@
                 </c:if>
 
                 <c:if test="${empty pageContext.request.userPrincipal}">
-                    <a href="/login" class="a-login position-relative fw-bold text-uppercase text-decoration-none btn btn-outline-danger px-3 py-1 rounded-pill" style="color: #6B1700; border-color: #CEAF95;">Đăng nhập</a>
-                    <a href="/register" class="a-login position-relative fw-bold text-uppercase text-decoration-none btn btn-danger px-3 py-1 rounded-pill text-white" style="background-color: #6B1700; border-color: #6B1700;">Đăng ký</a>
+                    <a href="/login" class="a-login position-relative fw-bold text-uppercase text-decoration-none btn btn-outline-danger px-3 py-1 rounded-pill w-100 w-xl-auto mb-2 mb-xl-0" style="color: #6B1700; border-color: #CEAF95;">Đăng nhập</a>
+                    <a href="/register" class="a-login position-relative fw-bold text-uppercase text-decoration-none btn btn-danger px-3 py-1 rounded-pill text-white w-100 w-xl-auto" style="background-color: #6B1700; border-color: #6B1700;">Đăng ký</a>
                 </c:if>
             </div>
         </div>
     </nav>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var toggler = document.querySelector(".custom-toggler");
+        var collapseMenu = document.getElementById("navbarCollapse");
+
+        if (toggler && collapseMenu) {
+            toggler.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                collapseMenu.classList.toggle("show");
+                var isExpanded = collapseMenu.classList.contains("show");
+                toggler.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+            });
+        }
+    });
+</script>
 </body>
 </html>
