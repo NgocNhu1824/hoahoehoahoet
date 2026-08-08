@@ -121,11 +121,36 @@
                             </td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${order.status == 'PENDING'}"><span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold"><i class="fas fa-clock me-1"></i>Chờ xác nhận</span></c:when>
-                                    <c:when test="${order.status == 'CONFIRM'}"><span class="badge bg-info text-white px-3 py-2 rounded-pill fw-bold"><i class="fas fa-check-circle me-1"></i>Đã xác nhận</span></c:when>
-                                    <c:when test="${order.status == 'COMPLETE'}"><span class="badge bg-success text-white px-3 py-2 rounded-pill fw-bold" style="background-color: #28a745 !important;"><i class="fas fa-check-double me-1"></i>Hoàn thành</span></c:when>
-                                    <c:when test="${order.status == 'CANCEL'}"><span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold"><i class="fas fa-times-circle me-1"></i>Đã hủy</span></c:when>
-                                    <c:otherwise><span class="badge bg-secondary text-white px-3 py-2 rounded-pill fw-bold">Không rõ</span></c:otherwise>
+                                    <c:when test="${order.status == 'PENDING' || order.status == 'CHO_XAC_NHAN'}">
+                                        <span class="badge px-3 py-2 rounded-pill fw-bold text-white shadow-sm" style="background-color: #f59e0b !important;">
+                                            <i class="fas fa-clock me-1"></i>Chờ xác nhận
+                                        </span>
+                                    </c:when>
+                                    <c:when test="${order.status == 'CONFIRM' || order.status == 'PROCESSING' || order.status == 'DANG_XU_LY'}">
+                                        <span class="badge px-3 py-2 rounded-pill fw-bold text-white shadow-sm" style="background-color: #3b82f6 !important;">
+                                            <i class="fas fa-box-open me-1"></i>Đã xác nhận
+                                        </span>
+                                    </c:when>
+                                    <c:when test="${order.status == 'SHIPPING' || order.status == 'DANG_GIAO'}">
+                                        <span class="badge px-3 py-2 rounded-pill fw-bold text-white shadow-sm" style="background-color: #06b6d4 !important;">
+                                            <i class="fas fa-truck me-1"></i>Đang giao hàng
+                                        </span>
+                                    </c:when>
+                                    <c:when test="${order.status == 'COMPLETE' || order.status == 'COMPLETED' || order.status == 'HOAN_THANH'}">
+                                        <span class="badge px-3 py-2 rounded-pill fw-bold text-white shadow-sm" style="background-color: #10b981 !important;">
+                                            <i class="fas fa-check-circle me-1"></i>Hoàn thành
+                                        </span>
+                                    </c:when>
+                                    <c:when test="${order.status == 'CANCEL' || order.status == 'CANCELLED' || order.status == 'DA_HUY'}">
+                                        <span class="badge px-3 py-2 rounded-pill fw-bold text-white shadow-sm" style="background-color: #ef4444 !important;">
+                                            <i class="fas fa-times-circle me-1"></i>Đã hủy
+                                        </span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="badge px-3 py-2 rounded-pill fw-bold text-white shadow-sm" style="background-color: #6b7280 !important;">
+                                            <i class="fas fa-info-circle me-1"></i>${order.status}
+                                        </span>
+                                    </c:otherwise>
                                 </c:choose>
                             </td>
                             <td>${order.convertedOrderDate}</td>
