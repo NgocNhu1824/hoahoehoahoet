@@ -9,6 +9,7 @@
         overflow: hidden;
         margin-top: 80px;
         box-shadow: 0 8px 25px rgba(107, 23, 0, 0.15);
+        cursor: pointer;
     }
 
     @media (max-width: 768px) {
@@ -47,6 +48,7 @@
         background: linear-gradient(180deg, rgba(30, 8, 2, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
         padding: 30px 20px 0;
         z-index: 3;
+        pointer-events: none;
     }
 
     .banner-title {
@@ -77,7 +79,7 @@
         left: 0;
         width: 100%;
         text-align: center;
-        z-index: 20;
+        z-index: 25;
         pointer-events: auto;
     }
 
@@ -119,32 +121,9 @@
         }
     }
 
-    /* Transparent left and right clickable navigation zones */
+    /* Hide default controls & indicators visually */
     .carousel-control-prev,
-    .carousel-control-next {
-        display: block !important;
-        width: 35% !important;
-        height: 100% !important;
-        top: 0 !important;
-        transform: none !important;
-        background: transparent !important;
-        border: none !important;
-        opacity: 0 !important;
-        z-index: 10 !important;
-        cursor: pointer !important;
-    }
-
-    .carousel-control-prev {
-        left: 0 !important;
-    }
-
-    .carousel-control-next {
-        right: 0 !important;
-    }
-
-    /* Hide arrow icons and pagination dots visually */
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon,
+    .carousel-control-next,
     .carousel-indicators {
         display: none !important;
     }
@@ -155,8 +134,8 @@
     }
 </style>
 
-<div class="hero-banner-container">
-    <div id="bloomBannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+<div class="hero-banner-container" id="heroBannerWrapper">
+    <div id="bloomBannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500" data-bs-pause="false">
         <div class="carousel-inner">
             <!-- Slide 1 -->
             <div class="carousel-item active" data-link="/products" data-btn-text="Khám Phá Sản Phẩm" data-btn-icon="fa-shopping-bag">
@@ -194,14 +173,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Transparent Clickable Left/Right Navigation Areas -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#bloomBannerCarousel" data-bs-slide="prev">
-            <span class="visually-hidden">Trước</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#bloomBannerCarousel" data-bs-slide="next">
-            <span class="visually-hidden">Tiếp</span>
-        </button>
     </div>
 
     <!-- 100% FIXED & STATIC Yellow button anchored inside image frame (40px gap from bottom edge) -->
@@ -212,26 +183,62 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var bannerCarousel = document.querySelector('#bloomBannerCarousel');
+        var bannerWrapper = document.getElementById('heroBannerWrapper');
+        var bannerCarouselEl = document.querySelector('#bloomBannerCarousel');
         var fixedBtn = document.getElementById('fixedBannerBtn');
+        var bsCarouselInstance = null;
 
-        if (bannerCarousel && typeof bootstrap !== 'undefined') {
-            new bootstrap.Carousel(bannerCarousel, {
-                interval: 3500,
-                ride: 'carousel',
-                wrap: true
-            });
+        function initBannerCarousel() {
+            if (bannerCarouselEl && typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
+                bsCarouselInstance = bootstrap.Carousel.getOrCreateInstance(bannerCarouselEl, {
+                    interval: 3500,
+                    ride: 'carousel',
+                    pause: false,
+                    wrap: true
+                });
+                bsCarouselInstance.cycle();
+            }
         }
 
-        if (bannerCarousel && fixedBtn) {
-            bannerCarousel.addEventListener('slid.bs.carousel', function () {
-                var activeItem = bannerCarousel.querySelector('.carousel-item.active');
+        initBannerCarousel();
+        setTimeout(initBannerCarousel, 400);
+        setTimeout(initBannerCarousel, 1200);
+
+        if (bannerCarouselEl && fixedBtn) {
+            bannerCarouselEl.addEventListener('slid.bs.carousel', function () {
+                var activeItem = bannerCarouselEl.querySelector('.carousel-item.active');
                 if (activeItem) {
                     var link = activeItem.getAttribute('data-link');
                     var text = activeItem.getAttribute('data-btn-text');
                     var icon = activeItem.getAttribute('data-btn-icon') || 'fa-shopping-bag';
                     if (link) fixedBtn.setAttribute('href', link);
                     if (text) fixedBtn.innerHTML = '<i class="fas ' + icon + ' me-2"></i>' + text;
+                }
+            });
+        }
+
+        // Smooth left & right click handler without anchor jump or scroll glitch
+        if (bannerWrapper) {
+            bannerWrapper.addEventListener('click', function (e) {
+                if (e.target.closest('#fixedBannerBtn')) {
+                    return; // Allow yellow button click
+                }
+                var rect = bannerWrapper.getBoundingClientRect();
+                var clickX = e.clientX - rect.left;
+                var halfWidth = rect.width / 2;
+
+                if (bsCarouselInstance) {
+                    if (clickX < halfWidth) {
+                        bsCarouselInstance.prev();
+                    } else {
+                        bsCarouselInstance.next();
+                    }
+                } else if (typeof $ !== 'undefined') {
+                    if (clickX < halfWidth) {
+                        $('#bloomBannerCarousel').carousel('prev');
+                    } else {
+                        $('#bloomBannerCarousel').carousel('next');
+                    }
                 }
             });
         }
