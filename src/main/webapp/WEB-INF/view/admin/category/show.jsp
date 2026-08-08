@@ -33,7 +33,7 @@
             </c:if>
 
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="/admin/statistics">Thống kê</a></li>
                 <li class="breadcrumb-item active">Danh mục</li>
             </ol>
 

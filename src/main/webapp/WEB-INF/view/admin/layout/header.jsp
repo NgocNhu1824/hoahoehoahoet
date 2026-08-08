@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand ps-3 d-flex align-items-center" href="/admin">
+    <a class="navbar-brand ps-3 d-flex align-items-center" href="/admin/statistics">
         <span style="font-family: 'Georgia', serif; font-weight: bold; font-size: 1.2rem;">
             ✿ Hoa hòe hoa hoẹt ✿
         </span>

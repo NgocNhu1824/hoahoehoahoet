@@ -6,7 +6,7 @@
          style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 3px solid white;">
 
     <ul class="list-unstyled w-100">
-        <li><a href="/admin" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-house-fill"></i> Trang chủ</a></li>
+        <li><a href="/admin/statistics" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-graph-up-arrow"></i> Thống kê</a></li>
         <li><a href="/admin/category" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-tags-fill"></i> Quản lý danh mục</a></li>
         <li><a href="/admin/product" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-box-fill"></i> Quản lý sản phẩm</a></li>
         <li><a href="/admin/customer" class="btn btn-light w-100 text-start mb-3"><i class="bi bi-people-fill"></i> Quản lý khách hàng</a></li>
