@@ -37,19 +37,14 @@
         height: 100%;
     }
 
-    /* Cinematic Slow Zoom & Smooth Fade Transitions */
+    /* Crisp, Sharp & Still Banner Image Display */
     .banner-slide-img {
         width: 100%;
         height: 500px;
         object-fit: cover;
-        filter: brightness(0.82);
+        filter: brightness(0.85);
         display: block;
-        transition: transform 5s ease-out;
-        transform: scale(1.04);
-    }
-
-    .carousel-item.active .banner-slide-img {
-        transform: scale(1);
+        transform: none !important;
     }
 
     @media (max-width: 768px) {
@@ -58,12 +53,12 @@
         }
     }
 
-    /* High-end gradual Crossfade timing (1.4 seconds smooth dissolve) */
+    /* Clean & Crisp Fade Dissolve (1.0 second smooth transition without motion distortion) */
     .carousel-fade .carousel-item {
         opacity: 0;
         transition-property: opacity;
-        transition-duration: 1.4s !important;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transition-duration: 1.0s !important;
+        transition-timing-function: ease-in-out !important;
     }
 
     .carousel-fade .carousel-item.active,
@@ -78,8 +73,8 @@
         z-index: 0;
         opacity: 0;
         transition-property: opacity;
-        transition-duration: 1.4s !important;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transition-duration: 1.0s !important;
+        transition-timing-function: ease-in-out !important;
     }
 
     /* Text overlay in upper-middle area */
