@@ -27,6 +27,7 @@
             padding-right: 20px;
             z-index: 1030;
             box-shadow: 0 4px 12px rgba(107, 23, 0, 0.05);
+            position: relative;
         }
 
         .nav-logo {
@@ -142,37 +143,61 @@
             }
 
             .navbar-collapse {
-                background-color: #FFF8EA;
-                border: 2px solid #CEAF95;
-                border-radius: 16px;
-                margin-top: 10px;
-                padding: 18px 20px;
-                box-shadow: 0 12px 30px rgba(107, 23, 0, 0.18);
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                background-color: #FFF1D2 !important; /* 100% Solid Opaque Background */
+                border-top: 1px solid #CEAF95 !important;
+                border-bottom: 3px solid #CEAF95 !important;
+                box-shadow: 0 15px 35px rgba(107, 23, 0, 0.25) !important;
+                z-index: 99999 !important;
+                padding: 20px 24px !important;
             }
 
             .navbar-nav {
                 flex-direction: column !important;
-                align-items: stretch !important;
-                gap: 4px;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+                gap: 8px !important;
+            }
+
+            .nav-item {
+                width: 100% !important;
+                text-align: center !important;
             }
 
             .nav-link {
-                font-size: 13.5px !important;
-                padding: 10px 16px !important;
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                border-bottom: 1px solid rgba(206, 175, 149, 0.2);
+                font-size: 14px !important;
+                font-weight: 700 !important;
+                padding: 12px 18px !important;
+                border-radius: 10px !important;
+                display: block !important;
+                text-align: center !important;
+                background-color: #FFF8EA;
+                border: 1px solid #CEAF95;
+                color: #6B1700 !important;
+                margin-bottom: 4px;
+            }
+
+            .nav-link:hover, .nav-link.active {
+                background-color: #CEAF95 !important;
+                color: #FFF !important;
             }
 
             .search-wrapper {
-                width: 100%;
+                width: 100% !important;
                 margin: 12px 0 !important;
+                display: flex;
+                justify-content: center;
             }
 
             .search-wrapper form {
-                width: 100%;
+                width: 100% !important;
+                max-width: 320px;
+                margin: 0 auto;
             }
 
             .nav-search {
@@ -191,7 +216,9 @@
                 border-top: 2px dashed #CEAF95;
                 display: flex;
                 align-items: center;
-                justify-content: space-around;
+                justify-content: center;
+                gap: 15px;
+                width: 100%;
             }
         }
     </style>
@@ -233,7 +260,7 @@
             <div class="navbar-nav d-flex align-items-center">
                 <a href="/" class="nav-item nav-link active fw-bold">Trang chủ</a>
 
-                <div class="nav-item dropdown d-flex align-items-center w-100-mobile">
+                <div class="nav-item dropdown d-flex align-items-center w-100">
                     <a href="/products" class="nav-link fw-bold flex-grow-1">Sản phẩm</a>
                     <a href="#" class="nav-link dropdown-toggle px-2" data-bs-toggle="dropdown"></a>
                     <ul class="dropdown-menu">
