@@ -115,11 +115,20 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label">Ảnh minh họa:</label>
-                        <input type="file" name="imageFile" class="form-control" onchange="previewImage(event)">
-                        <img id="preview"
-                             src="${pageContext.request.contextPath}/images/custom-order/${customOrder.image != null ? customOrder.image : 'default_custom.png'}"
-                             class="img-thumbnail mt-2" style="max-height: 150px; max-width: 100%; object-fit: contain;" alt="preview">
+                        <label class="form-label">Thay đổi ảnh minh họa:</label>
+                        <input type="file" name="imageFile" class="form-control" onchange="previewImage(event)" accept="image/*">
+                        <c:choose>
+                            <c:when test="${not empty customOrder.image}">
+                                <img id="preview"
+                                     src="${pageContext.request.contextPath}/images/custom-order/${customOrder.image}"
+                                     class="img-thumbnail mt-2" style="max-height: 150px; max-width: 100%; object-fit: contain; border-radius: 10px; border: 2px solid #CEAF95;" alt="Preview ảnh">
+                            </c:when>
+                            <c:otherwise>
+                                <img id="preview"
+                                     src=""
+                                     class="img-thumbnail mt-2" style="display: none; max-height: 150px; max-width: 100%; object-fit: contain; border-radius: 10px; border: 2px solid #CEAF95;" alt="Preview ảnh">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
 
@@ -140,11 +149,8 @@
         const preview = document.getElementById("preview");
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = "block";
         }
     }
 </script>

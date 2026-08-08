@@ -123,9 +123,8 @@
 
                     <div class="col-md-6">
                         <label class="form-label">Ảnh minh họa:</label>
-                        <input type="file" name="imageFile" class="form-control" onchange="previewImage(event)">
-                        <img id="preview" src="/images/custom-order/default_custom.png"
-                             class="img-thumbnail mt-2" style="max-height: 150px; max-width: 100%; object-fit: contain;" alt="preview">
+                        <input type="file" name="imageFile" class="form-control" onchange="previewImage(event)" accept="image/*">
+                        <img id="preview" src="" class="img-thumbnail mt-2" style="display: none; max-height: 150px; max-width: 100%; object-fit: contain; border-radius: 10px; border: 2px solid #CEAF95;" alt="Preview ảnh đã chọn">
                     </div>
                 </div>
 
@@ -147,6 +146,10 @@
         const file = event.target.files[0];
         if (file) {
             preview.src = URL.createObjectURL(file);
+            preview.style.display = "block";
+        } else {
+            preview.src = "";
+            preview.style.display = "none";
         }
     }
 
