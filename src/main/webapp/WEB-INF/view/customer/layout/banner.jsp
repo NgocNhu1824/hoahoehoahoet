@@ -135,7 +135,7 @@
 </style>
 
 <div class="hero-banner-container" id="heroBannerWrapper">
-    <div id="bloomBannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500" data-bs-pause="false">
+    <div id="bloomBannerCarousel" class="carousel slide">
         <div class="carousel-inner">
             <!-- Slide 1 -->
             <div class="carousel-item active" data-link="/products" data-btn-text="Khám Phá Sản Phẩm" data-btn-icon="fa-shopping-bag">
@@ -188,21 +188,30 @@
         var fixedBtn = document.getElementById('fixedBannerBtn');
         var bsCarouselInstance = null;
 
-        function initBannerCarousel() {
+        function startSingleCarousel() {
             if (bannerCarouselEl && typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
-                bsCarouselInstance = bootstrap.Carousel.getOrCreateInstance(bannerCarouselEl, {
-                    interval: 3500,
-                    ride: 'carousel',
+                var existing = bootstrap.Carousel.getInstance(bannerCarouselEl);
+                if (existing) {
+                    existing.dispose();
+                }
+                bsCarouselInstance = new bootstrap.Carousel(bannerCarouselEl, {
+                    interval: 4000,
+                    pause: false,
+                    wrap: true,
+                    touch: true
+                });
+                bsCarouselInstance.cycle();
+            } else if (typeof $ !== 'undefined') {
+                $('#bloomBannerCarousel').carousel({
+                    interval: 4000,
                     pause: false,
                     wrap: true
                 });
-                bsCarouselInstance.cycle();
+                $('#bloomBannerCarousel').carousel('cycle');
             }
         }
 
-        initBannerCarousel();
-        setTimeout(initBannerCarousel, 400);
-        setTimeout(initBannerCarousel, 1200);
+        startSingleCarousel();
 
         if (bannerCarouselEl && fixedBtn) {
             bannerCarouselEl.addEventListener('slid.bs.carousel', function () {
@@ -217,7 +226,7 @@
             });
         }
 
-        // Smooth left & right click handler without anchor jump or scroll glitch
+        // Smooth left & right click handler
         if (bannerWrapper) {
             bannerWrapper.addEventListener('click', function (e) {
                 if (e.target.closest('#fixedBannerBtn')) {
