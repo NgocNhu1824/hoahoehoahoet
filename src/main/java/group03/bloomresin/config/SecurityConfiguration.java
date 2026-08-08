@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.web.filter.ForwardedHeaderFilter;
-import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 
 import group03.bloomresin.repository.UserLoginLogRepository;
 import group03.bloomresin.service.UserService;
@@ -48,13 +47,6 @@ public class SecurityConfiguration {
         @Bean
         public AuthenticationSuccessHandler customSuccessHandler() {
                 return new CustomSuccessHandler(userService, loginLogRepo);
-        }
-
-        @Bean
-        public SpringSessionRememberMeServices rememberMeServices() {
-                SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
-                rememberMeServices.setAlwaysRemember(true);
-                return rememberMeServices;
         }
 
         @Bean
@@ -98,7 +90,8 @@ public class SecurityConfiguration {
                                 .invalidateHttpSession(true)
                         )
                         .rememberMe(r -> r
-                                .rememberMeServices(rememberMeServices())
+                                .key("bloomresin-remember-me-key")
+                                .tokenValiditySeconds(86400 * 7)
                         )
                         .exceptionHandling(ex -> ex
                                 .accessDeniedPage("/access-deny")
