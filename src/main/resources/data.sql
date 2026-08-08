@@ -191,32 +191,32 @@ VALUES (24, 'Đồng hồ treo tường Resin hoa ép trang trí', 650000, 'prod
 INSERT INTO news (id, title, content, image_url, created_at, status)
 VALUES (1, 'Nghệ thuật lưu giữ ký ức qua trang sức hoa ép Resin',
         'Trang sức hoa Resin là sự kết hợp hoàn hảo giữa vẻ đẹp mỏng mong của hoa tươi ép khô và sự bền vững của nhựa Epoxy Resin.',
-        'news_1.png', '2025-07-10 10:00:00', true);
+        '/images/news/news_1.png', '2025-07-10 10:00:00', true);
 
 INSERT INTO news (id, title, content, image_url, created_at, status)
 VALUES (2, 'Hướng dẫn bảo quản trang sức Resin luôn sáng bóng như mới',
         'Để trang sức hoa Resin giữ được màu sắc rực rỡ: Tránh tiếp xúc trực tiếp với hóa chất tẩy rửa mạnh và ánh nắng gắt kéo dài.',
-        'news_2.png', '2025-07-15 10:00:00', true);
+        '/images/news/news_2.png', '2025-07-15 10:00:00', true);
 
 INSERT INTO news (id, title, content, image_url, created_at, status)
 VALUES (3, 'BloomResin mở lớp Workshop tự tay đúc trang sức hoa khô',
         'Vào mỗi cuối tuần, BloomResin tổ chức workshop đúc dây chuyền và nhẫn hoa Resin cho các bạn trẻ yêu đồ handmade.',
-        'news_3.png', '2025-07-20 10:00:00', true);
+        '/images/news/news_3.png', '2025-07-20 10:00:00', true);
 
 INSERT INTO news (id, title, content, image_url, created_at, status)
 VALUES (4, 'Ý nghĩa các loại hoa ép trong trang sức Resin phong thủy',
         'Mỗi đóa hoa trong trang sức Resin mang một thông điệp: Hoa cẩm tú cầu tượng trưng cho sự biết ơn, Hoa baby đại diện cho tình yêu thuần khiết.',
-        'news_4.png', '2025-07-25 10:00:00', true);
+        '/images/news/news_4.png', '2025-07-25 10:00:00', true);
 
 INSERT INTO news (id, title, content, image_url, created_at, status)
 VALUES (5, 'Món quà tặng cá nhân hóa độc đáo từ hoa cưới kỷ niệm',
         'Dịch vụ ép hoa cưới Resin của BloomResin giúp các cô dâu lưu giữ bó hoa ngày trọng đại thành bộ trang sức kỷ niệm trọn đời.',
-        'news_5.png', '2025-07-28 10:00:00', true);
+        '/images/news/news_5.png', '2025-07-28 10:00:00', true);
 
 INSERT INTO news (id, title, content, image_url, created_at, status)
 VALUES (6, 'Gợi ý phối đồ cùng trang sức hoa Resin phong cách Vintage',
         'Trang sức hoa Resin rất phù hợp với trang phục chất liệu đũi, linen, váy xòe vintage nhẹ nhàng nữ tính.',
-        'news_6.png', '2025-08-01 10:00:00', true);
+        '/images/news/news_6.png', '2025-08-01 10:00:00', true);
 
 -- ===================================
 -- 6. ĐƠN HÀNG MẪU (Orders)
