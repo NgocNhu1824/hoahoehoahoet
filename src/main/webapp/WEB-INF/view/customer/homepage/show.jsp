@@ -160,17 +160,17 @@
     </div>
     <jsp:include page="../layout/header.jsp" />
     <jsp:include page="../layout/banner.jsp" />
-    <div class="container-fluid fruite pt-3 pb-5">
-        <div class="container pt-3 pb-5">
+    <div class="container-fluid fruite pt-2 pb-5">
+        <div class="container pt-2 pb-4">
             <div class="tab-class text-center">
-                <div class="row g-4">
+                <div class="row g-2 align-items-center mb-2">
                     <div class="col-lg-4 text-start">
-                        <h1>Sản phẩm hiện có</h1>
+                        <h1 style="font-size: 2.2rem; font-weight: 800; color: #6B1700; margin-bottom: 0;">Sản phẩm hiện có</h1>
                     </div>
                     <div class="col-lg-8 text-end">
-                        <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                        <ul class="nav nav-pills d-inline-flex text-center mb-2">
                             <li class="nav-item">
-                                <a class="d-flex m-2 py-2 bg-light rounded-pill active" href="/products">
+                                <a class="d-flex m-1 py-2 bg-light rounded-pill active" href="/products">
                                     <span class="text-dark" style="width: 130px;">SẢN PHẨM</span>
                                 </a>
                             </li>
@@ -179,13 +179,13 @@
                 </div>
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-4">
+                        <div class="row g-3">
                             <div class="col-lg-12">
-                                <div class="row g-4">
+                                <div class="row g-3">
                                     <c:set var="count" value="0" />
                                     <c:forEach var="category" items="${categories}">
-                                        <div class="container py-3">
-                                            <h2 class="text-start">${category.name}</h2>
+                                        <div class="container pt-2 pb-3">
+                                            <h2 class="text-start" style="font-size: 1.5rem; font-weight: 700; color: #6B1700; margin-top: 10px; margin-bottom: 12px; border-left: 4px solid #CEAF95; padding-left: 10px;">${category.name}</h2>
                                             <div class="row g-4">
                                                 <c:set var="count" value="0" />
                                                 <c:forEach var="product" items="${category.products}">
