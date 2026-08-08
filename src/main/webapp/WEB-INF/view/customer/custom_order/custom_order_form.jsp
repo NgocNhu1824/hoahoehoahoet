@@ -62,7 +62,7 @@
 
 <jsp:include page="../layout/header.jsp"/>
 
-<div class="container py-5 mt-5">
+<div class="container pt-2 pb-5 mt-2">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
