@@ -26,18 +26,49 @@
         height: 100%;
     }
 
+    /* Cinematic Slow Zoom & Smooth Fade Transitions */
     .banner-slide-img {
         width: 100%;
         height: 480px;
         object-fit: cover;
         filter: brightness(0.82);
         display: block;
+        transition: transform 5s ease-out;
+        transform: scale(1.04);
+    }
+
+    .carousel-item.active .banner-slide-img {
+        transform: scale(1);
     }
 
     @media (max-width: 768px) {
         .banner-slide-img {
             height: 340px;
         }
+    }
+
+    /* High-end gradual Crossfade timing (1.4 seconds smooth dissolve) */
+    .carousel-fade .carousel-item {
+        opacity: 0;
+        transition-property: opacity;
+        transition-duration: 1.4s !important;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .carousel-fade .carousel-item.active,
+    .carousel-fade .carousel-item-next.carousel-item-start,
+    .carousel-fade .carousel-item-prev.carousel-item-end {
+        z-index: 1;
+        opacity: 1;
+    }
+
+    .carousel-fade .active.carousel-item-start,
+    .carousel-fade .active.carousel-item-end {
+        z-index: 0;
+        opacity: 0;
+        transition-property: opacity;
+        transition-duration: 1.4s !important;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
     /* Text overlay in upper-middle area */
@@ -197,7 +228,7 @@
                     existing.dispose();
                 }
                 bsCarouselInstance = new bootstrap.Carousel(bannerCarouselEl, {
-                    interval: 4000,
+                    interval: 4500,
                     pause: false,
                     wrap: true,
                     touch: true
@@ -205,7 +236,7 @@
                 bsCarouselInstance.cycle();
             } else if (typeof $ !== 'undefined') {
                 $('#bloomBannerCarousel').carousel({
-                    interval: 4000,
+                    interval: 4500,
                     pause: false,
                     wrap: true
                 });
