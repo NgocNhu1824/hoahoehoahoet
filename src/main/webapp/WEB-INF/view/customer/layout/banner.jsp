@@ -13,7 +13,7 @@
 
     @media (max-width: 768px) {
         .hero-banner-container {
-            height: 340px;
+            height: 360px;
             margin-top: 70px;
         }
     }
@@ -28,24 +28,24 @@
 
     @media (max-width: 768px) {
         .banner-slide-img {
-            height: 340px;
+            height: 360px;
         }
     }
 
-    /* Overlay placed vertically and horizontally centered over full banner */
-    .banner-overlay-center {
+    /* Text overlay in the upper-middle area */
+    .banner-overlay-text {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 75%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        background: rgba(0, 0, 0, 0.42);
-        padding: 0 20px;
+        background: linear-gradient(180deg, rgba(30, 8, 2, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+        padding: 20px 20px 0;
         z-index: 3;
     }
 
@@ -56,7 +56,7 @@
         color: #FFFFFF !important;
         text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.95);
         letter-spacing: 1px;
-        margin: 0 0 12px 0;
+        margin: 0 0 10px 0;
         line-height: 1.25;
     }
 
@@ -65,15 +65,19 @@
         font-weight: 600;
         color: #FFF1D2 !important;
         text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.95);
-        margin: 0 auto 24px auto;
+        margin: 0 auto;
         max-width: 760px;
         line-height: 1.4;
     }
 
-    /* Yellow button placed BELOW the text */
+    /* Yellow button placed at the VERY BOTTOM below image content */
     .banner-btn-wrapper {
-        display: block;
+        position: absolute;
+        bottom: 35px;
+        left: 0;
         width: 100%;
+        text-align: center;
+        z-index: 5;
     }
 
     .banner-btn {
@@ -81,13 +85,13 @@
         background-color: #CEAF95 !important;
         color: #6B1700 !important;
         font-weight: 800;
-        padding: 12px 30px;
+        padding: 11px 32px;
         border-radius: 30px;
         text-decoration: none;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         transition: all 0.3s ease;
         border: 2px solid #FFF1D2;
-        font-size: 1.05rem;
+        font-size: 1rem;
     }
 
     .banner-btn:hover {
@@ -100,15 +104,17 @@
     @media (max-width: 768px) {
         .banner-title {
             font-size: 1.6rem;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .banner-subtitle {
-            font-size: 0.92rem;
-            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+        .banner-btn-wrapper {
+            bottom: 25px;
         }
         .banner-btn {
-            padding: 8px 20px;
-            font-size: 0.88rem;
+            padding: 8px 22px;
+            font-size: 0.85rem;
         }
     }
 
@@ -148,13 +154,13 @@
     }
 
     .carousel-indicators {
-        bottom: 15px;
+        bottom: 8px;
         z-index: 10;
     }
 
     .carousel-indicators [data-bs-target] {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background-color: #FFF1D2;
         opacity: 0.6;
@@ -164,7 +170,7 @@
     .carousel-indicators .active {
         opacity: 1;
         background-color: #CEAF95;
-        width: 28px;
+        width: 26px;
         border-radius: 10px;
     }
 </style>
@@ -183,48 +189,48 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">
                 <img src="${pageContext.request.contextPath}/client/img/banner01.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 1">
-                <div class="banner-overlay-center">
+                <div class="banner-overlay-text">
                     <h1 class="banner-title">HOA HOÈ HOA HOẸT - BLOOMRESIN</h1>
                     <p class="banner-subtitle">Trang sức thủ công hoa ép Resin tự nhiên lấp lánh & tinh tế</p>
-                    <div class="banner-btn-wrapper">
-                        <a href="/products" class="banner-btn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
-                    </div>
+                </div>
+                <div class="banner-btn-wrapper">
+                    <a href="/products" class="banner-btn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
                 </div>
             </div>
 
             <!-- Slide 2 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner02.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 2">
-                <div class="banner-overlay-center">
+                <div class="banner-overlay-text">
                     <h1 class="banner-title">BỘ SƯU TẬP HOA ÉP VĨNH CỬU</h1>
                     <p class="banner-subtitle">Lưu giữ trọn vẹn nét đẹp tươi tắn và khoảnh khắc kỷ niệm quý giá</p>
-                    <div class="banner-btn-wrapper">
-                        <a href="/products" class="banner-btn"><i class="fas fa-gem me-2"></i>Xem Bộ Sưu Tập</a>
-                    </div>
+                </div>
+                <div class="banner-btn-wrapper">
+                    <a href="/products" class="banner-btn"><i class="fas fa-gem me-2"></i>Xem Bộ Sưu Tập</a>
                 </div>
             </div>
 
             <!-- Slide 3 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner03.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 3">
-                <div class="banner-overlay-center">
+                <div class="banner-overlay-text">
                     <h1 class="banner-title">LÀM THEO YÊU CẦU (CUSTOM ORDER)</h1>
                     <p class="banner-subtitle">Gửi hoa cưới & hoa kỷ niệm của bạn – Shop sẽ đúc thành trang sức độc bản</p>
-                    <div class="banner-btn-wrapper">
-                        <a href="/custom-order/form" class="banner-btn"><i class="fas fa-magic me-2"></i>Đặt Làm Ngay</a>
-                    </div>
+                </div>
+                <div class="banner-btn-wrapper">
+                    <a href="/custom-order/form" class="banner-btn"><i class="fas fa-magic me-2"></i>Đặt Làm Ngay</a>
                 </div>
             </div>
 
             <!-- Slide 4 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner04.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 4">
-                <div class="banner-overlay-center">
+                <div class="banner-overlay-text">
                     <h1 class="banner-title">TIN TỨC & BẢO QUẢN SẢN PHẨM</h1>
                     <p class="banner-subtitle">Khám phá các bí quyết chăm sóc trang sức Resin bền đẹp cùng thời gian</p>
-                    <div class="banner-btn-wrapper">
-                        <a href="/news" class="banner-btn"><i class="fas fa-newspaper me-2"></i>Đọc Tin Tức</a>
-                    </div>
+                </div>
+                <div class="banner-btn-wrapper">
+                    <a href="/news" class="banner-btn"><i class="fas fa-newspaper me-2"></i>Đọc Tin Tức</a>
                 </div>
             </div>
         </div>
