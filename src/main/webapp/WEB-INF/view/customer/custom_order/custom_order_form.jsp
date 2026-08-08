@@ -53,13 +53,14 @@
             border-color: #CEAF95;
         }
 
-        .fw-bold {
-            color: #6B1700;
+        .custom-order-wrapper {
+            padding-top: 45px !important;
+            margin-top: 15px !important;
         }
 
         @media (max-width: 991px) {
             .custom-order-wrapper {
-                padding-top: 35px !important;
+                padding-top: 40px !important;
                 margin-top: 20px !important;
             }
         }
@@ -69,7 +70,7 @@
 
 <jsp:include page="../layout/header.jsp"/>
 
-<div class="container custom-order-wrapper pt-2 pb-5 mt-2">
+<div class="container custom-order-wrapper pb-5">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>

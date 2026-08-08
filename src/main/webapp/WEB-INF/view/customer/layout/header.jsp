@@ -365,7 +365,6 @@
                     </ul>
                 </div>
 
-                <a href="/custom-order/form" class="nav-item nav-link fw-bold"><i class="fas fa-magic me-2 opacity-75"></i>Đặt làm theo yêu cầu</a>
                 <a href="/careservice" class="nav-item nav-link fw-bold"><i class="fas fa-comments me-2 opacity-75"></i>Dịch vụ hỏi đáp</a>
                 <a href="/news" class="nav-item nav-link fw-bold"><i class="fas fa-newspaper me-2 opacity-75"></i>Tin tức</a>
                 <a href="/aboutus" class="nav-item nav-link fw-bold"><i class="fas fa-info-circle me-2 opacity-75"></i>Giới thiệu</a>
