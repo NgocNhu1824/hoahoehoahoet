@@ -38,10 +38,18 @@
 
         .news-image {
             width: 100%;
-            max-height: 400px; /* ảnh không quá cao */
-            object-fit: cover; /* cắt gọn ảnh cho cân đối */
+            height: auto;
+            max-height: 650px;
+            object-fit: contain;
             border-radius: 8px;
             margin: 20px 0;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .news-image:hover {
+            transform: scale(1.01);
         }
 
         .content {
@@ -68,6 +76,38 @@
             color: #000;
         }
 
+        /* Modal xem ảnh phóng to */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.85);
+        }
+
+        .image-modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 6px;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         @media screen and (max-width: 768px) {
             body {
                 padding: 15px;
@@ -89,7 +129,11 @@
 
     <c:choose>
         <c:when test="${not empty news.imageUrl}">
-            <img src="${news.imageUrl.startsWith('/') || news.imageUrl.startsWith('http') ? news.imageUrl : '/images/news/'.concat(news.imageUrl)}" alt="Ảnh tin tức" class="news-image">
+            <img src="${news.imageUrl.startsWith('/') || news.imageUrl.startsWith('http') ? news.imageUrl : '/images/news/'.concat(news.imageUrl)}" 
+                 alt="Ảnh tin tức" 
+                 class="news-image" 
+                 onclick="openImageModal(this.src)" 
+                 title="Nhấn để xem ảnh phóng to">
         </c:when>
         <c:otherwise>
             <p><i>Không có hình ảnh</i></p>
@@ -100,5 +144,21 @@
 
     <a href="/news" class="back-link">&#8592; Quay lại danh sách tin tức</a>
 </div>
+
+<!-- Modal xem toàn bộ ảnh -->
+<div id="imgModal" class="image-modal" onclick="closeImageModal()">
+    <span class="image-modal-close">&times;</span>
+    <img class="image-modal-content" id="imgModalSrc">
+</div>
+
+<script>
+    function openImageModal(src) {
+        document.getElementById("imgModalSrc").src = src;
+        document.getElementById("imgModal").style.display = "block";
+    }
+    function closeImageModal() {
+        document.getElementById("imgModal").style.display = "none";
+    }
+</script>
 </body>
 </html>

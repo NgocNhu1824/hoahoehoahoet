@@ -21,8 +21,8 @@
         }
 
         .card-img-top {
-            max-height: 400px;
-            object-fit: cover;
+            max-height: 550px;
+            object-fit: contain;
             border-radius: 8px;
         }
 
