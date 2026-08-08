@@ -8,7 +8,7 @@
         height: 500px;
         position: relative;
         overflow: hidden;
-        margin: 15px auto 30px auto;
+        margin: 35px auto 30px auto;
         border-radius: 20px;
         box-shadow: 0 12px 35px rgba(107, 23, 0, 0.18);
         cursor: pointer;
@@ -18,7 +18,7 @@
     @media (max-width: 1280px) {
         .hero-banner-container {
             max-width: 95%;
-            margin-top: 15px;
+            margin-top: 32px;
         }
     }
 
@@ -26,7 +26,7 @@
         .hero-banner-container {
             max-width: 100%;
             height: 340px;
-            margin-top: 10px;
+            margin-top: 25px;
             border-radius: 0;
         }
     }
