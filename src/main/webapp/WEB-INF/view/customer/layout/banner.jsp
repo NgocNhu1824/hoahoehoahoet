@@ -4,113 +4,111 @@
 <style>
     .hero-banner-container {
         width: 100%;
-        max-width: 1200px;
-        margin: 90px auto 30px;
+        height: 480px;
         position: relative;
         overflow: hidden;
-        border-radius: 16px;
-        box-shadow: 0 8px 25px rgba(107, 23, 0, 0.12);
-        background-color: #2b0e03;
+        margin-top: 80px;
+        box-shadow: 0 8px 25px rgba(107, 23, 0, 0.15);
     }
 
     @media (max-width: 768px) {
         .hero-banner-container {
-            margin: 75px 15px 20px;
-            border-radius: 12px;
+            height: 340px;
+            margin-top: 70px;
         }
     }
 
     .banner-slide-img {
         width: 100%;
-        height: 420px;
-        object-fit: contain;
-        background-color: #2b0e03;
+        height: 480px;
+        object-fit: cover;
+        filter: brightness(0.82);
         display: block;
     }
 
     @media (max-width: 768px) {
         .banner-slide-img {
-            height: 280px;
+            height: 340px;
         }
     }
 
-    /* Bottom caption strip - stacked text & yellow button below */
-    .banner-bottom-strip {
+    /* Overlay placed vertically and horizontally centered over full banner */
+    .banner-overlay-center {
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: 0;
         width: 100%;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(30, 8, 2, 0.88) 100%);
-        padding: 20px 20px 25px;
-        text-align: center;
-        z-index: 3;
+        height: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        gap: 8px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.42);
+        padding: 0 20px;
+        z-index: 3;
     }
 
     .banner-title {
         font-family: 'Raleway', sans-serif;
-        font-size: 1.8rem;
+        font-size: 2.6rem;
         font-weight: 800;
         color: #FFFFFF !important;
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-        letter-spacing: 0.5px;
-        margin: 0;
-        line-height: 1.2;
+        text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.95);
+        letter-spacing: 1px;
+        margin: 0 0 12px 0;
+        line-height: 1.25;
     }
 
     .banner-subtitle {
-        font-size: 1rem;
-        font-weight: 500;
+        font-size: 1.2rem;
+        font-weight: 600;
         color: #FFF1D2 !important;
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
-        margin: 0;
-        max-width: 700px;
-        line-height: 1.35;
+        text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.95);
+        margin: 0 auto 24px auto;
+        max-width: 760px;
+        line-height: 1.4;
     }
 
     /* Yellow button placed BELOW the text */
     .banner-btn-wrapper {
-        margin-top: 6px;
+        display: block;
+        width: 100%;
     }
 
     .banner-btn {
         display: inline-block;
         background-color: #CEAF95 !important;
         color: #6B1700 !important;
-        font-weight: 700;
-        padding: 8px 24px;
-        border-radius: 25px;
+        font-weight: 800;
+        padding: 12px 30px;
+        border-radius: 30px;
         text-decoration: none;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
         transition: all 0.3s ease;
-        border: 2px solid #CEAF95;
-        font-size: 0.95rem;
+        border: 2px solid #FFF1D2;
+        font-size: 1.05rem;
     }
 
     .banner-btn:hover {
         background-color: #6B1700 !important;
         color: #FFF1D2 !important;
         border-color: #FFF1D2;
-        transform: translateY(-2px);
+        transform: translateY(-3px);
     }
 
     @media (max-width: 768px) {
-        .banner-bottom-strip {
-            padding: 12px 12px 18px;
-            gap: 6px;
-        }
         .banner-title {
-            font-size: 1.25rem;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
         }
         .banner-subtitle {
-            font-size: 0.82rem;
+            font-size: 0.92rem;
+            margin-bottom: 16px;
         }
         .banner-btn {
-            padding: 6px 18px;
-            font-size: 0.82rem;
+            padding: 8px 20px;
+            font-size: 0.88rem;
         }
     }
 
@@ -122,8 +120,8 @@
     /* Carousel Nav Control Buttons */
     .carousel-control-prev,
     .carousel-control-next {
-        width: 44px !important;
-        height: 44px !important;
+        width: 48px !important;
+        height: 48px !important;
         background-color: rgba(107, 23, 0, 0.75) !important;
         border-radius: 50% !important;
         top: 50% !important;
@@ -135,11 +133,11 @@
     }
 
     .carousel-control-prev {
-        left: 15px !important;
+        left: 20px !important;
     }
 
     .carousel-control-next {
-        right: 15px !important;
+        right: 20px !important;
     }
 
     .carousel-control-prev:hover,
@@ -150,14 +148,13 @@
     }
 
     .carousel-indicators {
-        bottom: 5px;
+        bottom: 15px;
         z-index: 10;
-        margin-bottom: 2px;
     }
 
     .carousel-indicators [data-bs-target] {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         background-color: #FFF1D2;
         opacity: 0.6;
@@ -167,7 +164,7 @@
     .carousel-indicators .active {
         opacity: 1;
         background-color: #CEAF95;
-        width: 24px;
+        width: 28px;
         border-radius: 10px;
     }
 </style>
@@ -186,8 +183,8 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">
                 <img src="${pageContext.request.contextPath}/client/img/banner01.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 1">
-                <div class="banner-bottom-strip">
-                    <h2 class="banner-title">HOA HOÈ HOA HOẸT - BLOOMRESIN</h2>
+                <div class="banner-overlay-center">
+                    <h1 class="banner-title">HOA HOÈ HOA HOẸT - BLOOMRESIN</h1>
                     <p class="banner-subtitle">Trang sức thủ công hoa ép Resin tự nhiên lấp lánh & tinh tế</p>
                     <div class="banner-btn-wrapper">
                         <a href="/products" class="banner-btn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
@@ -198,8 +195,8 @@
             <!-- Slide 2 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner02.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 2">
-                <div class="banner-bottom-strip">
-                    <h2 class="banner-title">BỘ SƯU TẬP HOA ÉP VĨNH CỬU</h2>
+                <div class="banner-overlay-center">
+                    <h1 class="banner-title">BỘ SƯU TẬP HOA ÉP VĨNH CỬU</h1>
                     <p class="banner-subtitle">Lưu giữ trọn vẹn nét đẹp tươi tắn và khoảnh khắc kỷ niệm quý giá</p>
                     <div class="banner-btn-wrapper">
                         <a href="/products" class="banner-btn"><i class="fas fa-gem me-2"></i>Xem Bộ Sưu Tập</a>
@@ -210,8 +207,8 @@
             <!-- Slide 3 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner03.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 3">
-                <div class="banner-bottom-strip">
-                    <h2 class="banner-title">LÀM THEO YÊU CẦU (CUSTOM ORDER)</h2>
+                <div class="banner-overlay-center">
+                    <h1 class="banner-title">LÀM THEO YÊU CẦU (CUSTOM ORDER)</h1>
                     <p class="banner-subtitle">Gửi hoa cưới & hoa kỷ niệm của bạn – Shop sẽ đúc thành trang sức độc bản</p>
                     <div class="banner-btn-wrapper">
                         <a href="/custom-order/form" class="banner-btn"><i class="fas fa-magic me-2"></i>Đặt Làm Ngay</a>
@@ -222,8 +219,8 @@
             <!-- Slide 4 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner04.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 4">
-                <div class="banner-bottom-strip">
-                    <h2 class="banner-title">TIN TỨC & BẢO QUẢN SẢN PHẨM</h2>
+                <div class="banner-overlay-center">
+                    <h1 class="banner-title">TIN TỨC & BẢO QUẢN SẢN PHẨM</h1>
                     <p class="banner-subtitle">Khám phá các bí quyết chăm sóc trang sức Resin bền đẹp cùng thời gian</p>
                     <div class="banner-btn-wrapper">
                         <a href="/news" class="banner-btn"><i class="fas fa-newspaper me-2"></i>Đọc Tin Tức</a>
