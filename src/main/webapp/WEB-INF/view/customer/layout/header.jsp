@@ -223,7 +223,12 @@
                 transition: all 0.2s ease !important;
             }
 
-            .nav-link:hover, .nav-link.active {
+            .nav-link span, .nav-link i {
+                color: inherit !important;
+            }
+
+            .nav-link:hover, .nav-link:hover span, .nav-link:hover i,
+            .nav-link.active, .nav-link.active span, .nav-link.active i {
                 background-color: #6B1700 !important;
                 color: #FFF1D2 !important;
                 border-color: #6B1700 !important;
