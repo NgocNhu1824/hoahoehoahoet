@@ -19,6 +19,11 @@ INSERT INTO roles (id, name, description) VALUES (3, 'CUSTOMER', 'Khách hàng')
 INSERT INTO users (id, email, password, full_name, phone, address, avatar, status, role_id)
 VALUES (1, 'bloomresin.system@gmail.com', '$2a$10$A/J/WdgP6a.kSHriHbobo.YWIHERHXKQJDJ/FRD0mOxEtiOxJ6TY2',
         'Admin BloomResin', '0989780481', 'FPT University, 600 Nguyen Van Cu, An Binh, Ninh Kieu, Can Tho', 'nhu.jpg', true, 1);
+UPDATE users SET 
+    email = 'bloomresin.system@gmail.com',
+    phone = '0989780481',
+    address = 'FPT University, 600 Nguyen Van Cu, An Binh, Ninh Kieu, Can Tho'
+WHERE id = 1;
 
 -- Nhân viên 1
 INSERT INTO users (id, email, password, full_name, phone, address, avatar, status, role_id)
