@@ -32,20 +32,20 @@
         }
     }
 
-    /* Centered overlay inside image frame with 55px bottom gap from bottom edge */
-    .banner-overlay-center {
+    /* Text overlay in upper-middle area */
+    .banner-overlay-text {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 65%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        background: rgba(0, 0, 0, 0.42);
-        padding: 30px 20px 55px 20px;
+        background: linear-gradient(180deg, rgba(30, 8, 2, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+        padding: 30px 20px 0;
         z-index: 3;
     }
 
@@ -61,19 +61,23 @@
     }
 
     .banner-subtitle {
-        font-size: 1.18rem;
+        font-size: 1.2rem;
         font-weight: 600;
         color: #FFF1D2 !important;
         text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.95);
-        margin: 0 auto 26px auto;
+        margin: 0 auto;
         max-width: 760px;
         line-height: 1.4;
     }
 
-    /* Yellow button container placed BELOW the text, inside the image frame */
+    /* Yellow button anchored inside image frame, positioned below image content, 40px away from bottom edge */
     .banner-btn-container {
-        display: block;
-        margin-top: 5px;
+        position: absolute;
+        bottom: 40px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 5;
     }
 
     .banner-btn {
@@ -84,7 +88,7 @@
         padding: 11px 32px;
         border-radius: 30px;
         text-decoration: none;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
         transition: all 0.3s ease;
         border: 2px solid #FFF1D2;
         font-size: 1rem;
@@ -98,16 +102,15 @@
     }
 
     @media (max-width: 768px) {
-        .banner-overlay-center {
-            padding: 20px 15px 40px 15px;
-        }
         .banner-title {
             font-size: 1.6rem;
             margin-bottom: 6px;
         }
         .banner-subtitle {
             font-size: 0.9rem;
-            margin-bottom: 16px;
+        }
+        .banner-btn-container {
+            bottom: 25px;
         }
         .banner-btn {
             padding: 8px 22px;
@@ -134,48 +137,48 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">
                 <img src="${pageContext.request.contextPath}/client/img/banner01.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 1">
-                <div class="banner-overlay-center">
+                <div class="banner-overlay-text">
                     <h1 class="banner-title">HOA HOÈ HOA HOẸT - BLOOMRESIN</h1>
                     <p class="banner-subtitle">Trang sức thủ công hoa ép Resin tự nhiên lấp lánh & tinh tế</p>
-                    <div class="banner-btn-container">
-                        <a href="/products" class="banner-btn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
-                    </div>
+                </div>
+                <div class="banner-btn-container">
+                    <a href="/products" class="banner-btn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
                 </div>
             </div>
 
             <!-- Slide 2 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner02.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 2">
-                <div class="banner-overlay-center">
+                <div class="banner-overlay-text">
                     <h1 class="banner-title">BỘ SƯU TẬP HOA ÉP VĨNH CỬU</h1>
                     <p class="banner-subtitle">Lưu giữ trọn vẹn nét đẹp tươi tắn và khoảnh khắc kỷ niệm quý giá</p>
-                    <div class="banner-btn-container">
-                        <a href="/products" class="banner-btn"><i class="fas fa-gem me-2"></i>Xem Bộ Sưu Tập</a>
-                    </div>
+                </div>
+                <div class="banner-btn-container">
+                    <a href="/products" class="banner-btn"><i class="fas fa-gem me-2"></i>Xem Bộ Sưu Tập</a>
                 </div>
             </div>
 
             <!-- Slide 3 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner03.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 3">
-                <div class="banner-overlay-center">
+                <div class="banner-overlay-text">
                     <h1 class="banner-title">LÀM THEO YÊU CẦU (CUSTOM ORDER)</h1>
                     <p class="banner-subtitle">Gửi hoa cưới & hoa kỷ niệm của bạn – Shop sẽ đúc thành trang sức độc bản</p>
-                    <div class="banner-btn-container">
-                        <a href="/custom-order/form" class="banner-btn"><i class="fas fa-magic me-2"></i>Đặt Làm Ngay</a>
-                    </div>
+                </div>
+                <div class="banner-btn-container">
+                    <a href="/custom-order/form" class="banner-btn"><i class="fas fa-magic me-2"></i>Đặt Làm Ngay</a>
                 </div>
             </div>
 
             <!-- Slide 4 -->
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner04.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Banner 4">
-                <div class="banner-overlay-center">
+                <div class="banner-overlay-text">
                     <h1 class="banner-title">TIN TỨC & BẢO QUẢN SẢN PHẨM</h1>
                     <p class="banner-subtitle">Khám phá các bí quyết chăm sóc trang sức Resin bền đẹp cùng thời gian</p>
-                    <div class="banner-btn-container">
-                        <a href="/news" class="banner-btn"><i class="fas fa-newspaper me-2"></i>Đọc Tin Tức</a>
-                    </div>
+                </div>
+                <div class="banner-btn-container">
+                    <a href="/news" class="banner-btn"><i class="fas fa-newspaper me-2"></i>Đọc Tin Tức</a>
                 </div>
             </div>
         </div>
