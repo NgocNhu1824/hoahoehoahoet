@@ -37,12 +37,14 @@
         }
 
         .news-image {
-            width: 100%;
+            width: auto;
+            max-width: 100%;
             height: auto;
-            max-height: 650px;
+            max-height: 350px;
             object-fit: contain;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 20px auto;
+            display: block;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transition: transform 0.2s ease-in-out;
@@ -110,11 +112,16 @@
 
         @media screen and (max-width: 768px) {
             body {
-                padding: 15px;
+                padding: 10px;
             }
 
             .container {
-                padding: 20px;
+                padding: 15px;
+            }
+
+            .news-image {
+                max-height: 240px;
+                margin: 15px auto;
             }
 
             .content {

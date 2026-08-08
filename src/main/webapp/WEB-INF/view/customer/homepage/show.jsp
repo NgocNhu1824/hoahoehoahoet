@@ -159,7 +159,7 @@
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <jsp:include page="../layout/header.jsp" />
-<%--    <jsp:include page="../layout/banner.jsp" />--%>
+    <jsp:include page="../layout/banner.jsp" />
     <div class="container-fluid fruite pt-3 pb-5">
         <div class="container pt-3 pb-5">
             <div class="tab-class text-center">

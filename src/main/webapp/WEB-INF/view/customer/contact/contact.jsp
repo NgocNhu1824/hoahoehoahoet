@@ -89,6 +89,15 @@
 <jsp:include page="../layout/header.jsp" />
 <div class="container">
     <h2 class="contact-title">LIÊN HỆ</h2>
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8 text-center p-4 rounded shadow-sm" style="background-color: #FFF8EA; border: 2px solid #CEAF95;">
+            <h4 class="fw-bold mb-3" style="color: #6B1700;"><i class="fas fa-store me-2"></i>THÔNG TIN SHOP BLOOMRESIN</h4>
+            <p class="mb-2"><i class="fas fa-map-marker-alt me-2" style="color: #6B1700;"></i><strong>Địa chỉ:</strong> FPT University, 600 Nguyen Van Cu, An Binh, Ninh Kieu, Can Tho</p>
+            <p class="mb-2"><i class="fas fa-phone-alt me-2" style="color: #6B1700;"></i><strong>Hotline / Zalo:</strong> 0989780481</p>
+            <p class="mb-0"><i class="fas fa-envelope me-2" style="color: #6B1700;"></i><strong>Email:</strong> bloomresin.system@gmail.com</p>
+        </div>
+    </div>
+    <h4 class="text-center fw-bold mb-4" style="color: #6B1700;">ĐỘI NGŨ THỰC HIỆN</h4>
     <div class="row justify-content-center">
         <div class="col-6 col-md-4 col-lg-2 d-flex">
             <div class="member-card w-100">

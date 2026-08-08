@@ -354,7 +354,7 @@
         if (text.includes("yêu cầu") || text.includes("đặt làm") || text.includes("custom") || text.includes("hoa của tôi") || text.includes("kỷ niệm")) {
             return "✨ <strong>Dịch vụ làm sản phẩm theo yêu cầu (Custom Order):</strong><br>" +
                 "Bạn có thể gửi hoa cưới, hoa sinh nhật hay bông hoa kỷ niệm của chính bạn đến BloomResin! Shop sẽ ép khô bằng kỹ thuật cao và đúc vào khung Resin vĩnh cửu.<br><br>" +
-                "📞 Vui lòng gọi trực tiếp Hotline <strong>0901234567</strong> hoặc ghé cửa hàng để nhân viên tư vấn chi tiết quy trình gửi hoa ạ!";
+                "📞 Vui lòng gọi trực tiếp Hotline <strong>0989780481</strong> hoặc ghé cửa hàng để nhân viên tư vấn chi tiết quy trình gửi hoa ạ!";
         }
 
         if (text.includes("bảo quản") || text.includes("vàng") || text.includes("bền") || text.includes("nước") || text.includes("vệ sinh")) {
@@ -374,14 +374,14 @@
 
         if (text.includes("liên hệ") || text.includes("địa chỉ") || text.includes("hotline") || text.includes("sđt") || text.includes("shop")) {
             return "📞 <strong>Thông tin liên hệ BloomResin:</strong><br>" +
-                "• <strong>Địa chỉ cửa hàng:</strong> 123 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh.<br>" +
-                "• <strong>Hotline / Zalo:</strong> 0901234567<br>" +
-                "• <strong>Email:</strong> admin@bloomresin.com<br>" +
+                "• <strong>Địa chỉ cửa hàng:</strong> FPT University, 600 Nguyen Van Cu, An Binh, Ninh Kieu, Can Tho.<br>" +
+                "• <strong>Hotline / Zalo:</strong> 0989780481<br>" +
+                "• <strong>Email:</strong> bloomresin.system@gmail.com<br>" +
                 "• <strong>Giờ mở cửa:</strong> 08:00 - 21:30 (Tất cả các ngày trong tuần)";
         }
 
         return "Cảm ơn câu hỏi của bạn! 🌸 BloomResin đã ghi nhận thông tin: <em>'" + escapeHtml(query) + "'</em>.<br>" +
-            "Nếu cần hỗ trợ gấp về đơn hàng hay sản phẩm, bạn có thể gọi ngay Hotline <strong>0901234567</strong> hoặc bấm xem <a href='/products' style='color:#6B1700; font-weight:bold; text-decoration:underline;'>Trang Tất cả sản phẩm</a> nhé!";
+            "Nếu cần hỗ trợ gấp về đơn hàng hay sản phẩm, bạn có thể gọi ngay Hotline <strong>0989780481</strong> hoặc bấm xem <a href='/products' style='color:#6B1700; font-weight:bold; text-decoration:underline;'>Trang Tất cả sản phẩm</a> nhé!";
     }
 
     function convertMarkdownToHTML(text) {

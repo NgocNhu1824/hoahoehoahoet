@@ -23,6 +23,19 @@
         .btn-dark { background-color: #6B1700; border-color: #6B1700; }
         .btn-dark:hover { background-color: #4a0e00; }
         .review-item { background: #fff; border: 1px solid #CEAF95; border-radius: 10px; padding: 15px; }
+        .product-detail-img {
+            max-height: 380px;
+            object-fit: contain;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+        @media (max-width: 768px) {
+            .product-detail-img {
+                max-height: 260px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -41,9 +54,9 @@
         </div>
 
         <!-- IMAGE -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 text-center">
             <img src="<c:out value='/images/product/${product.image}'/>"
-                 class="img-fluid rounded border"
+                 class="img-fluid rounded border product-detail-img"
                  alt="${product.name}"
                  onerror="this.src='/images/no-image.png'">
         </div>

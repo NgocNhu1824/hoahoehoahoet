@@ -132,7 +132,7 @@
         <br><br>
         Chúng mình đang ấp ủ cho ra mắt những món trang sức resin thủ công — mỗi món là một câu chuyện nhỏ, không chỉ để đeo cho đẹp mà còn để cất giữ cảm xúc, màu sắc và một phần cá tính riêng của người đeo.
         <br><br>
-        <strong>Địa chỉ:</strong> Đại học FPT Cần Thơ, 600 Nguyễn Văn Cừ, P. An Bình, Q. Ninh Kiều, TP. Cần Thơ
+        <strong>Địa chỉ:</strong> FPT University, 600 Nguyen Van Cu, An Binh, Ninh Kieu, Can Tho
       </p>
       <div class="text-center btn-view-products">
         <a href="${pageContext.request.contextPath}/products" class="btn btn-primary px-4 py-2">

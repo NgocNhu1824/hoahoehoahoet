@@ -19,10 +19,10 @@
     <style>
         .news-container {
             max-width: 1200px;
-            margin: 100px auto 40px;
+            margin: 20px auto 40px;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
         }
 
@@ -44,7 +44,8 @@
         .news-card img {
             width: 100%;
             height: 220px;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #f8f9fa;
         }
 
         .news-content {
@@ -84,6 +85,18 @@
             background-color: #A6461D;
             color: #fff;
         }
+
+        @media (max-width: 576px) {
+            .news-container {
+                margin: 15px auto 20px;
+                padding: 0 10px;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .news-card img {
+                height: 180px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -91,9 +104,9 @@
 <jsp:include page="../layout/header.jsp"/>
 
 <!-- News Section -->
-<div class="container-fluid py-5">
+<div class="container-fluid pt-4 pb-5">
     <div class="container">
-        <h1 class="mb-4 text-center">Tin tức mới nhất</h1>
+        <h1 class="mb-3 text-center" style="margin-top: 20px;">Tin tức mới nhất</h1>
         <div class="news-container">
             <c:forEach var="news" items="${newsList}">
                 <div class="news-card">
