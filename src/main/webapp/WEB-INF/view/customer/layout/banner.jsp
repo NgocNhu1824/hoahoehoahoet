@@ -13,7 +13,7 @@
 
     @media (max-width: 768px) {
         .hero-banner-container {
-            height: 320px;
+            height: 360px;
             margin-top: 70px;
         }
     }
@@ -22,12 +22,12 @@
         width: 100%;
         height: 480px;
         object-fit: cover;
-        filter: brightness(0.82);
+        filter: brightness(0.75);
     }
 
     @media (max-width: 768px) {
         .banner-slide-img {
-            height: 320px;
+            height: 360px;
         }
     }
 
@@ -38,40 +38,63 @@
         width: 100%;
         height: 100%;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        background: linear-gradient(180deg, rgba(107, 23, 0, 0.35) 0%, rgba(0, 0, 0, 0.45) 100%);
-        color: #FFF1D2;
+        background: rgba(0, 0, 0, 0.25);
         padding: 0 20px;
+        z-index: 3;
+    }
+
+    .banner-content-box {
+        background: rgba(45, 12, 3, 0.72);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 30px 40px;
+        border-radius: 20px;
+        border: 1.5px solid rgba(206, 175, 149, 0.4);
+        max-width: 820px;
+        width: 90%;
+        margin: 0 auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
     }
 
     .banner-title {
         font-family: 'Raleway', sans-serif;
-        font-size: 2.8rem;
+        font-size: 2.3rem;
         font-weight: 800;
-        text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.6);
-        color: #FFF1D2;
+        color: #FFFFFF !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         letter-spacing: 1px;
-        margin-bottom: 15px;
+        margin: 0;
+        line-height: 1.2;
     }
 
     .banner-subtitle {
-        font-size: 1.25rem;
-        font-weight: 600;
-        text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.6);
-        color: #F7E4C8;
-        max-width: 700px;
-        margin-bottom: 25px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #FFF1D2 !important;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        margin: 0;
+        max-width: 680px;
+        line-height: 1.4;
+    }
+
+    .banner-btn-wrapper {
+        margin-top: 8px;
     }
 
     .banner-btn {
-        background-color: #CEAF95;
-        color: #6B1700;
+        display: inline-block;
+        background-color: #CEAF95 !important;
+        color: #6B1700 !important;
         font-weight: 700;
-        padding: 12px 28px;
-        border-radius: 30px;
+        padding: 10px 26px;
+        border-radius: 25px;
         text-decoration: none;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         transition: all 0.3s ease;
@@ -79,29 +102,62 @@
     }
 
     .banner-btn:hover {
-        background-color: #6B1700;
-        color: #FFF1D2;
+        background-color: #6B1700 !important;
+        color: #FFF1D2 !important;
         border-color: #FFF1D2;
-        transform: translateY(-3px);
+        transform: translateY(-2px);
     }
 
     @media (max-width: 768px) {
+        .banner-content-box {
+            padding: 20px 20px;
+            gap: 10px;
+        }
         .banner-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
         .banner-subtitle {
-            font-size: 0.95rem;
-            margin-bottom: 15px;
+            font-size: 0.9rem;
         }
         .banner-btn {
-            padding: 8px 20px;
-            font-size: 0.9rem;
+            padding: 8px 18px;
+            font-size: 0.85rem;
         }
     }
 
-    /* Standard slide animation (Left to Right transition) */
+    /* Left-to-Right smooth slide animation */
     .carousel-item {
         transition: transform 0.8s ease-in-out !important;
+    }
+
+    /* Carousel Nav Buttons styling */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 48px !important;
+        height: 48px !important;
+        background-color: rgba(107, 23, 0, 0.75) !important;
+        border-radius: 50% !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        border: 2px solid #CEAF95 !important;
+        opacity: 0.85 !important;
+        transition: all 0.3s ease !important;
+        z-index: 10 !important;
+    }
+
+    .carousel-control-prev {
+        left: 20px !important;
+    }
+
+    .carousel-control-next {
+        right: 20px !important;
+    }
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        opacity: 1 !important;
+        background-color: #6B1700 !important;
+        transform: translateY(-50%) scale(1.08) !important;
     }
 
     .carousel-indicators [data-bs-target] {
@@ -109,8 +165,9 @@
         height: 12px;
         border-radius: 50%;
         background-color: #FFF1D2;
-        opacity: 0.5;
+        opacity: 0.6;
         border: 2px solid #6B1700;
+        margin: 0 4px;
     }
     .carousel-indicators .active {
         opacity: 1;
@@ -135,9 +192,13 @@
             <div class="carousel-item active">
                 <img src="${pageContext.request.contextPath}/client/img/banner01.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Art 1">
                 <div class="banner-overlay-caption">
-                    <h1 class="banner-title">HOA HOÈ HOA HOẸT - BLOOMRESIN</h1>
-                    <p class="banner-subtitle">Trang sức thủ công hoa ép Resin tự nhiên lấp lánh & tinh tế</p>
-                    <a href="/products" class="banner-btn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
+                    <div class="banner-content-box">
+                        <h1 class="banner-title">HOA HOÈ HOA HOẸT - BLOOMRESIN</h1>
+                        <p class="banner-subtitle">Trang sức thủ công hoa ép Resin tự nhiên lấp lánh & tinh tế</p>
+                        <div class="banner-btn-wrapper">
+                            <a href="/products" class="banner-btn"><i class="fas fa-shopping-bag me-2"></i>Khám Phá Sản Phẩm</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -145,9 +206,13 @@
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner02.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Art 2">
                 <div class="banner-overlay-caption">
-                    <h1 class="banner-title">BỘ SƯU TẬP HOA ÉP VĨNH CỬU</h1>
-                    <p class="banner-subtitle">Lưu giữ trọn vẹn nét đẹp tươi tắn và khoảnh khắc kỷ niệm quý giá</p>
-                    <a href="/products" class="banner-btn"><i class="fas fa-gem me-2"></i>Xem Bộ Sưu Tập</a>
+                    <div class="banner-content-box">
+                        <h1 class="banner-title">BỘ SƯU TẬP HOA ÉP VĨNH CỬU</h1>
+                        <p class="banner-subtitle">Lưu giữ trọn vẹn nét đẹp tươi tắn và khoảnh khắc kỷ niệm quý giá</p>
+                        <div class="banner-btn-wrapper">
+                            <a href="/products" class="banner-btn"><i class="fas fa-gem me-2"></i>Xem Bộ Sưu Tập</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -155,9 +220,13 @@
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner03.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Art 3">
                 <div class="banner-overlay-caption">
-                    <h1 class="banner-title">LÀM THEO YÊU CẦU (CUSTOM ORDER)</h1>
-                    <p class="banner-subtitle">Gửi hoa cưới & hoa kỷ niệm của bạn – Shop sẽ đúc thành trang sức độc bản</p>
-                    <a href="/custom-order/form" class="banner-btn"><i class="fas fa-magic me-2"></i>Đặt Làm Ngay</a>
+                    <div class="banner-content-box">
+                        <h1 class="banner-title">LÀM THEO YÊU CẦU (CUSTOM ORDER)</h1>
+                        <p class="banner-subtitle">Gửi hoa cưới & hoa kỷ niệm của bạn – Shop sẽ đúc thành trang sức độc bản</p>
+                        <div class="banner-btn-wrapper">
+                            <a href="/custom-order/form" class="banner-btn"><i class="fas fa-magic me-2"></i>Đặt Làm Ngay</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -165,9 +234,13 @@
             <div class="carousel-item">
                 <img src="${pageContext.request.contextPath}/client/img/banner04.jpg" class="d-block w-100 banner-slide-img" alt="BloomResin Art 4">
                 <div class="banner-overlay-caption">
-                    <h1 class="banner-title">TIN TỨC & BẢO QUẢN SẢN PHẨM</h1>
-                    <p class="banner-subtitle">Khám phá các bí quyết chăm sóc trang sức Resin bền đẹp cùng thời gian</p>
-                    <a href="/news" class="banner-btn"><i class="fas fa-newspaper me-2"></i>Đọc Tin Tức</a>
+                    <div class="banner-content-box">
+                        <h1 class="banner-title">TIN TỨC & BẢO QUẢN SẢN PHẨM</h1>
+                        <p class="banner-subtitle">Khám phá các bí quyết chăm sóc trang sức Resin bền đẹp cùng thời gian</p>
+                        <div class="banner-btn-wrapper">
+                            <a href="/news" class="banner-btn"><i class="fas fa-newspaper me-2"></i>Đọc Tin Tức</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
