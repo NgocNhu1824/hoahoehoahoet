@@ -98,7 +98,7 @@
         background-color: #6B1700 !important;
         color: #FFF1D2 !important;
         border-color: #FFF1D2;
-        transform: translateY(-3px);
+        transform: none !important;
     }
 
     @media (max-width: 768px) {
