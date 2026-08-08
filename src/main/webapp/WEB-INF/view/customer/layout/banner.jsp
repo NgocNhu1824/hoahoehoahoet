@@ -119,9 +119,32 @@
         }
     }
 
-    /* Hide left/right navigation controls & indicators completely */
+    /* Transparent left and right clickable navigation zones */
     .carousel-control-prev,
-    .carousel-control-next,
+    .carousel-control-next {
+        display: block !important;
+        width: 35% !important;
+        height: 100% !important;
+        top: 0 !important;
+        transform: none !important;
+        background: transparent !important;
+        border: none !important;
+        opacity: 0 !important;
+        z-index: 10 !important;
+        cursor: pointer !important;
+    }
+
+    .carousel-control-prev {
+        left: 0 !important;
+    }
+
+    .carousel-control-next {
+        right: 0 !important;
+    }
+
+    /* Hide arrow icons and pagination dots visually */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon,
     .carousel-indicators {
         display: none !important;
     }
@@ -171,6 +194,14 @@
                 </div>
             </div>
         </div>
+
+        <!-- Transparent Clickable Left/Right Navigation Areas -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#bloomBannerCarousel" data-bs-slide="prev">
+            <span class="visually-hidden">Trước</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bloomBannerCarousel" data-bs-slide="next">
+            <span class="visually-hidden">Tiếp</span>
+        </button>
     </div>
 
     <!-- 100% FIXED & STATIC Yellow button anchored inside image frame (40px gap from bottom edge) -->
