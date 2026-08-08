@@ -16,22 +16,32 @@
             background-color: #FFF1D2;
             color: #6B1700;
             font-family: 'Open Sans', sans-serif;
+            padding-top: 85px;
         }
 
         .navbar {
             background-color: #FFF1D2;
             border-bottom: 2px solid #CEAF95;
             width: 100%;
-            padding-left: 24px;
-            padding-right: 24px;
+            padding-left: 20px;
+            padding-right: 20px;
             z-index: 1030;
+            box-shadow: 0 4px 12px rgba(107, 23, 0, 0.05);
         }
 
         .nav-logo {
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             object-fit: cover;
+            border: 2px solid #CEAF95;
+        }
+
+        .brand-title {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            color: #6B1700;
+            letter-spacing: 0.5px;
         }
 
         .nav-link {
@@ -41,11 +51,14 @@
             color: #6B1700 !important;
             white-space: nowrap;
             font-size: 13px;
-            padding: 0.5rem 0.6rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transition: all 0.25s ease;
         }
 
-        .nav-link:hover {
-            color: #CEAF95 !important;
+        .nav-link:hover, .nav-link.active {
+            color: #6B1700 !important;
+            background-color: rgba(206, 175, 149, 0.3);
         }
 
         .nav-item {
@@ -53,19 +66,21 @@
         }
 
         .nav-search {
-            width: 150px;
-            height: 36px;
-            padding: 6px 12px;
-            border: 2px solid #ccc;
+            width: 160px;
+            height: 38px;
+            padding: 6px 14px;
+            border: 2px solid #CEAF95;
             border-radius: 20px;
             outline: none;
-            font-size: 14px;
-            transition: width 0.4s ease-in-out;
+            font-size: 13.5px;
+            background-color: #FFF8EA;
+            transition: width 0.4s ease-in-out, border-color 0.3s ease;
         }
 
         .nav-search:focus {
-            width: 280px;
-            border-color: #CEAF95;
+            width: 250px;
+            border-color: #6B1700;
+            background-color: #FFF;
         }
 
         .nav-search::placeholder {
@@ -73,97 +88,153 @@
             font-style: italic;
         }
 
-        .search-wrapper {
-            margin-top: 5px;
-        }
-
         /* Icon */
         .icon-colored {
             color: #6B1700 !important;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .icon-colored:hover {
             color: #CEAF95 !important;
+            transform: scale(1.08);
         }
 
         /* Dropdown */
         .navbar .dropdown-menu {
-            background-color: #FFF1D2;
+            background-color: #FFF8EA;
             border: 1px solid #CEAF95;
-            border-radius: 10px;
-            padding: 0;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 8px 0;
+            box-shadow: 0 8px 20px rgba(107, 23, 0, 0.12);
         }
 
         .navbar .dropdown-item {
             padding: 10px 20px;
             color: #6B1700;
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 13.5px;
+            transition: all 0.2s ease;
         }
 
         .navbar .dropdown-item:hover {
             background-color: #CEAF95;
-            color: white;
+            color: #FFF;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-search {
-                width: 120px;
+        /* Mobile Menu Toggler */
+        .custom-toggler {
+            border: 2px solid #CEAF95 !important;
+            border-radius: 10px !important;
+            background-color: #FFF8EA !important;
+            padding: 6px 12px !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .custom-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(206, 175, 149, 0.4) !important;
+        }
+
+        /* Responsive Mobile Drawer Styling */
+        @media (max-width: 1199.98px) {
+            body {
+                padding-top: 75px;
             }
 
-            .nav-search:focus {
-                width: 150px;
+            .navbar-collapse {
+                background-color: #FFF8EA;
+                border: 2px solid #CEAF95;
+                border-radius: 16px;
+                margin-top: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 12px 30px rgba(107, 23, 0, 0.18);
+            }
+
+            .navbar-nav {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 4px;
             }
 
             .nav-link {
-                font-size: 11px;
-                padding: 0.3rem 0.4rem;
-            }
-
-            .nav-item {
-                padding: 0 1px;
+                font-size: 13.5px !important;
+                padding: 10px 16px !important;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid rgba(206, 175, 149, 0.2);
             }
 
             .search-wrapper {
-                margin-top: 10px;
+                width: 100%;
+                margin: 12px 0 !important;
             }
 
-            .dropdown-menu {
-                font-size: 13px;
+            .search-wrapper form {
+                width: 100%;
+            }
+
+            .nav-search {
+                width: 100% !important;
+                height: 42px;
+                font-size: 14px;
+            }
+
+            .nav-search:focus {
+                width: 100% !important;
+            }
+
+            .user-action-group {
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 2px dashed #CEAF95;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
             }
         }
     </style>
 </head>
 <body>
 <div class="container-fluid fixed-top px-0">
-    <nav class="navbar navbar-expand-xl px-4">
-        <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse">
-            <span class="fa fa-bars text-primary"></span>
-        </button>
+    <nav class="navbar navbar-expand-xl px-3 px-md-4 py-2">
+        <!-- Mobile Top Bar: Logo + Cart + Toggler -->
+        <div class="d-flex align-items-center justify-content-between w-100 d-xl-none">
+            <a href="/" class="d-flex align-items-center text-decoration-none me-2">
+                <img class="nav-logo me-2" src="/client/img/logo.jpg" alt="logo">
+                <span class="brand-title fs-5">BloomResin</span>
+            </a>
 
+            <div class="d-flex align-items-center gap-3">
+                <c:if test="${not empty pageContext.request.userPrincipal}">
+                    <a href="/cart" class="position-relative me-1">
+                        <i class="fa fa-shopping-bag fa-lg icon-colored"></i>
+                        <span class="position-absolute bg-secondary rounded-circle text-dark px-1 d-flex align-items-center justify-content-center"
+                              style="top: -6px; right: -8px; height: 18px; min-width: 18px; font-size: 11px;" id="sumCartMobile">
+                                ${sessionScope.sum}
+                        </span>
+                    </a>
+                </c:if>
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars fa-lg icon-colored"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Desktop Brand Logo (Hidden on Mobile) -->
+        <a href="/" class="nav-item d-none d-xl-flex align-items-center me-3 text-decoration-none">
+            <img class="nav-logo me-2" src="/client/img/logo.jpg" alt="logo">
+            <span class="brand-title fs-4">BloomResin</span>
+        </a>
+
+        <!-- Collapsible Navigation Drawer -->
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarCollapse">
             <div class="navbar-nav d-flex align-items-center">
-                <a href="/" class="nav-item d-flex align-items-center me-3">
-                    <img class="nav-logo" src="/client/img/logo.jpg" alt="logo">
-                </a>
-
                 <a href="/" class="nav-item nav-link active fw-bold">Trang chủ</a>
 
-                <div class="nav-item d-flex align-items-center ms-2 search-wrapper">
-                    <form action="/search" method="get" class="d-flex align-items-center">
-                        <input class="nav-search" type="text" name="query" placeholder="Bạn cần tìm gì..." required>
-                        <button type="submit" class="btn p-0 ms-2" style="background: none; border: none;">
-                            <i class="fas fa-search fa-lg icon-colored"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <div class="nav-item dropdown d-flex align-items-center">
-                    <a href="/products" class="nav-link fw-bold">Sản phẩm</a>
+                <div class="nav-item dropdown d-flex align-items-center w-100-mobile">
+                    <a href="/products" class="nav-link fw-bold flex-grow-1">Sản phẩm</a>
                     <a href="#" class="nav-link dropdown-toggle px-2" data-bs-toggle="dropdown"></a>
                     <ul class="dropdown-menu">
                         <c:forEach var="category" items="${categories}">
@@ -178,14 +249,24 @@
 
                 <a href="/careservice" class="nav-item nav-link fw-bold">Dịch vụ hỏi đáp</a>
                 <a href="/news" class="nav-item nav-link fw-bold">Tin tức</a>
-<%--                <a href="/contact" class="nav-item nav-link fw-bold">Liên hệ</a>--%>
                 <a href="/aboutus" class="nav-item nav-link fw-bold">Giới thiệu</a>
+
+                <!-- Search Input Bar -->
+                <div class="nav-item d-flex align-items-center search-wrapper ms-xl-2">
+                    <form action="/search" method="get" class="d-flex align-items-center w-100">
+                        <input class="nav-search" type="text" name="query" placeholder="Bạn cần tìm gì..." required>
+                        <button type="submit" class="btn p-0 ms-2" style="background: none; border: none;">
+                            <i class="fas fa-search fa-lg icon-colored"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
 
-            <div class="d-flex m-3 me-0 align-items-center gap-3">
+            <!-- Right Actions (User Profile / Auth Links) -->
+            <div class="d-flex align-items-center gap-3 user-action-group my-2 my-xl-0">
                 <c:if test="${not empty pageContext.request.userPrincipal}">
-                    <!-- Cart -->
-                    <a href="/cart" class="position-relative">
+                    <!-- Cart (Desktop) -->
+                    <a href="/cart" class="position-relative d-none d-xl-block">
                         <i class="fa fa-shopping-bag fa-2x icon-colored"></i>
                         <span class="position-absolute bg-secondary rounded-circle text-dark px-1 d-flex align-items-center justify-content-center"
                               style="top: -5px; left: 15px; height: 20px; min-width: 20px;" id="sumCart">
@@ -208,21 +289,21 @@
                             <i class="fas fa-user fa-2x icon-colored"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="dropdownMenuLink">
-                            <li class="d-flex align-items-center flex-column" style="min-width: 300px;">
+                            <li class="d-flex align-items-center flex-column" style="min-width: 260px;">
                                 <img src="/images/avatar/${sessionScope.avatar}" alt="Avatar người dùng"
-                                     style="width: 150px; height: 150px; border-radius: 50%;" />
-                                <div class="text-center my-3">
+                                     style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #CEAF95;" />
+                                <div class="text-center my-3 fw-bold fs-6">
                                     <c:out value="${sessionScope.username}" />
                                 </div>
                             </li>
-                            <li><a class="dropdown-item" href="/customer/profile/${sessionScope.id}">Quản lý tài khoản</a></li>
-                            <li><a class="dropdown-item" href="/order-tracking">Theo dõi đơn hàng</a></li>
-                            <li><a class="dropdown-item" href="/order-history">Lịch sử mua hàng</a></li>
+                            <li><a class="dropdown-item" href="/customer/profile/${sessionScope.id}"><i class="fas fa-user-circle me-2"></i>Quản lý tài khoản</a></li>
+                            <li><a class="dropdown-item" href="/order-tracking"><i class="fas fa-truck me-2"></i>Theo dõi đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="/order-history"><i class="fas fa-history me-2"></i>Lịch sử mua hàng</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form method="post" action="/logout">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                    <button class="dropdown-item">Đăng xuất</button>
+                                    <button class="dropdown-item text-danger"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</button>
                                 </form>
                             </li>
                         </ul>
@@ -230,8 +311,8 @@
                 </c:if>
 
                 <c:if test="${empty pageContext.request.userPrincipal}">
-                    <a href="/login" class="a-login position-relative fw-bold text-uppercase text-decoration-none" style="color: #6B1700;">Đăng nhập</a>
-                    <a href="/register" class="a-login position-relative fw-bold text-uppercase text-decoration-none" style="color: #6B1700;">Đăng ký</a>
+                    <a href="/login" class="a-login position-relative fw-bold text-uppercase text-decoration-none btn btn-outline-danger px-3 py-1 rounded-pill" style="color: #6B1700; border-color: #CEAF95;">Đăng nhập</a>
+                    <a href="/register" class="a-login position-relative fw-bold text-uppercase text-decoration-none btn btn-danger px-3 py-1 rounded-pill text-white" style="background-color: #6B1700; border-color: #6B1700;">Đăng ký</a>
                 </c:if>
             </div>
         </div>
