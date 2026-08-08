@@ -161,7 +161,12 @@
                 padding-top: 75px;
             }
 
-            .navbar-collapse {
+            .navbar-collapse:not(.show) {
+                display: none !important;
+            }
+
+            .navbar-collapse.show {
+                display: block !important;
                 position: absolute !important;
                 top: 100% !important;
                 left: 0 !important;
@@ -170,7 +175,7 @@
                 max-height: calc(100vh - 75px) !important;
                 overflow-y: auto !important;
                 -webkit-overflow-scrolling: touch !important;
-                background-color: #FFF1D2 !important; /* 100% Solid Opaque Background */
+                background-color: #FFF1D2 !important;
                 border-top: 1px solid #CEAF95 !important;
                 border-bottom: 3px solid #CEAF95 !important;
                 box-shadow: 0 15px 35px rgba(107, 23, 0, 0.25) !important;
@@ -256,9 +261,9 @@
                 padding-top: 15px;
                 border-top: 2px dashed #CEAF95;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                gap: 15px;
+                gap: 10px;
                 width: 100%;
             }
         }
@@ -336,7 +341,7 @@
                 </div>
             </div>
 
-            <!-- Right Actions (User Profile / Auth Links) -->
+            <!-- Right Actions (User Profile / Auth Links - Desktop Only for Profile & Wishlist) -->
             <div class="d-flex align-items-center gap-3 user-action-group my-2 my-xl-0">
                 <c:if test="${not empty pageContext.request.userPrincipal}">
                     <!-- Cart (Desktop) -->
@@ -348,8 +353,8 @@
                         </span>
                     </a>
 
-                    <!-- Wishlist -->
-                    <a href="/wishlist" class="position-relative">
+                    <!-- Wishlist (Desktop Only) -->
+                    <a href="/wishlist" class="position-relative d-none d-xl-block">
                         <i class="fas fa-heart fa-2x icon-colored"></i>
                         <span class="position-absolute bg-secondary rounded-circle text-dark px-1 d-flex align-items-center justify-content-center"
                               style="top: -5px; left: 15px; height: 20px; min-width: 20px;" id="sumWishlist">
@@ -357,8 +362,8 @@
                         </span>
                     </a>
 
-                    <!-- User Dropdown -->
-                    <div class="dropdown">
+                    <!-- User Profile Dropdown (Desktop Only) -->
+                    <div class="dropdown d-none d-xl-block">
                         <a href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-user fa-2x icon-colored"></i>
                         </a>
@@ -381,6 +386,17 @@
                                 </form>
                             </li>
                         </ul>
+                    </div>
+
+                    <!-- Mobile Account Links inside Drawer -->
+                    <div class="d-xl-none w-100 text-center">
+                        <a href="/customer/profile/${sessionScope.id}" class="nav-link"><i class="fas fa-user-circle me-2"></i>Tài khoản (${sessionScope.username})</a>
+                        <a href="/wishlist" class="nav-link"><i class="fas fa-heart me-2"></i>Danh sách yêu thích</a>
+                        <a href="/order-history" class="nav-link"><i class="fas fa-history me-2"></i>Lịch sử mua hàng</a>
+                        <form method="post" action="/logout" class="mt-2">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <button class="btn btn-outline-danger w-100 rounded-pill"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</button>
+                        </form>
                     </div>
                 </c:if>
 
