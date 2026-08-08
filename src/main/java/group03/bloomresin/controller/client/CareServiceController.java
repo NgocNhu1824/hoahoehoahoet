@@ -4,6 +4,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,14 +43,18 @@ public class CareServiceController {
     }
 
     private String callRealAiApi(String userMessage) {
-        // Priority 1: Free Public AI API (Pollinations GPT-4o Text API - Dynamic Real AI for any topic)
+        // Priority 1: Free Public AI API (Pollinations GPT-4o Text API) with 4s timeout
         try {
+            SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+            requestFactory.setConnectTimeout(4000);
+            requestFactory.setReadTimeout(5000);
+            RestTemplate restTemplate = new RestTemplate(requestFactory);
+
             String url = "https://text.pollinations.ai/";
-            RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 
-            String systemPrompt = "Bạn là Trợ lý AI thông minh của thương hiệu trang sức BloomResin (Hoa hòe hoa hoẹt). Hãy trả lời bằng tiếng Việt ngắn gọn, thân thiện, lịch sự và sinh động như ChatGPT. Nếu người dùng hỏi về BloomResin (trang sức hoa resin, bảo quản, vận chuyển, cửa hàng), hãy tư vấn tận tình. Ngược lại, nếu người dùng hỏi bất kỳ chủ đề chung hay kiến thức tổng hợp nào khác, hãy giải đáp thông minh như ChatGPT.";
+            String systemPrompt = "Bạn là Trợ lý AI thông minh của BloomResin (Thương hiệu trang sức hoa tự nhiên ép khô). Trả lời bằng tiếng Việt ngắn gọn, lịch sự. Nếu người dùng hỏi câu hỏi ngoài luồng không liên quan đến trang sức, cửa hàng hay đơn hàng, hãy lịch sự giải thích rằng bạn là Trợ lý BloomResin chuyên hỗ trợ tư vấn sản phẩm, dịch vụ làm hoa theo yêu cầu và bảo quản, đồng thời mời họ chọn các chủ đề gợi ý.";
 
             List<Map<String, String>> messages = new ArrayList<>();
             Map<String, String> sysMsg = new HashMap<>();
@@ -76,50 +81,7 @@ public class CareServiceController {
                 }
             }
         } catch (Exception e) {
-            // Fallback to Gemini if Pollinations is offline
-        }
-
-        // Priority 2: Google Gemini API
-        try {
-            String apiKey = System.getenv("GEMINI_API_KEY");
-            if (apiKey != null && !apiKey.trim().isEmpty()) {
-                String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
-                RestTemplate restTemplate = new RestTemplate();
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
-
-                Map<String, Object> part = new HashMap<>();
-                part.put("text", "Trả lời câu hỏi sau bằng tiếng Việt như ChatGPT: " + userMessage);
-
-                Map<String, Object> content = new HashMap<>();
-                content.put("parts", Collections.singletonList(part));
-
-                Map<String, Object> requestBody = new HashMap<>();
-                requestBody.put("contents", Collections.singletonList(content));
-
-                HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
-                ResponseEntity<Map> apiResponse = restTemplate.postForEntity(url, entity, Map.class);
-                if (apiResponse.getStatusCode().is2xxSuccessful() && apiResponse.getBody() != null) {
-                    Map body = apiResponse.getBody();
-                    List candidates = (List) body.get("candidates");
-                    if (candidates != null && !candidates.isEmpty()) {
-                        Map firstCandidate = (Map) candidates.get(0);
-                        Map candidateContent = (Map) firstCandidate.get("content");
-                        if (candidateContent != null) {
-                            List parts = (List) candidateContent.get("parts");
-                            if (parts != null && !parts.isEmpty()) {
-                                Map firstPart = (Map) parts.get(0);
-                                String text = (String) firstPart.get("text");
-                                if (text != null && !text.trim().isEmpty()) {
-                                    return text.trim();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            // Fallback to general BloomResin store support
+            // Proceed to store fallback
         }
 
         return generateGeneralStoreFallbackResponse(userMessage);
@@ -132,7 +94,7 @@ public class CareServiceController {
             return "Dạ BloomResin xin chào bạn! 🌸 Bạn đang quan tâm đến mẫu trang sức hoa Resin nào (Dây chuyền, Bông tai, Nhẫn, Vòng tay) hay cần tư vấn dịch vụ làm hoa theo yêu cầu ạ?";
         }
 
-        if (text.contains("sản phẩm") || text.contains("dây chuyền") || text.contains("nhẫn") || text.contains("vòng tay") || text.contains("bông tai") || text.contains("mẫu")) {
+        if (text.contains("sản phẩm") || text.contains("dây chuyền") || text.contains("nhẫn") || text.contains("vòng tay") || text.contains("bông tai") || text.contains("mẫu") || text.contains("giá")) {
             return "BloomResin chuyên cung cấp các bộ sưu tập trang sức hoa tự nhiên ép trong chất liệu Resin trong suốt:\n" +
                 "• **Dây chuyền hoa Resin:** Giọt nước, trái tim, hình tròn dát vàng 18k.\n" +
                 "• **Bông tai & Nhẫn hoa:** Tinh tế, nữ tính với hoa hồng khô, bách nhật, baby, cẩm tú cầu.\n" +
@@ -169,6 +131,8 @@ public class CareServiceController {
                 "• **Giờ mở cửa:** 08:00 - 21:30 (Tất cả các ngày trong tuần)";
         }
 
-        return "Cảm ơn bạn đã nhắn tin cho BloomResin! 🌸 Về câu hỏi *'" + query + "'*, Trợ lý AI có thể hỗ trợ bạn tìm hiểu thêm thông tin chi tiết hoặc bạn cũng có thể tham khảo mục [Tất cả sản phẩm](/products) của shop nhé!";
+        // Polite & logical response for out-of-scope / unrecognized questions
+        return "Dạ Trợ lý ảo BloomResin hiện chuyên hỗ trợ tư vấn các thông tin liên quan đến **sản phẩm trang sức, dịch vụ làm hoa theo yêu cầu, hướng dẫn bảo quản và đơn hàng** của cửa hàng ạ! 🌸\n\n" +
+            "Nếu bạn chưa biết bắt đầu từ đâu, hãy bấm chọn các **chủ đề gợi ý ngay bên dưới** hoặc đặt câu hỏi liên quan đến sản phẩm để shop được hỗ trợ bạn tốt nhất nhé!";
     }
 }
