@@ -15,7 +15,7 @@ import java.util.*;
 @Controller
 public class CareServiceController {
 
-    @GetMapping("/careservice")
+    @GetMapping({"/careservice", "/care-service"})
     public String showCareService() {
         return "customer/careservice/careservice";
     }
