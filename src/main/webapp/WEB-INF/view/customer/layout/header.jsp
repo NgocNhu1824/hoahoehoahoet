@@ -167,12 +167,24 @@
                 left: 0 !important;
                 right: 0 !important;
                 width: 100% !important;
+                max-height: calc(100vh - 75px) !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
                 background-color: #FFF1D2 !important; /* 100% Solid Opaque Background */
                 border-top: 1px solid #CEAF95 !important;
                 border-bottom: 3px solid #CEAF95 !important;
                 box-shadow: 0 15px 35px rgba(107, 23, 0, 0.25) !important;
                 z-index: 99999 !important;
                 padding: 20px 24px !important;
+            }
+
+            .navbar-collapse::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            .navbar-collapse::-webkit-scrollbar-thumb {
+                background-color: #CEAF95;
+                border-radius: 4px;
             }
 
             .navbar-nav {
