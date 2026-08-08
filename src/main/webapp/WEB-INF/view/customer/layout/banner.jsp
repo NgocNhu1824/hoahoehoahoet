@@ -4,29 +4,29 @@
 <style>
     .hero-banner-container {
         width: 100%;
-        max-width: 1240px;
-        height: 500px;
+        max-width: 1300px;
+        height: 540px;
         position: relative;
         overflow: hidden;
-        margin: 35px auto 30px auto;
+        margin: 40px auto 55px auto;
         border-radius: 20px;
-        box-shadow: 0 12px 35px rgba(107, 23, 0, 0.18);
+        box-shadow: 0 14px 40px rgba(107, 23, 0, 0.18);
         cursor: pointer;
         background-color: #1e0802 !important;
     }
 
-    @media (max-width: 1280px) {
+    @media (max-width: 1340px) {
         .hero-banner-container {
             max-width: 95%;
-            margin-top: 32px;
+            margin: 35px auto 45px auto;
         }
     }
 
     @media (max-width: 768px) {
         .hero-banner-container {
             max-width: 100%;
-            height: 340px;
-            margin-top: 25px;
+            height: 360px;
+            margin: 25px auto 45px auto;
             border-radius: 0;
         }
     }
@@ -40,7 +40,7 @@
     /* Crisp, Sharp & Still Banner Image Display */
     .banner-slide-img {
         width: 100%;
-        height: 500px;
+        height: 540px;
         object-fit: cover;
         filter: brightness(0.85);
         display: block;
@@ -49,7 +49,7 @@
 
     @media (max-width: 768px) {
         .banner-slide-img {
-            height: 340px;
+            height: 360px;
         }
     }
 
