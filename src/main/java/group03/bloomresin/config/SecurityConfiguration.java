@@ -64,7 +64,7 @@ public class SecurityConfiguration {
                                         "/products", "/product/**", "/category",
                                         "/search", "/news", "/news/**",
                                         "/forgotpassword", "/authentication/**",
-                                        "/about-us", "/contact", "/care-service",
+                                        "/aboutus", "/about-us", "/contact", "/careservice", "/care-service", "/api/**",
                                         "/upload/**", "/resources/**").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/employee/**").hasRole("EMPLOYEE")

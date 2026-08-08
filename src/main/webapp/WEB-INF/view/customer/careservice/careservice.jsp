@@ -257,11 +257,24 @@
 
         showTypingIndicator();
 
-        setTimeout(() => {
+        fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            removeTypingIndicator();
+            let botReply = data.reply || generateSmartResponse(message);
+            addMessage(botReply, "bot");
+        })
+        .catch(error => {
             removeTypingIndicator();
             let botReply = generateSmartResponse(message);
             addMessage(botReply, "bot");
-        }, 600);
+        });
     }
 
     function addMessage(text, sender) {
