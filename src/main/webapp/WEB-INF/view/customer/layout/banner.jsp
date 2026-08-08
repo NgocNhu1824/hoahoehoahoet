@@ -247,16 +247,29 @@
         startSingleCarousel();
 
         if (bannerCarouselEl && fixedBtn) {
-            bannerCarouselEl.addEventListener('slid.bs.carousel', function () {
-                var activeItem = bannerCarouselEl.querySelector('.carousel-item.active');
-                if (activeItem) {
-                    var link = activeItem.getAttribute('data-link');
-                    var text = activeItem.getAttribute('data-btn-text');
-                    var icon = activeItem.getAttribute('data-btn-icon') || 'fa-shopping-bag';
+            function updateButtonContent(targetSlide) {
+                if (targetSlide && fixedBtn) {
+                    var link = targetSlide.getAttribute('data-link');
+                    var text = targetSlide.getAttribute('data-btn-text');
+                    var icon = targetSlide.getAttribute('data-btn-icon') || 'fa-shopping-bag';
                     if (link) fixedBtn.setAttribute('href', link);
                     if (text) fixedBtn.innerHTML = '<i class="fas ' + icon + ' me-2"></i>' + text;
                 }
+            }
+
+            // Fire synchronously at the START of slide transition so button updates simultaneously with image & text
+            bannerCarouselEl.addEventListener('slide.bs.carousel', function (e) {
+                var targetSlide = e.relatedTarget || bannerCarouselEl.querySelector('.carousel-item.active');
+                updateButtonContent(targetSlide);
             });
+
+            // Also support jQuery carousel event fallback
+            if (typeof $ !== 'undefined') {
+                $('#bloomBannerCarousel').on('slide.bs.carousel', function (e) {
+                    var targetSlide = e.relatedTarget;
+                    updateButtonContent(targetSlide);
+                });
+            }
         }
 
         // Smooth left & right click handler
