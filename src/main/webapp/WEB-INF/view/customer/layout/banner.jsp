@@ -10,6 +10,7 @@
         margin-top: 80px;
         box-shadow: 0 8px 25px rgba(107, 23, 0, 0.15);
         cursor: pointer;
+        background-color: #1e0802 !important;
     }
 
     @media (max-width: 768px) {
@@ -17,6 +18,12 @@
             height: 340px;
             margin-top: 70px;
         }
+    }
+
+    .carousel, .carousel-inner, .carousel-item {
+        background-color: #1e0802 !important;
+        width: 100%;
+        height: 100%;
     }
 
     .banner-slide-img {
@@ -127,15 +134,10 @@
     .carousel-indicators {
         display: none !important;
     }
-
-    /* Smooth Left-to-Right slide transition */
-    .carousel-item {
-        transition: transform 0.8s ease-in-out !important;
-    }
 </style>
 
 <div class="hero-banner-container" id="heroBannerWrapper">
-    <div id="bloomBannerCarousel" class="carousel slide">
+    <div id="bloomBannerCarousel" class="carousel slide carousel-fade">
         <div class="carousel-inner">
             <!-- Slide 1 -->
             <div class="carousel-item active" data-link="/products" data-btn-text="Khám Phá Sản Phẩm" data-btn-icon="fa-shopping-bag">
