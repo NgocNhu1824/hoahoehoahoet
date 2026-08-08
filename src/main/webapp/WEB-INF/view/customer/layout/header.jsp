@@ -280,8 +280,8 @@
                 <a href="/" class="nav-item nav-link active fw-bold">Trang chủ</a>
 
                 <div class="nav-item dropdown">
-                    <a href="/products" class="nav-link fw-bold dropdown-toggle d-flex align-items-center justify-content-between" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sản phẩm <i class="fas fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    <a href="/products" class="nav-link fw-bold dropdown-toggle d-flex align-items-center justify-content-center" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sản phẩm
                     </a>
                     <ul class="dropdown-menu shadow" aria-labelledby="productDropdown">
                         <li>
