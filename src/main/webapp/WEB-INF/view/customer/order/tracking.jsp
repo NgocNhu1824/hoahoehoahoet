@@ -20,8 +20,8 @@
 <body style="background-color: #FFF1D2;">
 <jsp:include page="../layout/header.jsp" />
 
-<div class="container-fluid py-5 mt-5">
-    <div class="container py-5">
+<div class="container-fluid pt-4 pb-5 mt-2">
+    <div class="container pb-4">
         <h2 class="mb-4 text-center">Theo dõi đơn hàng</h2>
         <p class="text-center text-muted mb-5">Kiểm tra trạng thái các đơn hàng bạn đã đặt</p>
         <c:if test="${not empty message}">
@@ -74,11 +74,11 @@
                             <td><fmt:formatNumber type="number" value="${order.totalPrice}" /> đ</td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${order.status == 'PENDING'}"><span class="text-warning">Chờ xác nhận</span></c:when>
-                                    <c:when test="${order.status == 'CONFIRM'}"><span class="text-info">Đã xác nhận</span></c:when>
-                                    <c:when test="${order.status == 'COMPLETE'}"><span class="text-success">Hoàn thành</span></c:when>
-                                    <c:when test="${order.status == 'CANCEL'}"><span class="text-danger">Đã hủy</span></c:when>
-                                    <c:otherwise><span class="text-muted">Không rõ</span></c:otherwise>
+                                    <c:when test="${order.status == 'PENDING'}"><span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold"><i class="fas fa-clock me-1"></i>Chờ xác nhận</span></c:when>
+                                    <c:when test="${order.status == 'CONFIRM'}"><span class="badge bg-info text-white px-3 py-2 rounded-pill fw-bold"><i class="fas fa-check-circle me-1"></i>Đã xác nhận</span></c:when>
+                                    <c:when test="${order.status == 'COMPLETE'}"><span class="badge bg-success text-white px-3 py-2 rounded-pill fw-bold" style="background-color: #28a745 !important;"><i class="fas fa-check-double me-1"></i>Hoàn thành</span></c:when>
+                                    <c:when test="${order.status == 'CANCEL'}"><span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold"><i class="fas fa-times-circle me-1"></i>Đã hủy</span></c:when>
+                                    <c:otherwise><span class="badge bg-secondary text-white px-3 py-2 rounded-pill fw-bold">Không rõ</span></c:otherwise>
                                 </c:choose>
                             </td>
                             <td>

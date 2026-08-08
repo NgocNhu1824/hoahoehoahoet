@@ -494,6 +494,27 @@
                 toggler.setAttribute("aria-expanded", isExpanded ? "true" : "false");
             });
         }
+
+        // Human User Icon Dropdown Handler for all pages
+        var userDropdownToggle = document.getElementById("dropdownMenuLink");
+        if (userDropdownToggle) {
+            userDropdownToggle.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var parent = this.closest(".dropdown");
+                var menu = parent ? parent.querySelector(".dropdown-menu") : null;
+                if (menu) {
+                    menu.classList.toggle("show");
+                }
+            });
+            document.addEventListener("click", function(e) {
+                var parent = userDropdownToggle ? userDropdownToggle.closest(".dropdown") : null;
+                var menu = parent ? parent.querySelector(".dropdown-menu") : null;
+                if (menu && !parent.contains(e.target)) {
+                    menu.classList.remove("show");
+                }
+            });
+        }
     });
 </script>
 </body>

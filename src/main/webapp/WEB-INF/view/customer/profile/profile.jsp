@@ -76,7 +76,7 @@
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" />
-<div class="container-fluid py-4 mt-5">
+<div class="container-fluid pt-4 pb-5 mt-2">
     <div class="container profile-wrapper">
         <h2 class="mb-4 text-center">Hồ sơ khách hàng</h2>
 
