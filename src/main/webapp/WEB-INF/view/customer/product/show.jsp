@@ -308,28 +308,26 @@
                         <c:if test="${totalPages ==  0}">
                             <div>Không tìm thấy sản phẩm !!! </div>
                         </c:if>
-                        <div class="custom-product-blog">
+                        <div class="row g-4">
                             <c:forEach var="product" items="${products}">
                                 <c:if test="${product.status == true}">
-                                    <div class="product-item">
-                                        <div class="rounded position-relative">
-                                            <div class="fruite-img">
-                                                <img src="/images/product/${product.image}"
-                                                     class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                 style="top: 10px; left: 10px;">
+                                    <div class="col-12 col-sm-6 col-lg-4">
+                                        <div class="product-item">
+                                            <div class="position-relative">
+                                                <img src="/images/product/${product.image}" class="img-fluid w-100 rounded-top" alt="${product.name}">
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
                                                     ${product.category.name}
+                                                </div>
                                             </div>
-                                            <div class="product-content border border-secondary border-top-0 rounded-bottom">
+                                            <div class="product-content">
                                                 <div>
                                                     <h4 style="font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 8px;">
                                                         <a href="/product/${product.id}">${product.name}</a>
                                                     </h4>
                                                     <p class="product-desc">${product.shortDesc}</p>
                                                 </div>
-                                                <div class="d-flex flex-lg-wrap justify-content-center flex-column mt-auto pt-2">
-                                                    <p style="font-size: 15px; text-align: center; width: 100%;" class="text-dark fw-bold mb-2">
+                                                <div class="d-flex flex-column mt-auto pt-2 border-top border-light">
+                                                    <p style="font-size: 16px; text-align: center; width: 100%;" class="text-dark fw-bold mb-2">
                                                         <fmt:formatNumber type="number" value="${product.price}" /> đ
                                                     </p>
                                                     <c:choose>
@@ -389,15 +387,12 @@
 <jsp:include page="../layout/footer.jsp" />
 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/client/lib/easing/easing.min.js"></script>
 <script src="/client/lib/waypoints/waypoints.min.js"></script>
 <script src="/client/lib/lightbox/js/lightbox.min.js"></script>
 <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/client/js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
-<script src="/client/js/main.js"></script>
 <div id="chat-icon" onclick="redirectToCareService()">
     <i class="fas fa-comment-alt"></i>
 </div>

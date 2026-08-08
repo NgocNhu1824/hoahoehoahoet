@@ -7,7 +7,7 @@
     <title>Navbar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
 
@@ -100,17 +100,26 @@
             transform: scale(1.08);
         }
 
-        /* Dropdown */
+        /* Dropdown Positioning & Styling */
+        .navbar .dropdown {
+            position: relative;
+        }
+
         .navbar .dropdown-menu {
+            position: absolute;
+            top: 100% !important;
+            left: 0 !important;
+            margin-top: 6px !important;
             background-color: #FFF8EA;
             border: 1px solid #CEAF95;
             border-radius: 12px;
-            padding: 8px 0;
-            box-shadow: 0 8px 20px rgba(107, 23, 0, 0.12);
+            padding: 6px 0;
+            min-width: 220px;
+            box-shadow: 0 10px 25px rgba(107, 23, 0, 0.15);
         }
 
         .navbar .dropdown-item {
-            padding: 10px 20px;
+            padding: 10px 18px;
             color: #6B1700;
             font-weight: 600;
             font-size: 13.5px;
@@ -187,6 +196,16 @@
                 color: #FFF !important;
             }
 
+            .navbar .dropdown-menu {
+                position: static !important;
+                float: none !important;
+                width: 100% !important;
+                margin-top: 6px !important;
+                box-shadow: none !important;
+                border: 1px solid #CEAF95 !important;
+                background-color: #FFF;
+            }
+
             .search-wrapper {
                 width: 100% !important;
                 margin: 12px 0 !important;
@@ -260,14 +279,20 @@
             <div class="navbar-nav d-flex align-items-center">
                 <a href="/" class="nav-item nav-link active fw-bold">Trang chủ</a>
 
-                <div class="nav-item dropdown d-flex align-items-center w-100">
-                    <a href="/products" class="nav-link fw-bold flex-grow-1">Sản phẩm</a>
-                    <a href="#" class="nav-link dropdown-toggle px-2" data-bs-toggle="dropdown"></a>
-                    <ul class="dropdown-menu">
+                <div class="nav-item dropdown">
+                    <a href="/products" class="nav-link fw-bold dropdown-toggle d-flex align-items-center justify-content-between" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sản phẩm <i class="fas fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="dropdown-menu shadow" aria-labelledby="productDropdown">
+                        <li>
+                            <a class="dropdown-item fw-bold border-bottom" href="/products">
+                                <i class="fas fa-th-large me-2"></i>Tất cả sản phẩm
+                            </a>
+                        </li>
                         <c:forEach var="category" items="${categories}">
                             <li>
                                 <a class="dropdown-item" href="/products?categoryId=${category.id}">
-                                        ${category.name}
+                                    <i class="fas fa-angle-right me-2 opacity-50"></i>${category.name}
                                 </a>
                             </li>
                         </c:forEach>
