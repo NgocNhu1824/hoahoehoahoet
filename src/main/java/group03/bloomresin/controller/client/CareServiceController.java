@@ -42,14 +42,14 @@ public class CareServiceController {
     }
 
     private String callRealAiApi(String userMessage) {
-        // Priority 1: Free Public AI API (Pollinations GPT-4o Text API - No API Key Required)
+        // Priority 1: Free Public AI API (Pollinations GPT-4o Text API - Dynamic Real AI for any topic)
         try {
             String url = "https://text.pollinations.ai/";
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 
-            String systemPrompt = "Bạn là Trợ lý AI thông minh của thương hiệu trang sức BloomResin (Hoa hòe hoa hoẹt). Nếu người dùng hỏi về BloomResin hay trang sức hoa resin, bảo quản, đơn hàng, hãy tư vấn tận tình. Ngược lại, nếu người dùng hỏi về bất kỳ chủ đề chung nào khác (như Doraemon, lịch sử, văn hóa, khoa học, phim ảnh, đời sống...), hãy giải đáp chi tiết, thông minh, sinh động và lịch sự bằng tiếng Việt như ChatGPT.";
+            String systemPrompt = "Bạn là Trợ lý AI thông minh của thương hiệu trang sức BloomResin (Hoa hòe hoa hoẹt). Hãy trả lời bằng tiếng Việt ngắn gọn, thân thiện, lịch sự và sinh động như ChatGPT. Nếu người dùng hỏi về BloomResin (trang sức hoa resin, bảo quản, vận chuyển, cửa hàng), hãy tư vấn tận tình. Ngược lại, nếu người dùng hỏi bất kỳ chủ đề chung hay kiến thức tổng hợp nào khác, hãy giải đáp thông minh như ChatGPT.";
 
             List<Map<String, String>> messages = new ArrayList<>();
             Map<String, String> sysMsg = new HashMap<>();
@@ -76,7 +76,7 @@ public class CareServiceController {
                 }
             }
         } catch (Exception e) {
-            // Try Gemini if Pollinations AI is unreachable
+            // Fallback to Gemini if Pollinations is offline
         }
 
         // Priority 2: Google Gemini API
@@ -119,26 +119,14 @@ public class CareServiceController {
                 }
             }
         } catch (Exception e) {
-            // Fallback to internal knowledge engine
+            // Fallback to general BloomResin store support
         }
 
-        // Priority 3: Built-in Knowledge Engine (Handling Doraemon and General Questions)
-        return generateSmartFallbackResponse(userMessage);
+        return generateGeneralStoreFallbackResponse(userMessage);
     }
 
-    private String generateSmartFallbackResponse(String query) {
+    private String generateGeneralStoreFallbackResponse(String query) {
         String text = query.toLowerCase();
-
-        if (text.contains("doraemon") || text.contains("đô rê mon") || text.contains("doremon")) {
-            return "🤖 **Giới thiệu về Doraemon:**\n\n" +
-                "**Doraemon (Đô-rê-mon)** là chú mèo máy thông minh đến từ thế kỷ 22, nhân vật chính trong bộ truyện tranh nổi tiếng cùng tên của tác giả **Fujiko F. Fujio** (Nhật Bản).\n\n" +
-                "✨ **Đặc điểm nổi bật:**\n" +
-                "• **Ngoại hình:** Thân hình tròn xẻng màu xanh dương, không có tai (do bị chuột gặm mất) và rất sợ chuột.\n" +
-                "• **Túi thần kỳ:** Trước bụng Doraemon có chiếc túi thần kỳ chứa hàng trăm bảo bối viễn tưởng độc đáo (Đèn pin thu nhỏ, Cánh cửa thần kỳ, Bánh mì ghi nhớ, Chong chóng tre...).\n" +
-                "• **Món ăn yêu thích:** Bánh rán Dorayaki.\n" +
-                "• **Sứ mệnh:** Quay về thế kỷ 20 để giúp đỡ cậu bé **Nobita** hậu đậu, yếu ớt trở nên mạnh mẽ và thành công hơn.\n\n" +
-                "Doraemon là biểu tượng văn hóa hoạt hình Nhật Bản được hàng triệu trẻ em và người lớn trên toàn thế giới yêu thích!";
-        }
 
         if (text.contains("chào") || text.contains("hi") || text.contains("hello") || text.contains("tư vấn")) {
             return "Dạ BloomResin xin chào bạn! 🌸 Bạn đang quan tâm đến mẫu trang sức hoa Resin nào (Dây chuyền, Bông tai, Nhẫn, Vòng tay) hay cần tư vấn dịch vụ làm hoa theo yêu cầu ạ?";
