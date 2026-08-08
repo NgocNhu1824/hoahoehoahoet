@@ -347,21 +347,22 @@
 
         <!-- Collapsible Navigation Drawer -->
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarCollapse">
+            <c:set var="reqUri" value="${pageContext.request.requestURI}" />
             <div class="navbar-nav d-flex align-items-center">
-                <a href="/" class="nav-item nav-link fw-bold"><i class="fas fa-home me-2 opacity-75"></i>Trang chủ</a>
+                <a href="/" class="nav-item nav-link fw-bold ${reqUri.contains('/homepage/') ? 'active' : ''}"><i class="fas fa-home me-2 opacity-75"></i>Trang chủ</a>
 
                 <div class="nav-item dropdown">
-                    <a href="/products" class="nav-link fw-bold dropdown-toggle" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="/products" class="nav-link fw-bold dropdown-toggle ${reqUri.contains('/product/') || reqUri.contains('/custom_order/') ? 'active' : ''}" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-boxes me-2 opacity-75"></i>Sản phẩm
                     </a>
                     <ul class="dropdown-menu shadow" aria-labelledby="productDropdown">
                         <li>
-                            <a class="dropdown-item fw-bold border-bottom" href="/products">
+                            <a class="dropdown-item fw-bold border-bottom ${reqUri.contains('/product/') ? 'active' : ''}" href="/products">
                                 <i class="fas fa-th-large me-2"></i>Tất cả sản phẩm
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item fw-bold border-bottom text-primary" href="/custom-order/form">
+                            <a class="dropdown-item fw-bold border-bottom text-primary ${reqUri.contains('/custom_order/') ? 'active' : ''}" href="/custom-order/form">
                                 <i class="fas fa-magic me-2"></i>Đặt sản phẩm theo yêu cầu
                             </a>
                         </li>
@@ -375,9 +376,9 @@
                     </ul>
                 </div>
 
-                <a href="/careservice" class="nav-item nav-link fw-bold"><i class="fas fa-comments me-2 opacity-75"></i>Dịch vụ hỏi đáp</a>
-                <a href="/news" class="nav-item nav-link fw-bold"><i class="fas fa-newspaper me-2 opacity-75"></i>Tin tức</a>
-                <a href="/aboutus" class="nav-item nav-link fw-bold"><i class="fas fa-info-circle me-2 opacity-75"></i>Giới thiệu</a>
+                <a href="/careservice" class="nav-item nav-link fw-bold ${reqUri.contains('/careservice/') ? 'active' : ''}"><i class="fas fa-comments me-2 opacity-75"></i>Dịch vụ hỏi đáp</a>
+                <a href="/news" class="nav-item nav-link fw-bold ${reqUri.contains('/news/') ? 'active' : ''}"><i class="fas fa-newspaper me-2 opacity-75"></i>Tin tức</a>
+                <a href="/aboutus" class="nav-item nav-link fw-bold ${reqUri.contains('/aboutus/') ? 'active' : ''}"><i class="fas fa-info-circle me-2 opacity-75"></i>Giới thiệu</a>
 
                 <!-- Search Input Bar -->
                 <div class="nav-item d-flex align-items-center search-wrapper ms-xl-2">
@@ -459,21 +460,7 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var toggler = document.querySelector(".custom-toggler");
-        var collapseMenu = document.getElementById("navbarCollapse");
-
-        if (toggler && collapseMenu) {
-            toggler.addEventListener("click", function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                collapseMenu.classList.toggle("show");
-                var isExpanded = collapseMenu.classList.contains("show");
-                toggler.setAttribute("aria-expanded", isExpanded ? "true" : "false");
-            });
-        }
-
-        // Automatic Active Page Highlight
+    (function() {
         var currentPath = window.location.pathname;
         var navLinks = document.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item");
 
@@ -492,6 +479,21 @@
                 }
             }
         });
+    })();
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var toggler = document.querySelector(".custom-toggler");
+        var collapseMenu = document.getElementById("navbarCollapse");
+
+        if (toggler && collapseMenu) {
+            toggler.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                collapseMenu.classList.toggle("show");
+                var isExpanded = collapseMenu.classList.contains("show");
+                toggler.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+            });
+        }
     });
 </script>
 </body>
