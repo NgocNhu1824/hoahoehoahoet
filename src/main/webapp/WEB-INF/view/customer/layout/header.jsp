@@ -57,9 +57,17 @@
             transition: all 0.25s ease;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover, .nav-link.active, .nav-link:focus, .dropdown-toggle:focus, .dropdown-toggle.show {
             color: #6B1700 !important;
             background-color: rgba(206, 175, 149, 0.3);
+            outline: none !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        .dropdown-toggle:after {
+            vertical-align: 0.15em;
+            margin-left: 0.4em;
         }
 
         .nav-item {
