@@ -89,7 +89,7 @@
 
     <c:choose>
         <c:when test="${not empty news.imageUrl}">
-            <img src="${pageContext.request.contextPath}${news.imageUrl}" alt="Ảnh tin tức" class="news-image">
+            <img src="${news.imageUrl.startsWith('/') || news.imageUrl.startsWith('http') ? news.imageUrl : '/images/news/'.concat(news.imageUrl)}" alt="Ảnh tin tức" class="news-image">
         </c:when>
         <c:otherwise>
             <p><i>Không có hình ảnh</i></p>

@@ -97,7 +97,7 @@
         <div class="news-container">
             <c:forEach var="news" items="${newsList}">
                 <div class="news-card">
-                    <img src="${pageContext.request.contextPath}${news.imageUrl}" alt="Ảnh tin tức">
+                    <img src="${news.imageUrl.startsWith('/') || news.imageUrl.startsWith('http') ? news.imageUrl : '/images/news/'.concat(news.imageUrl)}" alt="Ảnh tin tức">
                     <div class="news-content">
                         <h2><a href="/news/${news.id}">${news.title}</a></h2>
                         <p class="news-desc">
