@@ -22,8 +22,8 @@
         }
 
         .chat-wrapper {
-            max-width: 900px;
-            margin: 30px auto;
+            max-width: 920px;
+            margin: 25px auto;
             padding: 0 15px;
         }
 
@@ -58,7 +58,7 @@
             display: flex;
             align-items: flex-end;
             gap: 10px;
-            max-width: 80%;
+            max-width: 82%;
         }
 
         .message-row.user {
@@ -95,7 +95,7 @@
             padding: 12px 18px;
             border-radius: 18px;
             font-size: 14.5px;
-            line-height: 1.5;
+            line-height: 1.55;
             word-break: break-word;
         }
 
@@ -106,19 +106,31 @@
         }
 
         .bot .message-bubble {
-            background-color: #FFF1D2;
+            background-color: #FFF8EA;
             color: #6B1700;
             border: 1px solid #CEAF95;
             border-bottom-left-radius: 4px;
         }
 
         .quick-tags {
-            padding: 12px 20px;
+            padding: 10px 16px;
             background-color: #FFF8EA;
             border-top: 1px solid #CEAF95;
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+
+        .quick-tags::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .quick-tags::-webkit-scrollbar-thumb {
+            background: #CEAF95;
+            border-radius: 4px;
         }
 
         .quick-tag-btn {
@@ -127,20 +139,24 @@
             color: #6B1700;
             font-size: 12.5px;
             font-weight: 600;
-            padding: 5px 12px;
-            border-radius: 16px;
+            padding: 6px 14px;
+            border-radius: 18px;
             cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
             transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(107, 23, 0, 0.05);
         }
 
         .quick-tag-btn:hover {
             background: #6B1700;
             color: #FFF1D2;
             border-color: #6B1700;
+            transform: translateY(-1px);
         }
 
         .chat-footer {
-            padding: 16px 20px;
+            padding: 14px 20px;
             background-color: #FFF8EA;
             border-top: 1px solid #CEAF95;
             display: flex;
@@ -332,7 +348,7 @@
                 "• <strong>Dây chuyền hoa Resin:</strong> Giọt nước, trái tim, hình tròn dát vàng 18k.<br>" +
                 "• <strong>Bông tai & Nhẫn hoa:</strong> Tinh tế, nữ tính với hoa hồng khô, bách nhật, baby, cẩm tú cầu.<br>" +
                 "• <strong>Vòng tay & Phụ kiện:</strong> Móc khóa hoa, khay đựng trang sức.<br><br>" +
-                "👉 Bạn có thể xem danh sách đầy đủ tại mục <a href='/products' style='color:#6B1700; font-weight:bold; text-decoration:underline;'>Tất cả sản phẩm</a> nhé!";
+                "👉 Bạn có thể xem danh sách đầy đủ tại <a href='/products' style='color:#6B1700; font-weight:bold; text-decoration:underline;'>Trang Tất cả sản phẩm</a> nhé!";
         }
 
         if (text.includes("yêu cầu") || text.includes("đặt làm") || text.includes("custom") || text.includes("hoa của tôi") || text.includes("kỷ niệm")) {
@@ -365,10 +381,12 @@
         }
 
         return "Cảm ơn câu hỏi của bạn! 🌸 BloomResin đã ghi nhận thông tin: <em>'" + escapeHtml(query) + "'</em>.<br>" +
-            "Nếu cần hỗ trợ gấp về đơn hàng hay sản phẩm, bạn có thể gọi ngay Hotline <strong>0901234567</strong> hoặc bấm xem <a href='/products' style='color:#6B1700; font-weight:bold; text-decoration:underline;'>Danh sách sản phẩm</a> nhé!";
+            "Nếu cần hỗ trợ gấp về đơn hàng hay sản phẩm, bạn có thể gọi ngay Hotline <strong>0901234567</strong> hoặc bấm xem <a href='/products' style='color:#6B1700; font-weight:bold; text-decoration:underline;'>Trang Tất cả sản phẩm</a> nhé!";
     }
 
     function convertMarkdownToHTML(text) {
+        // Convert Markdown links [Label](URL) to clickable HTML <a> tags
+        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color: #6B1700; font-weight: bold; text-decoration: underline;">$1</a>');
         text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
         text = text.replace(/\n/g, "<br>");
