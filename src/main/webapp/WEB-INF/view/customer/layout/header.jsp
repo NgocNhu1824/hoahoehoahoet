@@ -61,16 +61,16 @@
         }
 
         .nav-link:hover, .nav-link.active, .nav-link:focus, .dropdown-toggle:focus, .dropdown-toggle.show {
-            color: #FFF1D2 !important;
-            background-color: #6B1700 !important;
+            color: #6B1700 !important;
+            background-color: rgba(206, 175, 149, 0.35) !important;
             outline: none !important;
             box-shadow: none !important;
-            border: none !important;
-            border-radius: 20px;
+            border-radius: 12px;
+            font-weight: 800 !important;
         }
 
         .nav-link:hover i, .nav-link.active i, .nav-link:focus i {
-            color: #FFF1D2 !important;
+            color: #6B1700 !important;
         }
 
         .dropdown-toggle:after {
@@ -153,12 +153,13 @@
         }
 
         .navbar .dropdown-item:hover, .navbar .dropdown-item:focus, .navbar .dropdown-item.active {
-            background-color: #6B1700 !important;
-            color: #FFF1D2 !important;
+            background-color: rgba(206, 175, 149, 0.35) !important;
+            color: #6B1700 !important;
+            font-weight: 800 !important;
         }
 
         .navbar .dropdown-item:hover i, .navbar .dropdown-item:focus i, .navbar .dropdown-item.active i {
-            color: #FFF1D2 !important;
+            color: #6B1700 !important;
         }
 
         /* Mobile Menu Toggler */
@@ -250,9 +251,9 @@
 
             .nav-link:hover, .nav-link:hover i,
             .nav-link.active, .nav-link.active i {
-                background-color: #6B1700 !important;
-                color: #FFF1D2 !important;
-                border-color: #6B1700 !important;
+                background-color: rgba(206, 175, 149, 0.35) !important;
+                color: #6B1700 !important;
+                border-color: #CEAF95 !important;
                 outline: none !important;
                 box-shadow: none !important;
             }
@@ -347,7 +348,7 @@
         <!-- Collapsible Navigation Drawer -->
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarCollapse">
             <div class="navbar-nav d-flex align-items-center">
-                <a href="/" class="nav-item nav-link active fw-bold"><i class="fas fa-home me-2 opacity-75"></i>Trang chủ</a>
+                <a href="/" class="nav-item nav-link fw-bold"><i class="fas fa-home me-2 opacity-75"></i>Trang chủ</a>
 
                 <div class="nav-item dropdown">
                     <a href="/products" class="nav-link fw-bold dropdown-toggle" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -471,6 +472,26 @@
                 toggler.setAttribute("aria-expanded", isExpanded ? "true" : "false");
             });
         }
+
+        // Automatic Active Page Highlight
+        var currentPath = window.location.pathname;
+        var navLinks = document.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item");
+
+        navLinks.forEach(function(link) {
+            var href = link.getAttribute("href");
+            if (href) {
+                if (href === "/" && currentPath === "/") {
+                    link.classList.add("active");
+                } else if (href !== "/" && currentPath.startsWith(href)) {
+                    link.classList.add("active");
+                    var parentDropdown = link.closest(".dropdown");
+                    if (parentDropdown) {
+                        var toggleBtn = parentDropdown.querySelector(".dropdown-toggle");
+                        if (toggleBtn) toggleBtn.classList.add("active");
+                    }
+                }
+            }
+        });
     });
 </script>
 </body>
