@@ -1,168 +1,280 @@
-# 🌸 BloomResin - Nền Tảng Thương Mại Điện Tử & Đặt Hàng Thiết Kế Riêng Trang Sức Resin
-> **E-Commerce & Custom Order Platform for Handcrafted Resin Jewelry**
+# 🌸 BloomResin — Dự án học tập và phát triển của tôi trong hành trình trở thành Java Developer
 
 [![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.10-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
-[![Spring Security](https://img.shields.io/badge/Spring_Security-6.x-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
+[![Spring Security](https://img.shields.io/badge/Security-Spring_Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
 [![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
 [![Docker](https://img.shields.io/badge/Deploy-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
 
----
-
-## 📌 1. Giới thiệu Dự án (Project Overview)
-
-**BloomResin** (tên repository: `hoahoehoahoet`) là hệ thống thương mại điện tử chuyên nghiệp cung cấp các sản phẩm trang sức và phụ kiện nghệ thuật chế tác thủ công từ hoa thật ép trong nhựa Resin trong suốt cao cấp.
-
-Nền tảng không chỉ là cửa hàng trực tuyến phục vụ mua sắm sản phẩm bán lẻ mà còn cung cấp bộ công cụ **Đặt hàng Thiết kế Riêng (Custom Order Engine)** độc đáo, giúp khách hàng gửi yêu cầu cá nhân hóa hoa khô, màu sắc và kiểu dáng khung theo gu thẩm mỹ cá nhân.
-
-Dự án được thiết kế và xây dựng theo chuẩn **Spring Boot Enterprise Architecture**, đáp ứng đầy đủ tính năng bảo mật phân quyền (RBAC), thanh toán linh hoạt, gửi mail OTP tự động và quản lý vận hành kinh doanh hiệu quả cho doanh nghiệp.
+> Đây là dự án mà tôi tự xây dựng để rèn luyện tư duy lập trình thực tế, làm quen với hệ thống web có logic nghiệp vụ rõ ràng và hiểu sâu hơn về cách một ứng dụng thương mại điện tử hoạt động từ đầu đến cuối.
 
 ---
 
-## ✨ 2. Tính Năng Nổi Bật (Key Features)
+## 1. Vì sao tôi chọn dự án này?
 
-### 🛍️ 1. Dành cho Khách hàng (Customer Portal)
-- **Danh mục Sản phẩm Phong phú**: Khám phá 6 dòng sản phẩm chính (*Dây chuyền hoa resin, Bông tai hoa baby, Nhẫn resin dát vàng 18k, Vòng tay hoa ép, Móc khóa phụ kiện, Khay decor đúc resin*).
-- **Đặt làm Theo Yêu cầu (Custom Order Engine)**: Tính năng đặt chế tác riêng cho phép chọn mẫu hoa (hoa hồng baby, cúc cừu, cẩm tú cầu...), chọn loại khung (mạ vàng/bạc/giọt nước) và gửi ghi chú gia công cá nhân.
-- **Thanh toán & Đơn hàng**: Đặt hàng linh hoạt qua COD, VNPAY hoặc Chuyển khoản ngân hàng. Theo dõi tiến độ đơn hàng thời gian thực.
-- **Xác thực Bảo mật & Đăng nhập Nhanh**: Đăng ký/đăng nhập hệ thống, hỗ trợ **Google OAuth2 SSO** và quy trình lấy lại mật khẩu an toàn qua **Mã OTP Email**.
-- **Yêu thích & Đánh giá (Wishlist & Reviews)**: Lưu danh sách sản phẩm yêu thích và gửi phản hồi, chấm điểm sao cho từng sản phẩm đã mua.
-- **Chăm sóc & Bảo quản (Care Service)**: Hướng dẫn khách hàng mẹo bảo quản trang sức nhựa resin luôn trong suốt và bền màu theo thời gian.
+Khi bắt đầu học lập trình, tôi nhận ra rằng chỉ học kiến thức lý thuyết thôi là chưa đủ. Tôi muốn làm một dự án có tính ứng dụng thực tế, có chức năng rõ ràng, có user flow rõ ràng và có thể chứng minh mình đã hiểu cách một hệ thống web vận hành.
 
-### 🛡️ 2. Dành cho Quản trị viên & Nhân viên (Admin & Staff Dashboard)
-- **Thống kê Doanh thu (Analytics Dashboard)**: Báo cáo tổng doanh thu, số đơn hàng mới, thống kê sản phẩm bán chạy và biểu đồ doanh thu theo thời gian.
-- **Quản lý Đơn hàng & Custom Orders**: Xử lý phê duyệt đơn hàng bán lẻ và theo dõi/cập nhật trạng thái gia công cho các đơn thiết kế riêng.
-- **Quản lý Sản phẩm & Danh mục (Catalog Management)**: Quản lý danh sách sản phẩm, cập nhật số lượng tồn kho, giá bán và hình ảnh hiển thị.
-- **Phân quyền Người dùng (RBAC)**: Quản lý tài khoản và phân quyền người dùng theo 3 vai trò chính: `ADMIN`, `EMPLOYEE`, `CUSTOMER`.
-- **Quản lý Bài viết & Phản hồi**: Đăng tin tức khuyến mãi và phản hồi ý kiến đóng góp từ khách hàng.
+BloomResin là dự án đầu tiên giúp tôi đi từ việc “biết code” sang việc “hiểu cách xây dựng một sản phẩm”. Tôi không chỉ làm giao diện đẹp, mà còn phải nghĩ:
+
+- Người dùng cần gì?
+- Hệ thống cần lưu dữ liệu gì?
+- Đơn hàng phải đi qua những bước nào?
+- Ai có quyền làm gì trong hệ thống?
+- Làm sao bảo vệ dữ liệu và đảm bảo tính an toàn của ứng dụng?
+
+Đó là lý do dự án này quan trọng với tôi: nó giúp tôi hình thành tư duy như một lập trình viên thực thụ, không chỉ là người học theo template.
 
 ---
 
-## 🛠️ 3. Công Nghệ Sử Dụng (Tech Stack)
+## 2. Dự án của tôi là gì?
 
-### **Backend Framework**
-- **Core Runtime**: Java 21 & Spring Boot 3.2.10
-- **Security**: Spring Security 6 (Password Hashing BCrypt, Role-Based Access Control)
-- **Authentication**: Native Authentication & Google OAuth2 Client
-- **Data Persistence**: Spring Data JPA (Hibernate ORM)
-- **Database**: PostgreSQL (Production) / H2 In-Memory Database (Development)
-- **Notification**: Spring Mail (Jakarta Mail) gửi mã OTP xác minh
+BloomResin là một nền tảng thương mại điện tử dành cho trang sức resin handmade. Dự án này mô phỏng một hệ thống bán hàng thực tế với các chức năng chính như:
 
-### **Frontend & UI**
-- **Architecture**: Spring MVC (Model-View-Controller)
-- **Template Engine**: JSP (Jakarta Server Pages) & JSTL
-- **Styling**: Bootstrap 5, Custom CSS3, Responsive Layout (Desktop & Mobile)
-- **Icons & Libraries**: FontAwesome 6, jQuery, SweetAlert2
+- Quản lý sản phẩm và danh mục
+- Giỏ hàng và đặt hàng
+- Xử lý trạng thái đơn hàng
+- Đăng ký, đăng nhập, quên mật khẩu
+- Xác thực bằng email OTP
+- Tích hợp thanh toán VNPay
+- Custom order theo yêu cầu riêng của khách hàng
+- Quản lý phân quyền cho admin, employee và customer
+
+Với tôi, đây là dự án rất phù hợp vì nó không chỉ là website mua hàng đơn thuần, mà còn là một hệ thống có nhiều module nghiệp vụ cần được thiết kế và kết nối với nhau.
 
 ---
 
-## 📐 4. Kiến Trúc Hệ Thống (System Architecture)
+## 3. Những gì tôi đã làm trong dự án
 
+### 3.1 Frontend
+- Trang chủ và danh mục sản phẩm
+- Chi tiết sản phẩm
+- Giỏ hàng
+- Đăng ký, đăng nhập, đổi mật khẩu
+- Theo dõi trạng thái đơn hàng
+- Yêu thích sản phẩm và đánh giá
+- Custom order form cho khách hàng
+- Giao diện responsive cơ bản
+
+### 3.2 Backend
+- Xây dựng controller, service, repository theo mô hình MVC
+- Quản lý dữ liệu sản phẩm, đơn hàng, người dùng, custom order
+- Phân quyền người dùng theo vai trò
+- Tích hợp Spring Security
+- Gửi email xác thực và OTP
+- Xử lý thanh toán VNPay
+- Upload hình ảnh cho sản phẩm
+
+### 3.3 Quản trị hệ thống
+- Quản lý sản phẩm và danh mục
+- Quản lý nhân viên và khách hàng
+- Cập nhật trạng thái đơn hàng
+- Theo dõi doanh thu và sản phẩm bán chạy
+- Quản lý nội dung và tài nguyên hệ thống
+
+---
+
+## 4. Công nghệ tôi đã sử dụng
+
+### Backend
+- Java 21
+- Spring Boot 3.2.10
+- Spring Security 6
+- Spring Data JPA / Hibernate
+- PostgreSQL
+- Maven
+- Spring Mail
+- OAuth2 Client
+
+### Frontend
+- JSP / JSTL
+- Bootstrap 5
+- jQuery
+- HTML / CSS / JavaScript
+- FontAwesome
+
+### DevOps / triển khai
+- Docker
+- Maven Wrapper
+
+Tôi chọn những công nghệ này vì chúng phù hợp với mục tiêu học tập của tôi: vừa thực tế, vừa đủ mạnh để tôi tiếp tục nâng cấp kỹ năng sau này.
+
+---
+
+## 5. Mô hình kiến trúc tôi đã áp dụng
+
+```text
+Client / Browser
+       |
+       v
+Frontend (JSP + Bootstrap)
+       |
+       v
+Controller Layer
+       |
+       v
+Service Layer (Business Logic)
+       |
+       +------------------------+
+       |                        |
+       v                        v
+Security / Auth            Repository / Database
+- Login                    - PostgreSQL
+- Role                    - JPA Entities
+- OTP / Mail
 ```
-                       +-------------------------+
-                       |      Client Browser     |
-                       | (HTML5/JSP + Bootstrap) |
-                       +------------+------------+
-                                    |
-                                    | HTTP / HTTPS Request
-                                    v
-                       +-------------------------+
-                       |  Spring MVC Controller  |
-                       |  (Spring Security 6)    |
-                       +------------+------------+
-                                    |
-        +---------------------------+---------------------------+
-        |                           |                           |
-        v                           v                           v
-+---------------+           +---------------+           +---------------+
-| Auth & OAuth2 |           | Custom Order  |           | Admin Stats   |
-| (JWT / OTP)   |           | & Catalog Service         | & Product Mgmt|
-+-------+-------+           +-------+-------+           +-------+-------+
-        |                           |                           |
-        +---------------------------+---------------------------+
-                                    |
-                                    v
-                       +-------------------------+
-                       |    Spring Data JPA      |
-                       +------------+------------+
-                                    |
-                                    v
-                       +-------------------------+
-                       |   PostgreSQL / H2 DB    |
-                       +-------------------------+
-```
+
+Từ mô hình này, tôi đã hiểu rõ hơn về cách một hệ thống web được cấu thành:
+- Controller nhận request
+- Service xử lý nghiệp vụ
+- Repository tương tác với database
+- Security kiểm soát quyền truy cập
+- Frontend cung cấp trải nghiệm cho user
 
 ---
 
-## 📁 5. Cấu Trúc Thư Mục (Folder Structure)
+## 6. Tại sao tôi thấy đây là một dự án đáng giá?
 
-```bash
-hoahoehoahoet/
-├── src/main/java/group03/bloomresin/
-│   ├── config/             # Cấu hình Spring Security, OAuth2, Web MVC
-│   ├── controller/         # Các Controller xử lý (admin, client, employee)
-│   ├── domain/             # Entities Mapped Hibernate (Product, Order, User, CustomOrder, Category...)
-│   ├── repository/         # Interfaces Spring Data JPA
-│   ├── service/            # Business Logic Services xử lý nghiệp vụ
-│   └── util/               # Tiện ích gửi Mail OTP, xử lý file upload, Security
-├── src/main/resources/
-│   ├── application.properties # Cấu hình Database & Mail server
-│   └── data.sql            # Script khởi tạo dữ liệu mẫu (Seed Data)
-├── src/main/webapp/WEB-INF/jsp/ # Trang giao diện người dùng & quản trị (JSP Templates)
-├── Dockerfile              # Cấu hình đóng gói Docker Container
-├── pom.xml                 # Khai báo phụ thuộc Maven
-└── README.md
-```
+Với tư cách là sinh viên mới tốt nghiệp, tôi muốn có một dự án mà khi nhà tuyển dụng đọc CV sẽ thấy được điều sau:
+
+- Tôi không chỉ học code, mà tôi đã làm được một sản phẩm có logic thực tế.
+- Tôi biết cách xây dựng một ứng dụng web theo hướng nghiệp vụ.
+- Tôi có khả năng làm Backend bằng Java Spring Boot.
+- Tôi hiểu cơ bản về bảo mật, phân quyền, database và xử lý đơn hàng.
+- Tôi biết cách suy nghĩ theo hướng user và product, không chỉ code theo từng tutorial.
+
+Đó là điều làm cho dự án này trở nên có giá trị hơn so với các project “demo chỉ đẹp trên giấy”.
 
 ---
 
-## 🚀 6. Hướng Dẫn Cài Đặt & Khởi Chạy (Getting Started)
+## 7. Những khó khăn tôi đã vượt qua
 
-### Yêu cầu tiên quyết
-- **JDK 21** trở lên
-- **Apache Maven 3.8+**
-- **PostgreSQL** (hoặc mặc định chạy trên H2 In-Memory Database)
+Dự án này không dễ như tôi tưởng ban đầu. Tôi đã phải đối mặt với nhiều vấn đề thực tế như:
 
-### Các bước khởi chạy:
+- Xây dựng đúng luồng đăng ký và xác thực email OTP
+- Tối ưu luồng custom order cho sản phẩm thủ công
+- Phân quyền đúng theo từng vai trò: admin, employee, customer
+- Tạo tính ổn định cho giỏ hàng và đơn hàng
+- Tìm cách xử lý các lỗi khi hệ thống tương tác với database và thanh toán
 
-1. **Clone repository**:
-   ```bash
-   git clone https://github.com/NgocNhu1824/hoahoehoahoet.git
-   cd hoahoehoahoet
-   ```
-
-2. **Biên dịch và đóng gói với Maven**:
-   ```bash
-   ./mvnw clean package -DskipTests
-   ```
-
-3. **Khởi chạy ứng dụng**:
-   ```bash
-   ./mvnw spring-boot:run
-   ```
-   *Ứng dụng sẽ chạy tại địa chỉ*: `http://localhost:8080`
+Mỗi lỗi tôi gặp đều giúp tôi hiểu sâu hơn về cách lập trình thực tế hoạt động. Tôi tin rằng việc bạn không sợ sai và biết sửa sai chính là một điểm mạnh của người mới bắt đầu.
 
 ---
 
-## 🎯 7. Cơ Hội Phát Triển Trong Tương Lai (Future Growth Roadmap)
+## 8. Tôi học được gì từ dự án này?
 
-1. **Gợi Ý Sản Phẩm Thông Minh Bằng AI (AI Recommendation Engine)**:
-   - Tích hợp thuật toán AI phân tích phong cách thời trang, màu sắc hợp mệnh/phong thủy hoặc dịp tặng quà để đưa ra gợi ý mẫu hoa resin phù hợp nhất.
-2. **Ướm Thử Trang Sức Thực Tế Ảo (AR Virtual Try-On)**:
-   - Tích hợp công nghệ **Augmented Reality (AR)** trên trình duyệt cho phép khách hàng soi camera thử nhẫn, dây chuyền, bông tai resin trực quan trước khi chốt đơn.
-3. **Thương Mại Điện Tử Quốc Tế & Đa Tiền Tệ (Cross-Border E-Commerce)**:
-   - Tích hợp cổng thanh toán quốc tế (**PayPal, Stripe**), giao diện đa ngôn ngữ (Tiếng Anh, Tiếng Nhật) hỗ trợ xuất khẩu sản phẩm thủ công Việt Nam ra toàn cầu.
-4. **Ứng Dụng Di Động Native (React Native / Flutter App)**:
-   - Xây dựng app di động giúp khách hàng dễ dàng theo dõi tiến độ gia công thực tế của đơn hàng đặt làm riêng (**Custom Orders**) qua ảnh chụp cập nhật từ nghệ nhân.
+### Tư duy lập trình
+Tôi học cách không chỉ viết code đúng, mà còn viết code có logic, dễ mở rộng và dễ bảo trì.
+
+### Tư duy nghiệp vụ
+Tôi học cách đặt mình vào vị trí của người dùng và quản lý hệ thống, thay vì chỉ làm theo từng chức năng riêng lẻ.
+
+### Tư duy xử lý vấn đề
+Mỗi khi có bug, tôi không chỉ cố gắng tìm cách sửa ngay, mà còn phải hiểu nguyên nhân vì sao nó xảy ra và cách tránh trong tương lai.
+
+### Tư duy phát triển
+Tôi thấy rõ rằng project này chưa phải là điểm cuối, mà là điểm khởi đầu để tôi tiếp tục cải tiến, học thêm và phát triển kỹ năng theo hướng chuyên nghiệp hơn.
+
+---
+
+## 9. Tình trạng hiện tại của dự án
+
+Dự án hiện tại đã ở mức hoàn thiện nền tảng và có thể xem như một sản phẩm demo thực tế, phù hợp cho mục tiêu học tập và showcase kỹ năng. Nó không chỉ là một project “đẹp trên GitHub”, mà còn có logic rõ ràng và khả năng phát triển ở mức thực tế.
+
+### Điểm mạnh hiện có
+- Hệ thống có luồng người dùng rõ ràng
+- Có nhiều tính năng của một website thương mại điện tử
+- Có tích hợp bảo mật, xác thực, email và thanh toán
+- Có khả năng mở rộng theo hướng doanh nghiệp hoặc mobile app
+
+### Những phần tôi muốn cải thiện tiếp
+- Chuyển frontend sang React / Next.js
+- Tạo REST API rõ ràng hơn
+- Thêm unit test và integration test
+- Tăng chất lượng UI/UX
+- Thiết kế dashboard quản lý doanh thu và khách hàng chuyên nghiệp hơn
 
 ---
 
-## 👤 8. Tác Giả & Liên Hệ (Author & Contact)
+## 10. Cơ hội phát triển của dự án trong tương lai
 
-- **Họ và tên**: Cao Huỳnh Ngọc Như
-- **Vị trí mong muốn**: Full-stack Developer / Java Backend Developer (Java Spring Boot / React / Node.js)
-- **GitHub**: [github.com/NgocNhu1824](https://github.com/NgocNhu1824)
-- **Project Repository**: [hoahoehoahoet](https://github.com/NgocNhu1824/hoahoehoahoet)
+Tôi muốn tiếp tục phát triển dự án này theo hướng thực tế và có giá trị hơn. Bởi vì dự án này không chỉ là một bài tập học, mà còn là nền tảng cho một sản phẩm có thể được tái sử dụng, mở rộng và mang lại giá trị trong thực tế.
+
+### 1. Mở rộng ra thị trường lớn hơn
+- Hỗ trợ đa ngôn ngữ để phục vụ khách hàng quốc tế
+- Tích hợp thanh toán quốc tế như Stripe, PayPal
+- Mở rộng quy trình marketing và chăm sóc khách hàng sau bán hàng
+
+### 2. Tăng tính chuyên nghiệp cho doanh nghiệp
+- Dashboard báo cáo doanh thu, đơn hàng và sản phẩm bán chạy theo thời gian
+- Quản lý kho, tồn kho và giao hàng mạnh hơn
+- Hệ thống CRM cơ bản để chăm sóc khách hàng và theo dõi tương tác
+- Cải thiện quy trình làm việc cho admin và nhân viên để hệ thống hoạt động ổn định hơn
+
+### 3. Mở rộng sang các nền tảng mới
+- Ứng dụng di động cho khách hàng
+- Tích hợp thông báo push và cập nhật đơn hàng realtime
+- Xây dựng cửa hàng trên mobile để tăng khả năng tiếp cận người dùng
+
+### 4. Nâng cấp kỹ thuật và mô hình phát triển
+- Chuyển sang frontend hiện đại như React / Next.js để tăng trải nghiệm người dùng
+- Tách backend thành API rõ ràng để dễ tích hợp với mobile, partner và hệ thống khác
+- Thêm CI/CD, kiểm thử tự động và môi trường deploy chuyên nghiệp hơn
+- Tối ưu architecture để hệ thống có thể phát triển theo hướng scalable và maintainable
+
+### 5. Hướng tới sản phẩm có tiềm năng thương mại thực tế
+- Phát triển thêm các tính năng gợi ý sản phẩm theo sở thích khách hàng
+- Tích hợp AI để đề xuất sản phẩm phù hợp
+- Xây dựng thương hiệu và mô hình kinh doanh bền vững trong ngành handmade, gift và sản phẩm cá nhân hóa
+
+Với tôi, dự án này không chỉ là “một sản phẩm đã xong”, mà là một nền tảng để tôi tiếp tục học thêm, rèn luyện thêm và phát triển theo hướng xây dựng giải pháp phần mềm có giá trị thực tế trong doanh nghiệp.
 
 ---
-*Cảm ơn Quý doanh nghiệp / Nhà tuyển dụng đã dành thời gian xem qua dự án!* 🚀
+
+## 11. Vì sao tôi muốn đưa dự án này vào CV?
+
+Vì đây là một dự án thực tế, cho thấy tôi đã làm được những gì sau:
+
+- Xây dựng backend bằng Java Spring Boot
+- Làm việc với database và ORM
+- Thiết kế hệ thống có logic nghiệp vụ rõ ràng
+- Xây dựng chức năng thương mại điện tử thực tế
+- Xử lý xác thực, phân quyền, email và thanh toán
+- Học cách làm việc với các vấn đề thực tế trong quá trình xây dựng sản phẩm
+
+Khi nhà tuyển dụng đọc CV của tôi, họ không chỉ thấy “Tôi có kiến thức Java”, mà còn thấy “Tôi đã xây dựng được một hệ thống thực tế và đang tiếp tục phát triển.”
+
+Đó là điều tạo nên sự khác biệt.
+
+---
+
+## 12. Hướng phát triển nghề nghiệp của tôi
+
+Tôi muốn hướng tới các vị trí như:
+
+- Java Backend Developer
+- Full-stack Developer
+- Web Developer
+
+Trong thời gian tới, tôi muốn tiếp tục nâng cao kỹ năng ở các lĩnh vực như:
+
+- Java Spring Boot nâng cao
+- REST API
+- React / Next.js
+- Database design
+- Clean Architecture
+- Deploy và CI/CD cơ bản
+
+Tôi tin rằng dự án BloomResin là một bước khởi đầu tốt để tôi tiếp tục đi xa hơn trong nghề lập trình.
+
+---
+
+## 13. Thông tin liên hệ
+
+- Họ và tên: Cao Huỳnh Ngọc Như
+- GitHub: https://github.com/NgocNhu1824
+- Email: bloomresin.system@gmail.com
+- Mục tiêu nghề nghiệp: Java Backend Developer / Full-stack Developer / Web Developer
+
+---
+
+Mình viết dự án này không chỉ để khoe kỹ năng, mà còn để thể hiện sự chủ động học hỏi, khả năng xây dựng sản phẩm và tinh thần phát triển trong lĩnh vực lập trình. Đó là điều mà tôi muốn nhà tuyển dụng nhìn thấy khi đọc đến dự án của mình.
