@@ -1,104 +1,134 @@
 # 🌸 BloomResin - Nền Tảng Thương Mại Điện Tử & Đặt Hàng Thiết Kế Riêng Trang Sức Resin
-> **Handcrafted Resin Jewelry E-Commerce & Custom Order Platform**
+> **E-Commerce & Custom Order Platform for Handcrafted Resin Jewelry**
 
-[![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](file:///c:/Users/admin/Desktop/hoahoehoahoet)
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.10-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](file:///c:/Users/admin/Desktop/hoahoehoahoet)
-[![Spring Security](https://img.shields.io/badge/Spring_Security-6.x-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)](file:///c:/Users/admin/Desktop/hoahoehoahoet)
-[![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](file:///c:/Users/admin/Desktop/hoahoehoahoet)
-[![Docker](https://img.shields.io/badge/Deploy-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](file:///c:/Users/admin/Desktop/hoahoehoahoet)
-
----
-
-## 📌 1. Giới thiệu Tổng quan (Project Overview)
-
-**BloomResin** là nền tảng thương mại điện tử chuyên biệt dành cho các sản phẩm trang sức và phụ kiện thủ công từ hoa thật ép nhựa Resin cao cấp (dây chuyền, bông tai, nhẫn, vòng tay, móc khóa, khay decor). Nền tảng không chỉ cung cấp giải pháp bán lẻ sản phẩm có sẵn mà còn tích hợp quy trình **Đặt hàng Thiết kế Riêng (Custom Orders)** cho phép khách hàng cá nhân hóa mẫu hoa và phụ kiện theo mong muốn.
-
-Dự án được xây dựng theo kiến trúc **Spring Boot MVC chuẩn doanh nghiệp**, đáp ứng các tiêu chuẩn nghiêm ngặt về bảo mật (Spring Security, Google OAuth2, Bcrypt), tối ưu truy vấn dữ liệu (Spring Data JPA, PostgreSQL) và giao diện thân thiện, responsive trên mọi thiết bị.
+[![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.10-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
+[![Spring Security](https://img.shields.io/badge/Spring_Security-6.x-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
+[![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
+[![Docker](https://img.shields.io/badge/Deploy-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/NgocNhu1824/hoahoehoahoet)
 
 ---
 
-## 🔥 2. Các Tính năng Nổi bật (Key Features)
+## 📌 1. Giới thiệu Dự án (Project Overview)
 
-### 🛒 1. Dành cho Khách hàng (Client Portal)
-- **Xem & Tìm kiếm Sản phẩm**: Tìm kiếm nâng cao, lọc theo giá, phân loại theo danh mục sản phẩm (Dây chuyền giọt nước, Bông tai hoa baby, Nhẫn resin dát vàng, Vòng tay, Móc khóa, Khay decor...).
-- **Đặt hàng Thiết kế Riêng (Custom Order Engine)**: Cho phép khách hàng chọn loại hoa khô, màu sắc nhựa resin, kích thước và kiểu khung mạ vàng/bạc để đặt mẫu thiết kế riêng theo yêu cầu.
-- **Thanh toán & Đơn hàng**: Tích hợp thanh toán linh hoạt (VNPAY, Chuyển khoản ngân hàng, COD), xem lịch sử và theo dõi chi tiết trạng thái đơn hàng thời gian thực.
-- **Tài khoản & Xác thực an toàn**: Đăng ký / Đăng nhập qua tài khoản hoặc đăng nhập nhanh qua **Google OAuth2**, tính năng quên mật khẩu qua mã xác minh OTP Email.
-- **Tương tác Khách hàng**: Quản lý danh sách sản phẩm yêu thích (Wishlist), gửi đánh giá & bình luận sản phẩm kèm chấm điểm sao (Product Reviews & Ratings), gửi liên hệ hỗ trợ.
+**BloomResin** (tên repository: `hoahoehoahoet`) là hệ thống thương mại điện tử chuyên nghiệp cung cấp các sản phẩm trang sức và phụ kiện nghệ thuật chế tác thủ công từ hoa thật ép trong nhựa Resin trong suốt cao cấp.
 
-### 🛡️ 2. Dành cho Quản trị viên & Nhân viên (Admin & Employee Dashboard)
-- **Thống kê Doanh thu & Báo cáo (Revenue Analytics)**: Biểu đồ thống kê doanh thu trực quan theo thời gian, báo cáo sản phẩm bán chạy và danh sách đơn hàng cần xử lý.
-- **Quản lý Đơn hàng & Custom Orders**: Xử lý phê duyệt đơn bán lẻ và theo dõi/cập nhật tiến độ gia công cho các đơn hàng thiết kế riêng của khách hàng.
-- **Quản lý Sản phẩm & Danh mục (Catalog Management)**: Quản trị danh mục, thêm mới/chỉnh sửa thông tin sản phẩm, cập nhật số lượng tồn kho, giá bán và hình ảnh.
-- **Quản lý Người dùng & Phân quyền (RBAC)**: Quản lý danh sách tài khoản, hỗ trợ phân quyền đa dạng (`ROLE_ADMIN`, `ROLE_EMPLOYEE`, `ROLE_CUSTOMER`).
-- **Quản lý Bài viết & Phản hồi**: Đăng tải tin tức/bài viết chia sẻ kinh nghiệm bảo quản đồ resin, tiếp nhận và phản hồi thông tin từ khách hàng.
+Nền tảng không chỉ là cửa hàng trực tuyến phục vụ mua sắm sản phẩm bán lẻ mà còn cung cấp bộ công cụ **Đặt hàng Thiết kế Riêng (Custom Order Engine)** độc đáo, giúp khách hàng gửi yêu cầu cá nhân hóa hoa khô, màu sắc và kiểu dáng khung theo gu thẩm mỹ cá nhân.
+
+Dự án được thiết kế và xây dựng theo chuẩn **Spring Boot Enterprise Architecture**, đáp ứng đầy đủ tính năng bảo mật phân quyền (RBAC), thanh toán linh hoạt, gửi mail OTP tự động và quản lý vận hành kinh doanh hiệu quả cho doanh nghiệp.
 
 ---
 
-## 🛠️ 3. Công nghệ Sử dụng (Tech Stack)
+## ✨ 2. Tính Năng Nổi Bật (Key Features)
 
-| Phân hệ | Công nghệ chính | Mô tả |
-| :--- | :--- | :--- |
-| **Backend Core** | Java 21, Spring Boot 3.2.10 | Framework mạnh mẽ, tối ưu hiệu năng và khả năng mở rộng |
-| **Security & Auth** | Spring Security 6, Google OAuth2, Bcrypt | Bảo mật hệ thống, chống đe dọa an ninh mạng, xác thực SSO |
-| **Data Layer** | Spring Data JPA (Hibernate), PostgreSQL, H2 | ORM quản lý dữ liệu, truy vấn tối ưu, hỗ trợ H2 cho Dev |
-| **Communication** | Spring Mail (Jakarta Mail), OTP Email | Gửi mail tự động, xác minh tài khoản & quên mật khẩu |
-| **Frontend / View** | JSP, JSTL, HTML5, CSS3, JavaScript, Bootstrap 5 | Giao diện chuẩn Spring MVC, responsive và thẩm mỹ cao |
-| **DevOps & Tools** | Maven, Docker, Git | Quản lý phụ thuộc, đóng gói container và quản lý phiên bản |
+### 🛍️ 1. Dành cho Khách hàng (Customer Portal)
+- **Danh mục Sản phẩm Phong phú**: Khám phá 6 dòng sản phẩm chính (*Dây chuyền hoa resin, Bông tai hoa baby, Nhẫn resin dát vàng 18k, Vòng tay hoa ép, Móc khóa phụ kiện, Khay decor đúc resin*).
+- **Đặt làm Theo Yêu cầu (Custom Order Engine)**: Tính năng đặt chế tác riêng cho phép chọn mẫu hoa (hoa hồng baby, cúc cừu, cẩm tú cầu...), chọn loại khung (mạ vàng/bạc/giọt nước) và gửi ghi chú gia công cá nhân.
+- **Thanh toán & Đơn hàng**: Đặt hàng linh hoạt qua COD, VNPAY hoặc Chuyển khoản ngân hàng. Theo dõi tiến độ đơn hàng thời gian thực.
+- **Xác thực Bảo mật & Đăng nhập Nhanh**: Đăng ký/đăng nhập hệ thống, hỗ trợ **Google OAuth2 SSO** và quy trình lấy lại mật khẩu an toàn qua **Mã OTP Email**.
+- **Yêu thích & Đánh giá (Wishlist & Reviews)**: Lưu danh sách sản phẩm yêu thích và gửi phản hồi, chấm điểm sao cho từng sản phẩm đã mua.
+- **Chăm sóc & Bảo quản (Care Service)**: Hướng dẫn khách hàng mẹo bảo quản trang sức nhựa resin luôn trong suốt và bền màu theo thời gian.
+
+### 🛡️ 2. Dành cho Quản trị viên & Nhân viên (Admin & Staff Dashboard)
+- **Thống kê Doanh thu (Analytics Dashboard)**: Báo cáo tổng doanh thu, số đơn hàng mới, thống kê sản phẩm bán chạy và biểu đồ doanh thu theo thời gian.
+- **Quản lý Đơn hàng & Custom Orders**: Xử lý phê duyệt đơn hàng bán lẻ và theo dõi/cập nhật trạng thái gia công cho các đơn thiết kế riêng.
+- **Quản lý Sản phẩm & Danh mục (Catalog Management)**: Quản lý danh sách sản phẩm, cập nhật số lượng tồn kho, giá bán và hình ảnh hiển thị.
+- **Phân quyền Người dùng (RBAC)**: Quản lý tài khoản và phân quyền người dùng theo 3 vai trò chính: `ADMIN`, `EMPLOYEE`, `CUSTOMER`.
+- **Quản lý Bài viết & Phản hồi**: Đăng tin tức khuyến mãi và phản hồi ý kiến đóng góp từ khách hàng.
 
 ---
 
-## 📐 4. Kiến trúc Hệ thống (System Architecture)
+## 🛠️ 3. Công Nghệ Sử Dụng (Tech Stack)
 
-```mermaid
-graph TD
-    Client([💻 Client Browser]) <-->|HTTP / HTTPS| Controller[🎮 Spring MVC Controllers]
-    Controller <-->|Spring Security Guard| Auth[🔒 Security & OAuth2 Engine]
-    Controller <-->|Service Layer| Service[⚙️ Business Logic Services]
-    Service <-->|Spring Data JPA| Repo[📦 Repositories]
-    Repo <-->|SQL Queries| DB[(🐘 PostgreSQL / H2 DB)]
-    
-    Service <-->|Jakarta MailSender| Email[✉️ Email Service - OTP]
-    Service <-->|VNPAY API| Payment[💳 VNPAY Payment Gateway]
+### **Backend Framework**
+- **Core Runtime**: Java 21 & Spring Boot 3.2.10
+- **Security**: Spring Security 6 (Password Hashing BCrypt, Role-Based Access Control)
+- **Authentication**: Native Authentication & Google OAuth2 Client
+- **Data Persistence**: Spring Data JPA (Hibernate ORM)
+- **Database**: PostgreSQL (Production) / H2 In-Memory Database (Development)
+- **Notification**: Spring Mail (Jakarta Mail) gửi mã OTP xác minh
+
+### **Frontend & UI**
+- **Architecture**: Spring MVC (Model-View-Controller)
+- **Template Engine**: JSP (Jakarta Server Pages) & JSTL
+- **Styling**: Bootstrap 5, Custom CSS3, Responsive Layout (Desktop & Mobile)
+- **Icons & Libraries**: FontAwesome 6, jQuery, SweetAlert2
+
+---
+
+## 📐 4. Kiến Trúc Hệ Thống (System Architecture)
+
+```
+                       +-------------------------+
+                       |      Client Browser     |
+                       | (HTML5/JSP + Bootstrap) |
+                       +------------+------------+
+                                    |
+                                    | HTTP / HTTPS Request
+                                    v
+                       +-------------------------+
+                       |  Spring MVC Controller  |
+                       |  (Spring Security 6)    |
+                       +------------+------------+
+                                    |
+        +---------------------------+---------------------------+
+        |                           |                           |
+        v                           v                           v
++---------------+           +---------------+           +---------------+
+| Auth & OAuth2 |           | Custom Order  |           | Admin Stats   |
+| (JWT / OTP)   |           | & Catalog Service         | & Product Mgmt|
++-------+-------+           +-------+-------+           +-------+-------+
+        |                           |                           |
+        +---------------------------+---------------------------+
+                                    |
+                                    v
+                       +-------------------------+
+                       |    Spring Data JPA      |
+                       +------------+------------+
+                                    |
+                                    v
+                       +-------------------------+
+                       |   PostgreSQL / H2 DB    |
+                       +-------------------------+
 ```
 
 ---
 
-## 📁 5. Cấu trúc Thư mục Dự án (Project Structure)
+## 📁 5. Cấu Trúc Thư Mục (Folder Structure)
 
-```text
+```bash
 hoahoehoahoet/
 ├── src/main/java/group03/bloomresin/
 │   ├── config/             # Cấu hình Spring Security, OAuth2, Web MVC
-│   ├── controller/         # Chứa Controllers (admin, client, employee)
-│   ├── domain/             # Các JPA Entity (Product, Order, User, CustomOrder, Category...)
-│   ├── repository/         # Spring Data JPA Repositories
-│   ├── service/            # Xử lý Logic Nghiệp vụ (Business Services)
-│   └── util/               # Các lớp Tiện ích (EmailSender, SecurityUtils...)
+│   ├── controller/         # Các Controller xử lý (admin, client, employee)
+│   ├── domain/             # Entities Mapped Hibernate (Product, Order, User, CustomOrder, Category...)
+│   ├── repository/         # Interfaces Spring Data JPA
+│   ├── service/            # Business Logic Services xử lý nghiệp vụ
+│   └── util/               # Tiện ích gửi Mail OTP, xử lý file upload, Security
 ├── src/main/resources/
-│   ├── application.properties
-│   └── data.sql            # Mẫu Dữ liệu Khởi tạo (Seed Data)
-├── src/main/webapp/WEB-INF/jsp/ # Các trang Giao diện JSP (Admin & Client Templates)
-├── Dockerfile              # Cấu hình Đóng gói Docker Container
-├── pom.xml                 # Khai báo Phụ thuộc Maven Dependencies
-└── README.md               # Tài liệu Giới thiệu Dự án
+│   ├── application.properties # Cấu hình Database & Mail server
+│   └── data.sql            # Script khởi tạo dữ liệu mẫu (Seed Data)
+├── src/main/webapp/WEB-INF/jsp/ # Trang giao diện người dùng & quản trị (JSP Templates)
+├── Dockerfile              # Cấu hình đóng gói Docker Container
+├── pom.xml                 # Khai báo phụ thuộc Maven
+└── README.md
 ```
 
 ---
 
-## 🚀 6. Hướng Dẫn Khởi Chạy Cục Bộ (Local Setup)
+## 🚀 6. Hướng Dẫn Cài Đặt & Khởi Chạy (Getting Started)
 
 ### Yêu cầu tiên quyết
 - **JDK 21** trở lên
 - **Apache Maven 3.8+**
 - **PostgreSQL** (hoặc mặc định chạy trên H2 In-Memory Database)
 
-### Các bước thực hiện:
+### Các bước khởi chạy:
 
 1. **Clone repository**:
    ```bash
-   git clone http://git.fa.edu.vn/ct25_cpl_java_01/intern_fu_ct_2025_s1_g4/bloomresingr4.git
-   cd bloomresin
+   git clone https://github.com/NgocNhu1824/hoahoehoahoet.git
+   cd hoahoehoahoet
    ```
 
 2. **Biên dịch và đóng gói với Maven**:
@@ -110,14 +140,27 @@ hoahoehoahoet/
    ```bash
    ./mvnw spring-boot:run
    ```
-   *Ứng dụng sẽ khả dụng tại địa chỉ*: `http://localhost:8080`
+   *Ứng dụng sẽ chạy tại địa chỉ*: `http://localhost:8080`
 
 ---
 
-## 👤 7. Tác Giả & Liên Hệ (Author & Contact)
+## 🎯 7. Cơ Hội Phát Triển Trong Tương Lai (Future Growth Roadmap)
+
+1. **Gợi Ý Sản Phẩm Thông Minh Bằng AI (AI Recommendation Engine)**:
+   - Tích hợp thuật toán AI phân tích phong cách thời trang, màu sắc hợp mệnh/phong thủy hoặc dịp tặng quà để đưa ra gợi ý mẫu hoa resin phù hợp nhất.
+2. **Ướm Thử Trang Sức Thực Tế Ảo (AR Virtual Try-On)**:
+   - Tích hợp công nghệ **Augmented Reality (AR)** trên trình duyệt cho phép khách hàng soi camera thử nhẫn, dây chuyền, bông tai resin trực quan trước khi chốt đơn.
+3. **Thương Mại Điện Tử Quốc Tế & Đa Tiền Tệ (Cross-Border E-Commerce)**:
+   - Tích hợp cổng thanh toán quốc tế (**PayPal, Stripe**), giao diện đa ngôn ngữ (Tiếng Anh, Tiếng Nhật) hỗ trợ xuất khẩu sản phẩm thủ công Việt Nam ra toàn cầu.
+4. **Ứng Dụng Di Động Native (React Native / Flutter App)**:
+   - Xây dựng app di động giúp khách hàng dễ dàng theo dõi tiến độ gia công thực tế của đơn hàng đặt làm riêng (**Custom Orders**) qua ảnh chụp cập nhật từ nghệ nhân.
+
+---
+
+## 👤 8. Tác Giả & Liên Hệ (Author & Contact)
 
 - **Họ và tên**: Cao Huỳnh Ngọc Như
-- **Vị trí mong muốn**: Full-stack Developer / Java Back-end Developer (Java Spring Boot / React / Node.js)
+- **Vị trí mong muốn**: Full-stack Developer / Java Backend Developer (Java Spring Boot / React / Node.js)
 - **GitHub**: [github.com/NgocNhu1824](https://github.com/NgocNhu1824)
 - **Project Repository**: [hoahoehoahoet](https://github.com/NgocNhu1824/hoahoehoahoet)
 
